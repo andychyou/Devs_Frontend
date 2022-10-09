@@ -55,7 +55,7 @@ const NavigationBar = () => {
     <>
 
       <NavBar>
-        <div  onClick={goMain}>
+        <div  style={{marginLeft:'10px'}} onClick={goMain}>
           <MainTitle href="#">
             뎁스
           </MainTitle>
