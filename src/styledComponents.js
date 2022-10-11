@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // landing page
 export const LandingDiv = styled.div`
@@ -7,15 +7,15 @@ height: max-content;
 min-height: 100vh;
 padding-bottom: 100px;
 background-color: #FFE082;
-//position: relative;
 position: absolute;
 z-index: -5;
-//display: flex;
-//justify-content: center;
-//align-items: center;
 
-//padding-top: 55px;
-//padding-top: 8vh;
+${() => {
+  const w = document.documentElement.scrollWidth
+  return css`
+    width: ${w}px;
+  `
+}}
 `
 export const LandingHead = styled.div`
 // background-color: orange;
@@ -31,7 +31,7 @@ height: 100%;
 display: flex;
 align-items: center;
 margin: 0 auto;
-//padding-left: 100px;
+padding-left: 100px;
 font-weight: 500;
 font-size: 28px;
 //font-size: 3vh;
@@ -39,19 +39,10 @@ cursor: pointer;
 `
 
 export const LandingContent = styled.div`
-width: max-content;
-//min-height: 100vh;
+// width: max-content;
 margin: 0 auto;
 display: flex;
-//justify-content: space-evenly;
-//align-items: center;
-//position: absolute;
-//left: 0;
-////top: 8vh;
-////bottom: 10vh;
-//top: 80px;
-//bottom: 100px;
-//z-index: 10;
+justify-content: center;
 // background-color: aqua;
 `
 
@@ -139,6 +130,7 @@ border: none;
 border-radius: 7px;
 //border-radius: 0.7vh;
 width: 100%;
+padding: 0 10px;
 height: 35px;
 margin: 5px 0 0;
 //margin-top: 1vh;
@@ -240,20 +232,15 @@ z-index: 6;
 export const LoginBtnDiv = styled.div`
 color: #0D4AE9;
 display: flex;
-justify-content: space-between;
-width: 270px;
-//width: 27vh;
-position: absolute;
-bottom: 40px;
-//bottom: 4vh;
-//left: calc(37vw / 2);
-//margin-left: -13.5vh;
-left: calc(652px / 2);
-margin-left: -135px;
+// justify-content: space-between;
+justify-content: center;
+width: max-content;
+margin: 150px auto 0;
 `
 
 export const LoginBtn = styled.div`
 cursor: pointer;
+margin: 0 30px;
 //font-size: 1.8vh;
 `
 

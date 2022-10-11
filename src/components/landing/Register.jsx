@@ -25,14 +25,14 @@ const Register = () => {
   const [input, setInput] = useState({
     uname: '',
     email: '',
-    nickname: '',
+    id: '',
     pwd: '',
     pwd2: ''
   })
-  const { uname, email, nickname, pwd, pwd2 } = input;
+  const { uname, email, id, pwd, pwd2 } = input;
   const unameRef = useRef();
   const emailRef = useRef();
-  const nickRef = useRef();
+  const idRef = useRef();
   const pwdRef = useRef();
   const pwd2Ref = useRef();
 
@@ -102,10 +102,10 @@ const Register = () => {
 
     if(e.key === 'Enter'){
       if(name === "uname"){
+        idRef.current.focus();
+      } else if(name === 'id'){
         emailRef.current.focus();
       } else if(name === 'email'){
-        nickRef.current.focus();
-      } else if(name === 'nickname'){
         pwdRef.current.focus();
       } else if(name === 'pwd'){
         pwd2Ref.current.focus();
@@ -115,17 +115,23 @@ const Register = () => {
     }
   }
 
+//   **/account/user/**
+
+// - POST: body={id, email, password, name, image} // image : null 가능
+// → 성공: status=201
+// → 실패: status=400
   const sendRequest = async() => {
-    const res = await axios.post(`${APIURL}/account/signup/`, {
+    const res = await axios.post(`${APIURL}/account/user/`, {
+      id: id,
       email: email,
       password: pwd,
-      nickname: nickname,
-      name: uname
+      name: uname,
+      image: null
     })
 
     console.log(res);
 
-    if(res.data.success === 'true'){
+    if(res.status == 200){
       alert('회원가입 성공! 환영합니다.')
       navigate('/login');
     } else {
@@ -135,7 +141,7 @@ const Register = () => {
   }
 
   const onRegister = () => {
-    if(!email || !pwd || !nickname || !uname || !pwd2){
+    if(!email || !pwd || !id || !uname || !pwd2){
       alert('모든 정보를 입력해주세요!')
     } else if(!isRightEmail){
       alert('이메일 표기식이 잘못되었습니다!')
@@ -171,12 +177,12 @@ const Register = () => {
           </RegisterLi>
 
           <RegisterLi>
-            <RegisterInputText>유저 닉네임</RegisterInputText>
+            <RegisterInputText>아이디</RegisterInputText>
             <RegisterInput 
               type="text"
-              name="nickname"
-              value={nickname}
-              ref={nickRef}
+              name="id"
+              value={id}
+              ref={idRef}
               onChange={onChange}
               onKeyUp={onKeyUp} />
           </RegisterLi>

@@ -12,15 +12,15 @@ import { useNavigate } from 'react-router-dom';
 
 const LoginInput = () => {
   const [input, setInput] = useState({
-    email: '',
+    id: '',
     pwd: ''
   })
-  const { email, pwd } = input;
-  const emailRef = useRef();
+  const { id, pwd } = input;
+  const idRef = useRef();
   const pwdRef = useRef();
 
   useEffect(() => {
-    emailRef.current.focus();
+    idRef.current.focus();
   }, []);
 
   const onChange = (e) => {
@@ -35,7 +35,7 @@ const LoginInput = () => {
     const { name } = e.target;
 
     if(e.key === 'Enter'){
-      if(name === 'email'){
+      if(name === 'id'){
         pwdRef.current.focus();
       } else {
         onLogin();
@@ -44,16 +44,21 @@ const LoginInput = () => {
   }
 
   const navigate = useNavigate();
+
+//   **/account/login/**
+
+// - POST: body={id, password}
+// → 성공: status=200, data={id}
+// → 실패: status=400
   const sendRequest = async() => {
     const res = await axios.post(`${APIURL}/account/login/`, {
-      email: email,
+      id: id,
       password: pwd
     })
 
     console.log(res);
-    if(res.data.success === 'true'){
+    if(res.data.status == 200){
       console.log('login success')
-      console.log('res::::', res.data)
       setCookie('user_id', res.data.id, {maxAge: 3000, path: '/'})
       if(res.data.img === ''){
         setCookie('user_img', `${APIURL}/media/uploads/profile-img.png`, {maxAge: 3000, path: '/'})
@@ -68,11 +73,14 @@ const LoginInput = () => {
   }
 
   const onLogin = () => {
-    if(!email || !pwd){
+    if(!id || !pwd){
       alert('모든 정보를 입력해주세요!');
     } else {
       sendRequest();
     }
+  }
+  const goRegister = () => {
+    navigate('/')
   }
 
   return (
@@ -85,12 +93,12 @@ const LoginInput = () => {
 
         <RegisterUl>
           <RegisterLi>
-            <RegisterInputText>이메일</RegisterInputText>
+            <RegisterInputText>아이디</RegisterInputText>
             <RegisterInput 
               type="text"
-              name="email"
-              value={email}
-              ref={emailRef}
+              name="id"
+              value={id}
+              ref={idRef}
               onChange={onChange}
               onKeyUp={onKeyUp}
             />
@@ -113,8 +121,9 @@ const LoginInput = () => {
         </RegisterBtn>
 
         <LoginBtnDiv>
-          <LoginBtn>아이디 찾기</LoginBtn>
-          <LoginBtn>비밀번호 찾기</LoginBtn>
+          {/* <LoginBtn>아이디 찾기</LoginBtn>
+          <LoginBtn>비밀번호 찾기</LoginBtn> */}
+          <LoginBtn onClick={goRegister}>회원가입</LoginBtn>
         </LoginBtnDiv>
 
       </LoginDiv>
