@@ -861,6 +861,13 @@ export const NavBar = styled.div`
 
 `
 
+export const TitleWrap = styled.div`
+margin-left:10px;
+flex-shrink:0; 
+display: flex;
+align-items: center;
+`
+
 export const MainTitle = styled.span`
   font-size: 26px;   
 `
@@ -871,7 +878,12 @@ export const SubTitle = styled.span`
   margin-right: 40px;
 `
 
-export const NavSearchbar = styled.input`
+export const NavSearchbar = styled.div`
+width: 400px;
+flex-shrink: 0;
+`
+
+export const NavSearchInput = styled.input`
 width: 350px;
     height: 35px;
     border: none;
@@ -895,6 +907,9 @@ display: inline-block;
 `
 
 export const NavIconsContainer = styled.div`
+width:200px;
+margin-left: auto;
+margin-right: 0;
 display: flex;
 align-items: center;
 
@@ -914,3 +929,170 @@ border-radius: 5px;
 cursor: pointer;
 transition: .45s;
 `
+
+
+//ProfileCard
+export const CardDiv = styled.span`
+display: flex;
+flex-direction: column;
+background-color: #c2e6ab;
+border-radius: 30px;
+width: 400px;
+height: 450px;
+justify-content: space-evenly;
+margin: 0 10px 30px 0;
+cursor: pointer;
+`
+
+export const IdContainer = styled.span`
+display: flex;
+margin: 0 auto;
+width: 350px;
+display: flex;
+justify-content: space-evenly;
+`
+export const NameContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+`
+
+export const NameP = styled.p`
+font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 5px;
+`
+
+export const JobP = styled.p`
+font-size: 36px;
+`
+
+export const ContentContainer = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+font-size: 24px;
+`
+
+export const ProfileIntro = styled.div`
+margin-top: 10px;
+text-align: left;
+`
+
+export const ProfileSpec = styled.div`
+margin-top: 20px;
+text-align: left;
+`
+
+export const ProfileSkills = styled.div`
+margin-top: 20px;
+text-align: left;
+&:p{
+  font-weight: bold;
+}
+`
+
+//AdCard
+export const AdContentP = styled.div`
+margin-left: 5px;
+margin-right: 5px;
+font-size: 24px;
+`
+export const AdText = styled.div`
+width: max-content;
+color: #f8f4f4;
+font-size: 20px;
+font-weight: bold;
+position: relative;
+left: 330px;
+bottom: -20px;
+`
+
+//RecommendBar
+export const RecommendBarDiv = styled.div`
+margin-top: 2%;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+height: 100px;
+`
+export const RecommendToWho = styled.div`
+padding: 5px;
+margin-right: 6px;
+font-size: 36px;
+`
+
+export const RecommendChip = styled.button`
+color: black;
+font-size: 20px;
+background-color: white;
+border: 1px solid black;
+border-radius: 20px;
+margin: 0px 6px;
+padding: 10px;
+&:hover{
+  background-color: grey;
+  color: white;
+}
+`
+
+//SearchPage
+
+export const RecommendDiv = styled.div` //추천 카드는 구현을 우선순위에서 미루는 걸로 회의함
+margin-top: 40px;
+margin-left: auto;
+margin-right: auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+width: 90%;
+`
+export const SuggestP = styled.p`
+margin-top: 6%;
+font-size: 36px;
+color:  #707070;
+align-self: flex-start;
+margin-left: 20px;
+`
+
+export const SearchResultDiv = styled.div`
+display: flex;
+margin: 0 auto;
+width: 1000px;
+height: 134px;
+background-color: rgba(255, 224, 130, 0.2);
+border-radius: 10px;
+justify-content: space-evenly;
+align-items: center;
+`
+export const SearchResultImg = styled.img`
+width: 66px;
+height: 66px;
+border-radius: 50%;
+`
+
+export const SearchResultDetail = styled.div`
+display:flex;
+flex-direction: column;
+gap: 8px;
+`
+
+export const SearchResultIntroBox = styled.div`
+width: 400px;
+height: 100px;
+background-color: white;
+border-radius: 8px;
+`
+
+export const SearchResultButton = styled.button`
+font-size: 24px;
+width: 150px;
+height: 57px;
+background-color: #B299B0;
+border: none;
+border-radius: 7px;
+`
+

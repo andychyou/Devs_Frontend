@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MainTitle, NavAccountSpan, NavBar, NavBarContainer, NavIconsContainer, NavSearchbar, NavSearchButton, SubTitle } from '../../styledComponents';
+import { MainTitle, NavAccountSpan, NavBar, NavSearchInput, NavIconsContainer, NavSearchbar, NavSearchButton, SubTitle, TitleWrap } from '../../styledComponents';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -55,21 +55,22 @@ const NavigationBar = () => {
     <>
 
       <NavBar>
-        <div  style={{marginLeft:'10px'}} onClick={goMain}>
+        <TitleWrap onClick={goMain}>
           <MainTitle href="#">
             뎁스
           </MainTitle>
           <SubTitle href="#">
             devStory
           </SubTitle>
-        </div>
+        </TitleWrap>
 
-        <div style={{ width:'400px'}}>
-          <NavSearchbar type='text' placeholder="Search"></NavSearchbar>
+        <NavSearchbar>
+          <NavSearchInput type='text' placeholder="Search"></NavSearchInput>
           <NavSearchButton>
             <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
           </NavSearchButton>
-        </div>
+        </NavSearchbar>
+
         
         
     
@@ -90,9 +91,9 @@ const NavigationBar = () => {
             <NavAccountSpan>로그아웃</NavAccountSpan>
           </NavIconsContainer>
         ) : (
-          <NavIconsContainer style={{width:"300px", marginLeft: 'auto', marginRight: '0'}}>
-            <NavAccountSpan>로그인</NavAccountSpan>
-            <NavAccountSpan>회원가입</NavAccountSpan>
+          <NavIconsContainer >
+            <NavAccountSpan onClick={goLogin}>로그인</NavAccountSpan>
+            <NavAccountSpan onClick={goRegister}>회원가입</NavAccountSpan>
           </NavIconsContainer>
         )}
 
