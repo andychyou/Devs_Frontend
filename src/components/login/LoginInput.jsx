@@ -57,15 +57,9 @@ const LoginInput = () => {
     })
 
     console.log(res);
-    if(res.data.status == 200){
+    if(res.status == 200){
       console.log('login success')
-      setCookie('user_id', res.data.id, {maxAge: 3000, path: '/'})
-      if(res.data.img === ''){
-        setCookie('user_img', `${APIURL}/media/uploads/profile-img.png`, {maxAge: 3000, path: '/'})
-      }
-      else{
-        setCookie('user_img', res.data.img, {maxAge: 3000, path: '/'})
-      }
+      setCookie('user_id', res.data.id);
       navigate('/main')
     } else {
       console.log('login fail')

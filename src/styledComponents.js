@@ -2,21 +2,23 @@ import styled, { css } from 'styled-components'
 
 // landing page
 export const LandingDiv = styled.div`
-width: 100%;
+// width: 100%;
+min-width: 100vw;
 height: max-content;
 min-height: 100vh;
 padding-bottom: 100px;
 background-color: #FFE082;
 position: absolute;
 z-index: -5;
-
-${() => {
-  const w = document.documentElement.scrollWidth
-  return css`
-    width: ${w}px;
-  `
-}}
 `
+
+// ${() => {
+//   const w = document.documentElement.scrollWidth
+//   return css`
+//     width: ${w}px;
+//   `
+// }}
+
 export const LandingHead = styled.div`
 // background-color: orange;
 width: 100%;

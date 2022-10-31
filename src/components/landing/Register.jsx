@@ -131,10 +131,10 @@ const Register = () => {
 
     console.log(res);
 
-    if(res.status == 200){
+    if(res.status == 201){
       alert('회원가입 성공! 환영합니다.')
       navigate('/login');
-    } else {
+    } else if(res.status == 400) {
       console.log('sign up fail')
       alert('이메일 또는 닉네임이 중복되었습니다.')
     }

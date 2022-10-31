@@ -16,7 +16,7 @@ const DescHead = ({ text, setPopup }) => {
 
   return (
     <>
-      {/* <DescHeadDiv>
+      <DescHeadDiv>
 
         <DescHeadText>{ text }</DescHeadText>
 
@@ -24,9 +24,9 @@ const DescHead = ({ text, setPopup }) => {
           <FontAwesomeIcon icon={faPen}/>
         </DescEditBtn>
 
-      </DescHeadDiv> */}
+      </DescHeadDiv>
 
-      <DescHeadDiv>
+      {/* <DescHeadDiv>
 
         <DescHeadText>{ text }</DescHeadText>
         {
@@ -46,7 +46,7 @@ const DescHead = ({ text, setPopup }) => {
           <FontAwesomeIcon icon={faPen}/>
         </DescEditBtn>
 
-      </DescHeadDiv>
+      </DescHeadDiv> */}
     </>
   );
 };
