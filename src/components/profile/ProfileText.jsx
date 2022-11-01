@@ -12,31 +12,19 @@ import { APIURL } from '../../config/key';
 import { getCookie } from '../../config/cookie';
 import { useState } from 'react';
 
-const ProfileText = memo(() => {
-  const [nickname, setNickname] = useState('');
-  const id = getCookie('user_id')
-
-  useEffect(() => {
-    axios.get(`${APIURL}/account/userinfo/${id}/`)
-    .then(res => {
-      console.log(res.data);
-      setNickname(res.data.nickname)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }, [])
+const ProfileText = memo(({ name, email, id }) => {
+  
   return (
     <>
       <ProfileTextDiv>
         <ProfileName>
-          {nickname}
+          {name}
           <ProfileEditBtn>
             <FontAwesomeIcon icon={faGear} />
           </ProfileEditBtn>
         </ProfileName>
-        {/* <ProfileDesc>웹 프론트엔드</ProfileDesc>
-        <ProfileDesc>서강대학교</ProfileDesc> */}
+        <ProfileDesc>{id}</ProfileDesc>
+        <ProfileDesc>{email}</ProfileDesc>
       </ProfileTextDiv>
     </>
   );

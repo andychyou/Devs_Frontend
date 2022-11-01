@@ -2,15 +2,15 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { APIURL } from '../../config/key';
 import { 
-  ProfileImg, ProfileImgDiv, ProfileImgEditBtn
+  ProfileImg, ProfileImgDiv, ProfileImgEditBtn, ProfileImgIcon
 } from '../../styledComponents';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getCookie, setCookie } from '../../config/cookie';
 
-const ProfileImage = ({ setPopup }) => {
+const ProfileImage = ({ image, setPopup }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const onClick = () => {
@@ -36,8 +36,16 @@ const ProfileImage = ({ setPopup }) => {
 
   return (
     <>
-      <ProfileImgDiv>
-        <ProfileImg src={userImg} />
+      <ProfileImgDiv >
+        {image == null ? (
+          <ProfileImgIcon>
+            <FontAwesomeIcon icon={faUser} 
+              style={{fontSize: '80px'}}
+            />
+          </ProfileImgIcon>
+        ) : (
+          <ProfileImg src={image} />
+        )}
         
         <ProfileImgEditBtn>
           <FontAwesomeIcon onClick={onClick} icon={faPen} />

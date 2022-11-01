@@ -270,15 +270,27 @@ export const ProfileImgDiv = styled.div`
 width: 150px;
 height: max-content;
 position: relative;
+
+// background-color: orange;
 `
 
 export const ProfileImg = styled.img`
 display: inline-block;
 border-radius: 50%;
 background-color: white;
-width: 120px;
-height: 120px;
+width: 150px;
+height: 150px;
 object-fit: contain;
+`
+export const ProfileImgIcon = styled.div`
+border-radius: 50%;
+background-color: white;
+width: 150px;
+height: 150px;
+color: #D0D0D0;
+display: flex;
+align-items: center;
+justify-content: center;
 `
 
 export const ProfileImgEditBtn = styled.span`
@@ -295,8 +307,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: absolute;
-right: 8px;
-bottom: 8px;
+right: 5px;
+bottom: 5px;
 cursor: pointer;
 `
 // --------------------------------------

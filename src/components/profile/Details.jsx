@@ -14,20 +14,20 @@ import {
 import DescHead from './DescHead';
 
 const Details = memo(() => {
-  // const id = getCookie('user_id');
   const [isEdit, setIsEdit] = useState(false);
   const params = useParams();
   const id = params.user_id;
   const [isInit, setIsInit] = useState(false);
 
   const [details, setDetails] = useState({
-    belongs: '',
+    user: '',  // user_id
+    belong: '',
     introduction: '',
     major: '',
-    position: '',
-    subposition: ''
+    main_position: '',
+    sub_position: ''
   });
-  const { belongs, introduction, major, position, subposition } = details
+  const { belong, introduction, major, main_position, sub_position } = details
 
   const bRef = useRef();
   const iRef = useRef();
@@ -36,9 +36,9 @@ const Details = memo(() => {
   const sRef = useRef();
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/details/${id}/`)
+    axios.get(`${APIURL}/profile/${id}/`)
     .then(res => {
-      console.log('profile details: ', res.data);
+      console.log(res)
       setDetails(res.data);
     })
     .catch(err => {
@@ -63,30 +63,41 @@ const Details = memo(() => {
   }, [isEdit])
 
   const onDetailsPost = () => {
-    setIsEdit(false)
-
-    if(isInit){
-      axios.post(`${APIURL}/profiles/details/`, {
-        user: id, 
-        belongs, major, position, subposition,
-        introduction
-      })
-      .then(res => {
-        console.log('detail post success')
-      })
-      .catch(err => console.log(err))
-    } else {
-      axios.patch(`${APIURL}/profiles/details/${id}/`, {
-        belongs, major, position, subposition,
-        introduction
-      })
-      .then(res => {
+    axios.patch(`${APIURL}/profile/${id}/`, {
+      belong, major, main_position, sub_position,
+      introduction
+    })
+    .then(res => {
+      if(res.status == 200){
         console.log('detail patch success');
-      })
-      .catch(err => console.log(err))
-    }
+      }
+    })
+    .catch(err => console.log(err))
 
-    window.location.replace('');
+    // setIsEdit(false)
+
+    // if(isInit){
+    //   axios.post(`${APIURL}/profiles/details/`, {
+    //     user: id, 
+    //     belongs, major, position, subposition,
+    //     introduction
+    //   })
+    //   .then(res => {
+    //     console.log('detail post success')
+    //   })
+    //   .catch(err => console.log(err))
+    // } else {
+    //   axios.patch(`${APIURL}/profile/${id}/`, {
+    //     belong, major, main_position, sub_position,
+    //     introduction
+    //   })
+    //   .then(res => {
+    //     console.log('detail patch success');
+    //   })
+    //   .catch(err => console.log(err))
+    // }
+
+    window.location.reload();
   }
 
   return (
@@ -106,14 +117,14 @@ const Details = memo(() => {
             {isEdit ? (
               <SmallInput 
                 type="text"
-                name="belongs"
-                value={belongs}
+                name="belong"
+                value={belong}
                 onChange={onChange}
                 ref={bRef}
                 autoComplete='nope'
               />
             ) : (
-              <SmallBox>{belongs}</SmallBox>
+              <SmallBox>{belong}</SmallBox>
             )}
             
           </SmallDiv>
@@ -140,14 +151,14 @@ const Details = memo(() => {
             {isEdit ? (
               <SmallInput 
                 type="text"
-                name="position"
-                value={position}
+                name="main_position"
+                value={main_position}
                 onChange={onChange}
                 ref={pRef}
                 autoComplete='nope'
               />
             ) : (
-              <SmallBox>{position}</SmallBox>
+              <SmallBox>{main_position}</SmallBox>
             )}
           </SmallDiv>
           <SmallDiv>
@@ -155,14 +166,14 @@ const Details = memo(() => {
             {isEdit ? (
               <SmallInput 
                 type="text"
-                name="subposition"
-                value={subposition}
+                name="sub_position"
+                value={sub_position}
                 onChange={onChange}
                 ref={sRef}
                 autoComplete='nope'
               />
             ) : (
-              <SmallBox>{subposition}</SmallBox>
+              <SmallBox>{sub_position}</SmallBox>
             )}
           </SmallDiv>
         </DescSmallDiv>

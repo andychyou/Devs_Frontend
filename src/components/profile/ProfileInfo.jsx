@@ -25,41 +25,28 @@ const ProfileInfo = memo(() => {
 
   const [followers, setFollowers] = useState([]);
   const [followings, setFollowings] = useState([]);
-  
-  const getHashTag = async() => {
-    const res = await axios.get(`${APIURL}/profiles/hashtag/${id}/`)
 
-    console.log('해시태그: ', res);
-    const temp = res.data.hashtag.split(' ');
-    console.log('hashtag temp ', temp);
-    setHashtag(temp);
-    // res.data[0]
-    // hashtag: "웹프론트엔드 웹백엔드"
+  const [userInfo, setUserInfo] = useState({
+    id: '',
+    email: '',
+    name: '',
+    image: '',
+  })
+  const { email, name, image } = userInfo;
+  const getUserInfo = async() => {
+    const res = await axios.get(`${APIURL}/account/user/${id}`)
+
+    if(res.status == 200){
+      console.log('get user info: ', res.data)
+      setUserInfo(res.data)
+    } else {
+      console.log('get user info fail')
+    }
   }
 
+
   useEffect(() => {
-    getHashTag().catch(err => console.log(err))
-
-    axios.get(`${APIURL}/profiles/follower/${id}/`)
-    .then(res => {
-      console.log(res)
-      // res.data : [{id, follower, following}]
-      const temp = res.data;
-      const tmp1 = [];
-      const tmp2 = [];
-
-      for(let i = 0; i < temp.length; i++){
-        const data = temp[i];
-        tmp1.push(data.follower);
-        tmp2.push(data.following)
-      }
-
-      setFollowers(tmp1);
-      setFollowings(tmp2);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+    getUserInfo()
   }, [])
 
   return (
@@ -79,7 +66,7 @@ const ProfileInfo = memo(() => {
       <ProfileImage setPopup={setIsImageUpdate} />
 
       <ProfileFunctDiv>
-        <ProfileText />
+        <ProfileText name={name} id={id} email={email} />
 
         <ProfileFollow setFan={setFan} setIdol={setIdol} />
 
