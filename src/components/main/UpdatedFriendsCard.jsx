@@ -1,7 +1,5 @@
 import React from 'react';
-import { UpdatedFriendsBox, UpdatedFriendsCardDiv, UpdatedFriendsCardIcons, UpdatedFriendsCardImg, UpdatedFriendsCardName, UpdatedFriendsCardText} from '../../styledComponents';
-import UpdatedFriendsBar from './UpdatedFriendsBar';
-import { Button } from 'react-bootstrap';
+import { UpdatedFriendsBox, UpdatedFriendsCardDiv, UpdatedFriendsCardIcons, UpdatedFriendsCardImg, UpdatedFriendsCardName, UpdatedFriendsCardText, UpdatedFriendsRecommendChip} from '../../styledComponents';
 
 
 const UpdatedFriendsCard = () => {
@@ -27,13 +25,13 @@ const UpdatedFriendsCard = () => {
               </UpdatedFriendsCardIcons>
             </div>
             <div>
-              <div className="updated-card-chips flex-box-r">
-                <Button className="updated-card-chip" variant="secondary">
+              <div style={{display:'flex', justifyContent:'center'}}>
+                <UpdatedFriendsRecommendChip>
                   #웹
-                </Button>
-                <Button className="updated-card-chip" variant="secondary">
+                </UpdatedFriendsRecommendChip>
+                <UpdatedFriendsRecommendChip>
                   #백엔드
-                </Button>
+                </UpdatedFriendsRecommendChip>
               </div>
             </div>
           </UpdatedFriendsCardDiv>
