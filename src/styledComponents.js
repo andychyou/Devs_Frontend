@@ -680,6 +680,49 @@ color: #FFB300;
 }
 `
 
+//Profile3
+
+export const ProfileContentSection = styled.section`
+width: 1000px;
+background-color: rgba(255, 224, 130, 0.3);
+display: flex;
+justify-content: center;
+margin-top: 100px;
+`
+
+export const ProfileSkillHeader = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 20px;
+margin-bottom: 20px;
+`
+
+export const ProfileSkillDiv = styled.div`
+width: 900px;
+`
+
+export const ProfileSkillSpecificDiv = styled.div`
+display: flex;
+background-color: white;
+height: 50px;
+margin-top: 10px;
+margin-bottom: 10px;
+justify-content:flex-start;
+align-items: center;
+`
+
+export const ProfileSkillName = styled.p`
+justify-self: start;
+    font-weight: bold;
+`
+
+export const ProfileSkillEditBtn = styled.button`
+
+display: block;
+background-color: rgb(132, 22, 12);
+`
+
 
 // POPUP
 export const PopupDiv = styled.div`
