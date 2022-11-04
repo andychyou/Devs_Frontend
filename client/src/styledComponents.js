@@ -1095,4 +1095,132 @@ background-color: #B299B0;
 border: none;
 border-radius: 7px;
 `
+//UpdatedFriends.jsx
 
+export const UpdatedFriendsSection = styled.section`
+display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 40px;
+`
+
+export const UpdatedFriendsBox = styled.div`
+display: flex;
+flex-direction: column;
+margin-top: 14px;
+width: inherit;
+height: 55px;
+background-color: rgba(249, 249, 249, 1);
+box-shadow: 2px 2px 10px 2px rgba(107, 104, 104, 0.67);
+border-radius: 10px;
+justify-content: center;
+`
+
+export const UpdatedFriendsImg = styled.img`
+image-resolution: 1 / 1;
+width: 35px;
+border-radius: 50%;
+color: red;
+`
+
+export const UpdatedFriendsDot = styled.span`
+width: 10px;
+height: 10px;
+background-color: red;
+border-radius: 50%;
+display:inline-block;
+position: relative;
+left: -8px;
+top: -28px;
+`
+
+export const UpdatedFriendsCardDiv = styled.div`
+background-color: rgba(255, 224, 130, 0.6);
+border-radius: 10px;
+width: 80vw;
+cursor: pointer;
+`
+
+export const UpdatedFriendsCardImg = styled.img`
+width: 66px;
+border-radius: 50%;
+margin: 10px 30px;
+`
+
+export const UpdatedFriendsCardName = styled.span`
+font-size: 20px;
+    flex: 1;
+`
+
+export const UpdatedFriendsCardText = styled.div`
+flex: 8;
+`
+export const UpdatedFriendsCardIcons = styled.div`
+display: flex;
+flex:1;
+gap: 10px;
+margin: 10px;
+`
+
+export const UpdatedFriendsRecommendToYouDiv = styled.div`
+display:flex;
+align-items:center;
+width: 1000px;
+margin-bottom:20px;
+margin-left:200px;
+`
+
+export const UpdatedFriendsRecommendCardIdolButton = styled.button`
+font-size: 14px;
+color: black;
+background-color: rgba(178, 153, 176, 1);
+border: none;
+border-radius: 5px;
+padding: 8px 14px;
+margin: 5px;
+`
+
+export const UpdatedFriendsRecommendChips = styled.div`
+display: flex;
+justify-content: center;
+`
+
+export const UpdatedFriendsRecommendChip = styled.button`
+font-size: 14px;
+color: black;
+background-color: rgba(217, 217, 217, 1);
+border-radius: 20px;
+border: none;
+padding: 8px 14px;
+margin: 5px;
+cursor: pointer;
+`
+
+
+export const UpdatedFriendsRecommendCardContainer = styled.div`
+display: flex;
+ justify-content:center;
+  gap:20px;
+   flex-wrap:wrap;
+`
+
+export const UpdatedFriendsRecommendCardDiv = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 155px;
+height: 173px;
+background-color: rgba(255, 153, 0, 0.6);
+border-radius: 10px;
+cursor: pointer;
+`
+
+export const UpdatedFriendsRecommendCardImg = styled.img`
+width: 66px;
+    border-radius: 50%;
+    margin: 10px;
+`
+export const UpdatedFriendsRecommendCardName = styled.span`
+margin: 10px;
+font-weight: bold;
+`
