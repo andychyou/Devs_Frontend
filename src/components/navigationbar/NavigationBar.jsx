@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Button,
-  Container,
-  Form,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap";
+import { MainTitle, NavAccountSpan, NavBar, NavSearchInput, NavIconsContainer, NavSearchbar, NavSearchButton, SubTitle, TitleWrap } from '../../styledComponents';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import "./navigationbar.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getAllCookie, getCookie, removeCookie } from "../config/cookie";
+import { getAllCookie, getCookie, removeCookie } from "../../config/cookie";
 
 const NavigationBar = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -62,37 +53,30 @@ const NavigationBar = () => {
 
   return (
     <>
-    <div className="navbar-big">
 
-      <section className="navbar">
-        <div className="nav-logo">
-          <div  onClick={goMain}>
-            <span className="maintitle" href="#">
-              뎁스
-            </span>
-            <span className="subtitle" href="#">
-              devStory
-            </span>
-          </div>
+      <NavBar>
+        <TitleWrap onClick={goMain}>
+          <MainTitle href="#">
+            뎁스
+          </MainTitle>
+          <SubTitle href="#">
+            devStory
+          </SubTitle>
+        </TitleWrap>
 
-          <div style={{display:'flex', width:'350px', justifyContent:'space-between', alignItems: 'center'}}>
-            <input className='nav-searchbar' type='text' placeholder="Search"></input>
-            {/* <Button variant="outline-success">
-              <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
-            </Button> */}
-          </div>
-        </div>
-        
-      
-        {/* <div style={{display:'flex', width:'350px', justifyContent:'space-between', alignItems: 'center'}}>
-          <input className='nav-searchbar' type='text' placeholder="Search"></input>
-          <Button variant="outline-success">
+        <NavSearchbar>
+          <NavSearchInput type='text' placeholder="Search"></NavSearchInput>
+          <NavSearchButton>
             <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
-          </Button>
-        </div> */}
+          </NavSearchButton>
+        </NavSearchbar>
+
+        
+        
+    
 
         {isLogin ? (
-          <div className="nav-icons">
+          <NavIconsContainer>
             <span class="nav-icon material-symbols-outlined">notifications</span>
             <span class="nav-icon material-symbols-outlined">home</span>
             <span class="nav-icon material-symbols-outlined">settings</span>
@@ -104,18 +88,17 @@ const NavigationBar = () => {
               onClick={goProfile}
             />
 
-            <span onClick={goLogout} className="account-div">로그아웃</span>
-          </div>
+            <NavAccountSpan>로그아웃</NavAccountSpan>
+          </NavIconsContainer>
         ) : (
-          <div className="nav-icons">
-            <span onClick={goLogin} className="account-div">로그인</span>
-            <span onClick={goRegister} className="account-div">회원가입</span>
-          </div>
+          <NavIconsContainer >
+            <NavAccountSpan onClick={goLogin}>로그인</NavAccountSpan>
+            <NavAccountSpan onClick={goRegister}>회원가입</NavAccountSpan>
+          </NavIconsContainer>
         )}
 
-      </section>
+      </NavBar>
 
-    </div>
     </>
   );
 };

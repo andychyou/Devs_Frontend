@@ -11,7 +11,7 @@ import SearchResultPage from './components/search/SearchResultPage';
 import ProfilePage3 from './components/profile/profile3/ProfilePage3';
 import MainPage from './components/main/MainPage';
 import ProfilePage from './components/profile/ProfilePage';
-import NavigationBar from './components/NavigationBar';
+import NavigationBar from './components/navigationbar/NavigationBar';
 import Profile from './components/profile/Profile';
 import ImageEdit from './components/profile/edit/ImageEdit';
 
