@@ -125,8 +125,7 @@ const Register = () => {
       id: id,
       email: email,
       password: pwd,
-      name: uname,
-      image: null
+      name: uname
     })
 
     console.log(res);
