@@ -1,15 +1,17 @@
-import axios from 'axios';
-import React, { memo, useEffect, useState } from 'react';
-import { useRef } from 'react';
-import { useParams } from 'react-router-dom';
-import { getCookie } from '../../config/cookie';
-import { APIURL } from '../../config/key';
-import { 
-  DescDiv, DescContentsDiv, CurrentStudy,
-  SaveBtn, CurrentInput 
-} from '../../styledComponents';
-import DescHead from './DescHead';
-
+import axios from "axios";
+import React, { memo, useEffect, useState } from "react";
+import { useRef } from "react";
+import { useParams } from "react-router-dom";
+import { getCookie } from "../../config/cookie";
+import { APIURL } from "../../config/key";
+import {
+  DescDiv,
+  DescContentsDiv,
+  CurrentStudy,
+  SaveBtn,
+  CurrentInput,
+} from "../../styledComponents";
+import DescHead from "./DescHead";
 
 const OnGoing = memo(() => {
   // const id = getCookie('user_id')
@@ -18,58 +20,41 @@ const OnGoing = memo(() => {
   const [isEdit, setIsEdit] = useState(false);
   const [onGoing, setOnGoing] = useState("");
   const onRef = useRef();
-  const [isInit, setIsInit] = useState(false);
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/ongoing/${id}/`)
-    .then( res => {
-      console.log('ongoing: ', res.data);
-      setOnGoing(res.data[0].ongoing)
-    })
-    .catch(err => {
-      console.log(err)
-      setIsInit(true);
-    })
+    axios
+      .get(`${APIURL}/profile/study/${id}/`)
+      .then((res) => {
+        console.log("ongoing: ", res.data);
+        setOnGoing(res.data.current_study);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   useEffect(() => {
-    if(isEdit){
+    if (isEdit) {
       onRef.current.focus();
     }
-  }, [isEdit])
+  }, [isEdit]);
 
-  const ongoingPost = () => {
-    setIsEdit(false)
+  const ongoingPost = async () => {
+    const res = await axios.patch(`${APIURL}/profile/study/${id}/`, {
+      current_study: onGoing,
+    });
 
-    if(isInit){
-      axios.post(`${APIURL}/profiles/ongoing/`, {
-        user: id, 
-        ongoing: onGoing
-      })
-      .then(res => {
-        console.log('ongoing post success')
-      })
-      .catch(err => console.log(err))
+    if (res.status == 200) {
+      console.log("ongoing patch success");
+      window.location.reload();
     } else {
-      axios.patch(`${APIURL}/profiles/ongoing/${id}/`, {
-        ongoing: onGoing
-      })
-      .then(res => {
-        console.log('ongoing patch success');
-      })
-      .catch(err => console.log(err))
+      console.log("ongoing patch fail");
     }
-
-    window.location.replace('');
-  }
+  };
 
   return (
     <DescDiv>
-      {isEdit && (
-        <SaveBtn onClick={ongoingPost}>
-          저장
-        </SaveBtn>
-      )}
+      {isEdit && <SaveBtn onClick={ongoingPost}>저장</SaveBtn>}
 
       <DescHead text="현재 진행 중" setPopup={setIsEdit} />
 
@@ -78,16 +63,14 @@ const OnGoing = memo(() => {
           <CurrentInput
             value={onGoing}
             ref={onRef}
-            onChange={(e) => {setOnGoing(e.target.value)}}
+            onChange={(e) => {
+              setOnGoing(e.target.value);
+            }}
           />
         ) : (
-          <CurrentStudy>
-            {onGoing}
-          </CurrentStudy>
+          <CurrentStudy>{onGoing}</CurrentStudy>
         )}
-
       </DescContentsDiv>
-      
     </DescDiv>
   );
 });

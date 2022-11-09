@@ -1,20 +1,25 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { 
-  LoginDiv, LoginBtn, LoginBtnDiv,
-  RegisterText, RegisterUl, RegisterLi,
-  RegisterInput, RegisterInputText,
-  RegisterBtn
-} from '../../styledComponents';
-import axios from 'axios'
-import { APIURL } from '../../config/key';
-import { getCookie, setCookie } from '../../config/cookie';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import {
+  LoginDiv,
+  LoginBtn,
+  LoginBtnDiv,
+  RegisterText,
+  RegisterUl,
+  RegisterLi,
+  RegisterInput,
+  RegisterInputText,
+  RegisterBtn,
+} from "../../styledComponents";
+import axios from "axios";
+import { APIURL } from "../../config/key";
+import { getCookie, setCookie } from "../../config/cookie";
+import { useNavigate } from "react-router-dom";
 
 const LoginInput = () => {
   const [input, setInput] = useState({
-    id: '',
-    pwd: ''
-  })
+    id: "",
+    pwd: "",
+  });
   const { id, pwd } = input;
   const idRef = useRef();
   const pwdRef = useRef();
@@ -28,67 +33,65 @@ const LoginInput = () => {
 
     setInput({
       ...input,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
   const onKeyUp = (e) => {
     const { name } = e.target;
 
-    if(e.key === 'Enter'){
-      if(name === 'id'){
+    if (e.key === "Enter") {
+      if (name === "id") {
         pwdRef.current.focus();
       } else {
         onLogin();
       }
     }
-  }
+  };
 
   const navigate = useNavigate();
 
-//   **/account/login/**
+  //   **/account/login/**
 
-// - POST: body={id, password}
-// → 성공: status=200, data={id}
-// → 실패: status=400
-  const sendRequest = async() => {
+  // - POST: body={id, password}
+  // → 성공: status=200, data={id}
+  // → 실패: status=400
+  const sendRequest = async () => {
     const res = await axios.post(`${APIURL}/account/login/`, {
       id: id,
-      password: pwd
-    })
+      password: pwd,
+    });
 
     console.log(res);
-    if(res.status == 200){
-      console.log('login success')
-      setCookie('user_id', res.data.id);
-      navigate('/main')
+    if (res.status == 200) {
+      console.log("login success");
+      setCookie("user_id", res.data.id);
+      setCookie("user_img", res.data.img);
+      navigate("/main");
     } else {
-      console.log('login fail')
+      console.log("login fail");
     }
-  }
+  };
 
   const onLogin = () => {
-    if(!id || !pwd){
-      alert('모든 정보를 입력해주세요!');
+    if (!id || !pwd) {
+      alert("모든 정보를 입력해주세요!");
     } else {
       sendRequest();
     }
-  }
+  };
   const goRegister = () => {
-    navigate('/')
-  }
+    navigate("/");
+  };
 
   return (
     <>
       <LoginDiv>
-
-        <RegisterText>
-          당신의 스토리를 알려주세요!
-        </RegisterText>
+        <RegisterText>당신의 스토리를 알려주세요!</RegisterText>
 
         <RegisterUl>
           <RegisterLi>
             <RegisterInputText>아이디</RegisterInputText>
-            <RegisterInput 
+            <RegisterInput
               type="text"
               name="id"
               value={id}
@@ -99,7 +102,7 @@ const LoginInput = () => {
           </RegisterLi>
           <RegisterLi>
             <RegisterInputText>비밀번호</RegisterInputText>
-            <RegisterInput 
+            <RegisterInput
               type="password"
               name="pwd"
               value={pwd}
@@ -110,16 +113,13 @@ const LoginInput = () => {
           </RegisterLi>
         </RegisterUl>
 
-        <RegisterBtn onClick={onLogin}>
-          로그인
-        </RegisterBtn>
+        <RegisterBtn onClick={onLogin}>로그인</RegisterBtn>
 
         <LoginBtnDiv>
           {/* <LoginBtn>아이디 찾기</LoginBtn>
           <LoginBtn>비밀번호 찾기</LoginBtn> */}
           <LoginBtn onClick={goRegister}>회원가입</LoginBtn>
         </LoginBtnDiv>
-
       </LoginDiv>
     </>
   );
