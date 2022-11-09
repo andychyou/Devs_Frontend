@@ -923,7 +923,7 @@ export const SubTitle = styled.span`
 `
 
 export const NavSearchbar = styled.div`
-width: 400px;
+width: 420px;
 flex-shrink: 0;
 `
 
