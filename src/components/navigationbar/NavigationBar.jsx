@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MainTitle, NavAccountSpan, NavBar, NavSearchInput, NavIconsContainer, NavSearchbar, NavSearchButton, SubTitle, TitleWrap } from '../../styledComponents';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faHouseUser,faBell,faGear,faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAllCookie, getCookie, removeCookie } from "../../config/cookie";
 
@@ -77,18 +77,18 @@ const NavigationBar = () => {
 
         {isLogin ? (
           <NavIconsContainer>
-            <span class="nav-icon material-symbols-outlined">notifications</span>
-            <span class="nav-icon material-symbols-outlined">home</span>
-            <span class="nav-icon material-symbols-outlined">settings</span>
+            <FontAwesomeIcon size="2x" icon={faHouseUser} />
+            <FontAwesomeIcon size="2x"icon={faBell} />
+            <FontAwesomeIcon size="2x"icon={faGear} />
 
-            <img
+            <img style={{width:"40px", borderRadius:"50%"}}
               className="profile-pic"
-              // src={require("./search/profile-img.png")}
-              src={getCookie('user_img')}
+              src={require("../search/profile-img.png")}
+              // src={getCookie('user_img')}
               onClick={goProfile}
             />
 
-            <NavAccountSpan>로그아웃</NavAccountSpan>
+            <NavAccountSpan onClick={goLogout}>로그아웃</NavAccountSpan>
           </NavIconsContainer>
         ) : (
           <NavIconsContainer >

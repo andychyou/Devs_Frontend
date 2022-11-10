@@ -10,31 +10,31 @@ import {
 import PopupHeader from './PopupHeader';
 import PopupInputComp from './PopupInputComp';
 
-const CareerPopup = memo(({ setPopup }) => {
+const ProjectPopup = memo(({ setPopup }) => {
   return (
     <PopupDiv>
 
       <PopupBox>
 
-        <PopupHeader setPopup={setPopup} text="경력 추가하기" />
+        <PopupHeader setPopup={setPopup} text="프로젝트 추가하기" />
 
-        <PopupInputComp text="회사명" />
+        <PopupInputComp text="프로젝트명" />
 
-        <PopupInputComp text="직책" />
+        <PopupInputComp text="담당" />
 
-        <PopupInputComp text="위치" />
+        <PopupInputComp text="사용한 기술 스택" />
 
         <PopupDateDiv>
 
           <PopupDateSmall>
-            <PopupDateText>근무 시작 일자</PopupDateText>
+            <PopupDateText>프로젝트 시작 일자</PopupDateText>
             <PopupDateInputDiv>
               <PopupDateInput placeholder='YEAR' />
               <PopupDateInput placeholder='MONTH' />
             </PopupDateInputDiv>
           </PopupDateSmall>
           <PopupDateSmall>
-            <PopupDateText>근무 종료 일자</PopupDateText>
+            <PopupDateText>프로젝트 종료 일자</PopupDateText>
             <PopupDateInputDiv>
               <PopupDateInput placeholder='YEAR' />
               <PopupDateInput placeholder='MONTH' />
@@ -44,7 +44,7 @@ const CareerPopup = memo(({ setPopup }) => {
         </PopupDateDiv>
 
 
-        <PopupInputComp text="사용한 기술 스택" />
+        <PopupInputComp text="함께 한 동료" />
 
         <PopupInputDiv style={{flexGrow:'3'}}>
           <PopupInputText>상세설명</PopupInputText>
@@ -63,4 +63,4 @@ const CareerPopup = memo(({ setPopup }) => {
   );
 });
 
-export default CareerPopup;
+export default ProjectPopup;

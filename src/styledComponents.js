@@ -836,6 +836,9 @@ export const PopupXMark = {
 };
 
 export const PopupInputDiv = styled.div`
+  flexGrow:3;
+  display:flex;
+  flex-direction:column;
   margin-bottom: 30px;
 `;
 
@@ -884,6 +887,7 @@ export const PopupDateInput = styled.input`
 `;
 
 export const PopupTextarea = styled.textarea`
+  flex-grow: 3;
   width: 670px;
   padding: 10px;
   border: none;
@@ -898,6 +902,7 @@ export const PopupSaveBtn = styled.div`
   color: white;
   line-height: 36px;
   text-align: center;
+  vertical-align: middle;
   border-radius: 10px;
   border: 2px solid #ffb300;
   transition: 0.45s;
@@ -968,7 +973,7 @@ export const NavBar = styled.div`
 `;
 
 export const TitleWrap = styled.div`
-  margin-left: 10px;
+  margin-left: 20px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -1013,10 +1018,11 @@ export const NavSearchButton = styled.button`
 `;
 
 export const NavIconsContainer = styled.div`
-  width: 200px;
+  width: 300px;
   margin-left: auto;
   margin-right: 0;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 `;
 

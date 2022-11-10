@@ -14,7 +14,6 @@ import ProfilePage from './components/profile/ProfilePage';
 import NavigationBar from './components/navigationbar/NavigationBar';
 import Profile from './components/profile/Profile';
 import ImageEdit from './components/profile/edit/ImageEdit';
-import CareerPopup from './components/profile/popup/CareerPopup';
 
 const App = () => {
 
@@ -33,7 +32,6 @@ const App = () => {
         
         {/* Login */}
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/hey" element={<CareerPopup />} />
 
         {/* Search Page */}
         <Route path="/search" element={<SearchPage />} />
