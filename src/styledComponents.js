@@ -807,7 +807,7 @@ export const PopupDiv = styled.div`
 
 export const PopupBox = styled.div`
   width: 723px;
-  // height: 759px;
+  height: 90%;
   background-color: #fcf4de;
   padding: 20px 20px 40px;
   display: flex;
@@ -822,7 +822,7 @@ export const PopupHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 `;
 
 export const PopupText = styled.p`
@@ -885,7 +885,6 @@ export const PopupDateInput = styled.input`
 
 export const PopupTextarea = styled.textarea`
   width: 670px;
-  height: 100px;
   padding: 10px;
   border: none;
   border-radius: 5px;

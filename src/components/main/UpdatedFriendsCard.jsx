@@ -1,7 +1,7 @@
 import React from 'react';
 import { UpdatedFriendsBox, UpdatedFriendsCardDiv, UpdatedFriendsCardIcons, UpdatedFriendsCardImg, UpdatedFriendsCardName, UpdatedFriendsCardText, UpdatedFriendsRecommendChip} from '../../styledComponents';
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMessage, faHeart } from '@fortawesome/free-solid-svg-icons';
 const UpdatedFriendsCard = () => {
   return (
     <>
@@ -20,8 +20,8 @@ const UpdatedFriendsCard = () => {
                 <span>을 업데이트 했습니다</span>
               </UpdatedFriendsCardText>
               <UpdatedFriendsCardIcons>
-                <span class="material-symbols-outlined">favorite</span>
-                <span class="material-symbols-outlined">chat</span>
+                <FontAwesomeIcon style={{color: 'red'}}  icon={faHeart} />
+                <FontAwesomeIcon style={{color: 'yellow'}}icon={faMessage} />
               </UpdatedFriendsCardIcons>
             </div>
             <div>
