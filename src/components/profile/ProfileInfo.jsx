@@ -53,7 +53,7 @@ const ProfileInfo = memo(() => {
       {idol && <MyIdolPopup setPopup={setIdol} followings={followings} />}
 
       <ProfileInfoDiv>
-        <ProfileImage setPopup={setIsImageUpdate} />
+        <ProfileImage image={image} setPopup={setIsImageUpdate} />
 
         <ProfileFunctDiv>
           <ProfileText name={name} id={id} email={email} />

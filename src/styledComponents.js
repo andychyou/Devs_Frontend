@@ -676,7 +676,7 @@ export const ImageInputDiv = styled.div`
   // background-color: white;
   // width: max-content;
   width: 82px;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 `;
 
 export const ImageInput = styled.input`
@@ -685,19 +685,28 @@ export const ImageInput = styled.input`
 `;
 
 export const ImageBox = styled.div`
-  width: 350px;
-  height: 350px;
-  background-color: white;
+  width: 300px;
+  height: 300px;
   border: 3px solid white;
+  background-color: white;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+
+export const ImageIconStyle = {
+  color: "#d0d0d0",
+  fontSize: "150px",
+};
 
 export const Image = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   background-color: white;
 `;
 
@@ -717,6 +726,27 @@ export const ImageUploadBtn = styled.div`
     background-color: white;
     color: #ffb300;
   }
+`;
+
+export const EditProfileDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  // background-color: orange;
+  margin: 10px 0;
+  font-size: 18px;
+`;
+export const EditLabel = styled.div`
+  width: 150px;
+  // background-color: aqua;
+  text-align: center;
+  font-weight: bold;
+`;
+export const EditInput = styled.input`
+  padding: 10px;
+  width: calc(100% - 150px - 50px);
+  border-radius: 5px;
 `;
 
 //Profile3
