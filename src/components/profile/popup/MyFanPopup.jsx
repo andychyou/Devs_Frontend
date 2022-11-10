@@ -13,7 +13,7 @@ const  MyFanPopup = memo(({ setPopup, followers }) => {
   // const id = params.user_id;
 
   // useEffect(() => {
-  //   axios.get(`${APIURL}/profiles/follower/${id}/`)
+  //   axios.get(`${APIURL}/profile/follower/${id}/`)
   //   .then(res => {
   //     console.log(res)
   //   })

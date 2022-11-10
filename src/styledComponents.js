@@ -977,6 +977,7 @@ export const TitleWrap = styled.div`
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const MainTitle = styled.span`
@@ -1011,9 +1012,10 @@ export const NavSearchButton = styled.button`
   background-color: white;
   float: right;
   display: inline-block;
+  cursor: pointer;
   &:hover {
-    background-color: skyblue;
-    color: blue;
+    background-color: #5fb352;
+    color: black;
   }
 `;
 
@@ -1211,8 +1213,8 @@ export const SearchResultButton = styled.button`
 export const UpdatedFriendsSection = styled.section`
   display: block;
   margin: auto;
-  margin-top: 30px;
-  margin-bottom: 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 `;
 
 export const UpdatedFriendsBox = styled.div`
@@ -1248,7 +1250,7 @@ export const UpdatedFriendsDot = styled.span`
 export const UpdatedFriendsCardDiv = styled.div`
   background-color: rgba(255, 224, 130, 0.6);
   border-radius: 10px;
-  width: 80vw;
+  width: 1600px;
   cursor: pointer;
 `;
 
@@ -1264,7 +1266,7 @@ export const UpdatedFriendsCardName = styled.span`
 `;
 
 export const UpdatedFriendsCardText = styled.div`
-  flex: 8;
+  flex: 6;
 `;
 export const UpdatedFriendsCardIcons = styled.div`
   display: flex;
@@ -1277,8 +1279,11 @@ export const UpdatedFriendsRecommendToYouDiv = styled.div`
   display: flex;
   align-items: center;
   width: 1000px;
-  margin-bottom: 20px;
-  margin-left: 200px;
+  gap: 10px;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 40px;
+
 `;
 
 export const UpdatedFriendsRecommendCardIdolButton = styled.button`

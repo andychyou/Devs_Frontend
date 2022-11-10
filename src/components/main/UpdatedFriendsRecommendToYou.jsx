@@ -22,7 +22,12 @@ const UpdatedFriendsRecommendToYou = () => {
                 <UpdatedFriendsRecommendChip>
                 #백엔드
                 </UpdatedFriendsRecommendChip>
-
+                <UpdatedFriendsRecommendChip>
+                #웹
+                </UpdatedFriendsRecommendChip>
+                <UpdatedFriendsRecommendChip>
+                #백엔드
+                </UpdatedFriendsRecommendChip>
             </UpdatedFriendsRecommendChips>
         </UpdatedFriendsRecommendToYouDiv>
     </>

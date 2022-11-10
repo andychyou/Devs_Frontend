@@ -77,11 +77,11 @@ const NavigationBar = () => {
 
         {isLogin ? (
           <NavIconsContainer>
-            <FontAwesomeIcon size="2x" icon={faHouseUser} />
-            <FontAwesomeIcon size="2x"icon={faBell} />
-            <FontAwesomeIcon size="2x"icon={faGear} />
+            <FontAwesomeIcon style={{cursor: 'pointer'}}size="2x" icon={faHouseUser} />
+            <FontAwesomeIcon style={{cursor: 'pointer'}}size="2x"icon={faBell} />
+            <FontAwesomeIcon style={{cursor: 'pointer'}}size="2x"icon={faGear} />
 
-            <img style={{width:"40px", borderRadius:"50%"}}
+            <img style={{width:"40px", borderRadius:"50%",cursor: 'pointer'}}
               className="profile-pic"
               src={require("../search/profile-img.png")}
               // src={getCookie('user_img')}

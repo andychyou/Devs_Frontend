@@ -88,7 +88,7 @@ const Details = memo(() => {
     // setIsEdit(false)
 
     // if(isInit){
-    //   axios.post(`${APIURL}/profiles/details/`, {
+    //   axios.post(`${APIURL}/profile/details/`, {
     //     user: id,
     //     belongs, major, position, subposition,
     //     introduction

@@ -11,7 +11,7 @@ const Skill = memo(() => {
   const [frw, setFrw] = useState([]);
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/skills/${id}/`)
+    axios.get(`${APIURL}/profile/skills/${id}/`)
     .then(res => {
       console.log(res.data);
       const temp = res.data;

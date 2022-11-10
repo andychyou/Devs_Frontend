@@ -10,7 +10,7 @@ const Certification = memo(() => {
   const [cert, setCert] = useState([])
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/cert/${id}/`)
+    axios.get(`${APIURL}/profile/cert/${id}/`)
     .then(res => {
       console.log('certification: ', res.data)
       setCert(res.data)

@@ -16,7 +16,7 @@ const Careers = memo(() => {
   const [career, setCareer] = useState([]);
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/career/${id}/`)
+    axios.get(`${APIURL}/profile/career/${id}/`)
     .then(res => {
       console.log('career: ', res.data)
       setCareer(res.data)
