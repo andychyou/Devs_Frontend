@@ -1,15 +1,16 @@
-import React, { memo } from 'react';
+import React, { memo } from "react";
 
-import { 
+import {
   PopupInputDiv,
-  PopupInputText, PopupInput
-} from '../../../styledComponents'
+  PopupInputText,
+  PopupInput,
+} from "../../../styledComponents";
 
-const PopupInputComp = memo(({ text }) => {
+const PopupInputComp = memo(({ text, name, value, onChange }) => {
   return (
     <PopupInputDiv>
-      <PopupInputText>{ text }</PopupInputText>
-      <PopupInput />
+      <PopupInputText>{text}</PopupInputText>
+      <PopupInput type="text" name={name} value={value} onChange={onChange} />
     </PopupInputDiv>
   );
 });

@@ -54,16 +54,23 @@ const ProfileTag = () => {
   };
 
   const deleteHashtag = async ({ hashtag_name }) => {
-    console.log(hashtag_name);
-    const res = await axios.delete(
-      `${APIURL}/profile/hashtag/${hashtag_name}/`
-    );
+    // console.log(hashtag_name);
+    // const res = await axios.delete(
+    //   `${APIURL}/profile/hashtag/${hashtag_name}/`
+    // );
 
-    if (res.status == 200) {
-      console.log("delete hashtag success");
-    } else {
-      console.log("delete hashtag fail");
-    }
+    // if (res.status == 200) {
+    //   console.log("delete hashtag success");
+    // } else {
+    //   console.log("delete hashtag fail");
+    // }
+
+    axios({
+      url: `${APIURL}/profile/hashtag/${hashtag_name}/`,
+      method: "delete",
+    }).then((res) => {
+      console.log(res);
+    });
   };
 
   useEffect(() => {

@@ -807,7 +807,7 @@ export const PopupDiv = styled.div`
 
 export const PopupBox = styled.div`
   width: 723px;
-  height: 90%;
+  // height: 90%;
   background-color: #fcf4de;
   padding: 20px 20px 40px;
   display: flex;
@@ -815,6 +815,14 @@ export const PopupBox = styled.div`
   align-items: center;
   border-radius: 7px;
   position: relative;
+
+  ${(props) => {
+    if (props.type === "career") {
+      return css`
+        height: 90%;
+      `;
+    }
+  }}
 `;
 
 export const PopupHead = styled.div`
@@ -836,9 +844,9 @@ export const PopupXMark = {
 };
 
 export const PopupInputDiv = styled.div`
-  flexGrow:3;
-  display:flex;
-  flex-direction:column;
+  flexgrow: 3;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 30px;
 `;
 
@@ -1283,7 +1291,6 @@ export const UpdatedFriendsRecommendToYouDiv = styled.div`
   margin: 0 auto;
   margin-top: 60px;
   margin-bottom: 40px;
-
 `;
 
 export const UpdatedFriendsRecommendCardIdolButton = styled.button`
