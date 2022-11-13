@@ -53,13 +53,17 @@ const CareerPopup = memo(({ setPopup }) => {
       company,
       position,
       locate,
-      start_date: start_year + start_month,
-      end_date: end_year + end_month,
+      start_date: start_year + "-" + start_month + "-01",
+      end_date: end_year + "-" + end_month + "-01",
       skill,
       detail,
     };
     console.log(body);
-    const res = await axios.post(`${APIURL}/profile/career/`, body);
+    const res = await axios.post(`${APIURL}/profile/career/`, body, {
+      headers: {
+        Authorization: "token " + getCookie("token"),
+      },
+    });
   };
 
   const onChange = (e) => {
@@ -162,7 +166,7 @@ const CareerPopup = memo(({ setPopup }) => {
         />
 
         <PopupInputDiv style={{ flexGrow: "3" }}>
-          <PopupInputText>상세설명</PopupInputText>
+          <PopupInputText>업무 내용</PopupInputText>
           <PopupTextarea name="detail" value={detail} onChange={onChange} />
         </PopupInputDiv>
 

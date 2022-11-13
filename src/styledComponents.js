@@ -251,6 +251,7 @@ export const ProfileDiv = styled.div`
   background-color: rgba(255, 224, 130, 0.3);
   // width: 963px;
   width: calc(923px + 100px);
+  min-height: 800px;
   margin: 50px auto;
   padding: 50px;
   border-radius: 10px;
@@ -270,8 +271,7 @@ export const ProfileImgDiv = styled.div`
   width: 150px;
   height: max-content;
   position: relative;
-
-  // background-color: orange;
+  // background-color: white;
 `;
 
 export const ProfileImg = styled.img`
@@ -597,13 +597,20 @@ export const SkillContents = styled.div`
 `;
 export const SkillDiv = styled.div`
   background-color: white;
-  //width: calc(923px / 4 - 30px);
-  width: calc(883px / 4 - 30px);
-  line-height: 33px;
-  text-align: center;
+  width: calc(100% / 4 - 34px);
+  height: 35px;
   margin: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  border: 2px solid white;
+
+  &:hover {
+    border-color: rgba(215, 203, 161, 1);
+  }
 `;
 
 export const LicenceDiv = styled.div`
@@ -625,19 +632,92 @@ export const CareerDiv = styled.div`
   border-radius: 5px;
   padding: 20px 20px 10px;
   margin: 20px 0;
+  position: relative;
 `;
+
+export const CareerHoverDiv = styled.div`
+  position: absolute;
+  // background-color: orange;
+  top: 10px;
+  right: 10px;
+  display: flex;
+`;
+export const CareerHoverBox = styled.div`
+  // line-height: 30px;
+  text-align: center;
+  // width: 70px;
+  padding: 7px 10px;
+  color: white;
+  margin: 0 3px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+
+  ${(props) => {
+    if (props.type === "edit") {
+      return css`
+        background-color: #999999;
+
+        &:hover {
+          background-color: black;
+        }
+      `;
+    } else if (props.type === "delete") {
+      return css`
+        background-color: #e37979;
+
+        &:hover {
+          background-color: #ea1010;
+        }
+      `;
+    } else if (props.type === "save") {
+      return css`
+        background-color: #ffb300;
+      `;
+    }
+  }};
+`;
+
 export const CareerBox = styled.div`
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
+  // background-color: orange;
 `;
 export const Career = styled.div`
   background-color: rgba(215, 203, 161, 0.65);
   width: calc(923px / 3 - 45px);
-  /* margin: 10px; */
   line-height: 35px;
   border-radius: 5px;
   padding: 0 10px;
+
+  ${(props) => {
+    if (props.type === "text") {
+      return css`
+        background-color: rgba(0, 0, 0, 0);
+        font-weight: bold;
+      `;
+    }
+  }}
+`;
+
+export const CareerInput = styled.input`
+  background-color: #ffe5b2;
+  width: calc(923px / 3 - 45px);
+  line-height: 35px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 5px;
+
+  ${(props) => {
+    if (props.type === "small") {
+      return css`
+        width: calc((923px / 3 - 45px) / 2 - 20px);
+        margin: 0 5px;
+      `;
+    }
+  }}
 `;
 
 export const CareerDescDiv = styled.div`
@@ -659,6 +739,18 @@ export const CareerDesc = styled.div`
   width: calc(923px - 100px);
   border-radius: 5px;
   padding: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+export const CareerDescInput = styled.textarea`
+  background-color: #ffe5b2;
+  width: calc(923px - 100px);
+  // min-height: 35px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -746,29 +838,43 @@ export const EditLabel = styled.div`
 export const EditInput = styled.input`
   padding: 10px;
   width: calc(100% - 150px - 50px);
+  border: none;
   border-radius: 5px;
 `;
 
 //Profile3
 
 export const ProfileContentSection = styled.section`
-  width: 1000px;
+  // width: 1000px;
+  width: 100%;
+  min-height: 750px;
   background-color: rgba(255, 224, 130, 0.3);
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
+  // display: flex;
+  // justify-content: center;
+  // margin-top: 100px;
+  margin: 0 auto;
+  padding-bottom: 50px;
 `;
 
 export const ProfileSkillHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  height: 80px;
+  font-weight: bold;
+  font-size: 22px;
 `;
 
 export const ProfileSkillDiv = styled.div`
   width: 900px;
+  margin: 0 auto;
+`;
+
+export const ProfileSkillDetailEmptyDiv = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  color: #7e7e7e;
 `;
 
 export const ProfileSkillSpecificDiv = styled.div`
@@ -777,8 +883,10 @@ export const ProfileSkillSpecificDiv = styled.div`
   height: 50px;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 0 20px;
   justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const ProfileSkillName = styled.p`
@@ -787,8 +895,17 @@ export const ProfileSkillName = styled.p`
 `;
 
 export const ProfileSkillEditBtn = styled.button`
-  display: block;
-  background-color: rgb(132, 22, 12);
+  width: 40px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // line-height: 30px;
+  background-color: black;
+  color: white;
+  // text-align: center;
+  border-radius: 7px;
+  cursor: pointer;
 `;
 
 // POPUP
@@ -809,7 +926,7 @@ export const PopupBox = styled.div`
   width: 723px;
   // height: 90%;
   background-color: #fcf4de;
-  padding: 20px 20px 40px;
+  padding: 20px 20px 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -862,6 +979,41 @@ export const PopupInput = styled.input`
   border: none;
   border-radius: 5px;
   padding: 0 10px;
+`;
+
+export const PopupDropDiv = styled.div`
+  width: 670px;
+  height: 40px;
+  background-color: aqua;
+  padding: 0 10px;
+  background-color: white;
+  border: 2px solid #a1a1a1;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+`;
+
+export const PopupDropBox = styled.div`
+  width: 100%;
+  background-color: #ececec;
+  position: absolute;
+  bottom: -102px;
+  left: 0;
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+`;
+
+export const PopupDropItem = styled.div`
+  width: calc(100% - 20px);
+  padding: 0 10px;
+  line-height: 50px;
+
+  &:hover {
+    background-color: #ffd574;
+  }
 `;
 
 export const PopupDateDiv = styled.div`
@@ -925,7 +1077,69 @@ export const PopupSaveBtn = styled.div`
   }
 `;
 
+// Post Page
+export const PostDiv = styled.div`
+  width: calc(100% - 60px);
+  padding: 0 30px;
+  min-height: 750px;
+  padding-bottom: 50px;
+  background-color: white;
+  position: relative;
+`;
+
+export const PostCategoryDiv = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 1px solid rgba(72, 72, 72, 0.3);
+  color: rgba(72, 72, 72, 0.5);
+  border-radius: 2px;
+  padding: 5px 7px;
+  background-color: white;
+  font-size: 12px;
+`;
+
+export const PostTitleInput = styled.input`
+  margin: 50px 0 20px;
+  width: calc(100% - 20px);
+  padding: 0 10px;
+  // background-color: orange;
+  border: none;
+  border-bottom: 1px solid rgba(72, 72, 72, 0.5);
+  line-height: 80px;
+  font-weight: bold;
+  font-size: 30px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const PostContents = styled.textarea`
+  width: 100%;
+  max-width: 100%;
+  // background-color: orange;
+  border: none;
+  padding: 0;
+  // min-height: calc(100% - 121px);
+  line-height: 35px;
+  resize: none;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
 //팬, 아이돌 팝업
+
+export const EmptyFanIdol = styled.div`
+  // background-color: orange;
+  width: 100%;
+  text-align: center;
+  color: rgba(72, 72, 72, 0.5);
+  line-height: 100px;
+`;
 
 export const CardUnit = styled.section`
   display: flex;

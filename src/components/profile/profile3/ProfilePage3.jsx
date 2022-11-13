@@ -1,38 +1,72 @@
-import React from 'react';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPen, faClipboardCheck} from "@fortawesome/free-solid-svg-icons";
-import { ProfileContentSection, ProfileSkillDiv, ProfileSkillHeader, ProfileSkillSpecificDiv, ProfileSkillName, ProfileSkillEditBtn} from '../../../styledComponents';
+import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  ProfileContentSection,
+  ProfileSkillDiv,
+  ProfileSkillHeader,
+  ProfileSkillSpecificDiv,
+  ProfileSkillName,
+  ProfileSkillEditBtn,
+  ProfileSkillDetailEmptyDiv,
+} from "../../../styledComponents";
+import SkillHeader from "./SkillHeader";
+import ProfileSkillSpecific from "./ProfileSkillSpecific";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { APIURL } from "../../../config/key";
 
 const ProfilePage3 = () => {
+  const params = useParams();
+  const category = params.category;
+  const name = params.name;
+  const id = params.id;
+  const user_id = params.user_id;
+  const [details, setDetails] = useState([]);
+
+  const getDetails = async () => {
+    const res = await axios.get(`${APIURL}/profile/skilldetail/${id}/`);
+
+    // console.log(res);
+    setDetails(res.data);
+  };
+
+  useEffect(() => {
+    getDetails();
+  }, []);
+
   return (
     <>
+      <ProfileContentSection>
+        <ProfileSkillDiv>
+          <SkillHeader
+            skill_name={name}
+            skill_type={
+              category === "pl"
+                ? "Programming Languages"
+                : "Framework / Library"
+            }
+          />
 
+          {details.length === 0 ? (
+            <ProfileSkillDetailEmptyDiv>
+              등록된 게시물이 없습니다.
+            </ProfileSkillDetailEmptyDiv>
+          ) : (
+            <>
+              {details.map((detail) => (
+                <ProfileSkillSpecific />
+              ))}
+            </>
+          )}
 
-        <div style={{display: 'flex', justifyContent: 'center'}}>
-        <ProfileContentSection>
-            <ProfileSkillDiv>
-                <ProfileSkillHeader>
-                    <ProfileSkillName>Programming Languages - Javascript</ProfileSkillName>
-                    <ProfileSkillEditBtn>
-                        <FontAwesomeIcon style={{color:'white'}}icon={faPen}></FontAwesomeIcon>
-                    </ProfileSkillEditBtn>
-                </ProfileSkillHeader>
-                
-                <ProfileSkillSpecificDiv>
-                    <FontAwesomeIcon style={{marginLeft: '40px'}} icon={faClipboardCheck} size='xl'></FontAwesomeIcon>
-                    <p>[Javascript] 자바스크립트의 데이터 타입</p>
-                </ProfileSkillSpecificDiv>
-                <ProfileSkillSpecificDiv>
-                    <FontAwesomeIcon style={{marginLeft: '40px'}} icon={faClipboardCheck} size='xl'></FontAwesomeIcon>
-                    <p>[JavaScript] 자바스크립트의 fetch & axios</p>
-                </ProfileSkillSpecificDiv>
-                <ProfileSkillSpecificDiv>
-                    <FontAwesomeIcon style={{marginLeft: '40px'}} icon={faClipboardCheck} size='xl'></FontAwesomeIcon>
-                    <p>[JavaScript] 자바스크립트의 콜백 함수 Callback</p>
-                </ProfileSkillSpecificDiv>
-            </ProfileSkillDiv>
-        </ProfileContentSection>
-        </div>
+          {/* <ProfileSkillSpecific
+            title={"[Javascript] 자바스크립트의 데이터 타입"}
+          />
+
+          <ProfileSkillSpecific title={"[Javascript] 자바스크립트의 비동기"} /> */}
+        </ProfileSkillDiv>
+      </ProfileContentSection>
     </>
   );
 };

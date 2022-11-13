@@ -19,7 +19,6 @@ const ProfileInfo = memo(() => {
   const [isImgUpdate, setIsImageUpdate] = useState(false);
   const [fan, setFan] = useState(false);
   const [idol, setIdol] = useState(false);
-
   const [followers, setFollowers] = useState([]);
   const [followings, setFollowings] = useState([]);
 
@@ -42,6 +41,10 @@ const ProfileInfo = memo(() => {
     }
   };
 
+  const getFollowers = async () => {
+    const res = await axios.get(`${APIURL}/profile/follow/${id}/get_follower/`);
+  };
+
   useEffect(() => {
     getUserInfo();
   }, []);
@@ -49,8 +52,8 @@ const ProfileInfo = memo(() => {
   return (
     <>
       {isImgUpdate && <ImgPopup setPopup={setIsImageUpdate} />}
-      {fan && <MyFanPopup setPopup={setFan} followers={followers} />}
-      {idol && <MyIdolPopup setPopup={setIdol} followings={followings} />}
+      {fan && <MyFanPopup setPopup={setFan} />}
+      {idol && <MyIdolPopup setPopup={setIdol} />}
 
       <ProfileInfoDiv>
         <ProfileImage image={image} setPopup={setIsImageUpdate} />

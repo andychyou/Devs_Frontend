@@ -1,29 +1,72 @@
-import React, { memo, useState } from 'react';
-import { 
-  PopupBox, PopupDiv,
-  CardUnit, CardUserName, CardUserDesc, CardImg, CardImgNameBox
-} from '../../../styledComponents';
-import PopupHeader from './PopupHeader';
-const  MyIdolPopup = memo(({setPopup}) => {
+import React, { memo, useState, useEffect } from "react";
+import {
+  PopupBox,
+  PopupDiv,
+  CardUnit,
+  CardUserName,
+  CardUserDesc,
+  CardImg,
+  CardImgNameBox,
+  EmptyFanIdol,
+} from "../../../styledComponents";
+import PopupHeader from "./PopupHeader";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { APIURL } from "../../../config/key";
 
-    return (
-      
-      <>       
-        <PopupDiv>
-          <PopupBox>
+const MyIdolPopup = memo(({ setPopup }) => {
+  const params = useParams();
+  const id = params.user_id;
+  const [idols, setIdols] = useState([]);
 
-            <PopupHeader setPopup={setPopup} text="나의 IDOL" />
-            <CardUnit>
-                <CardImgNameBox>
-                  <CardImg src={require('../../../static/profile-img.png')}></CardImg>
-                  <CardUserName>도영</CardUserName>
-                </CardImgNameBox>
-                <CardUserDesc>Front-End Developer</CardUserDesc>
-            </CardUnit>
-          </PopupBox>
-        </PopupDiv>
-      </>
-    );
-  });
-  
-  export default MyIdolPopup;
+  useEffect(() => {
+    axios
+      .get(`${APIURL}/profile/follow/${id}/get_following/`)
+      .then((res) => {
+        console.log(res);
+        setIdols(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  return (
+    <>
+      <PopupDiv>
+        <PopupBox>
+          <PopupHeader setPopup={setPopup} text="IDOL" />
+          <CardUnit>
+            <CardImgNameBox>
+              <CardImg
+                src={require("../../../static/profile-img.png")}
+              ></CardImg>
+              <CardUserName>도영</CardUserName>
+            </CardImgNameBox>
+            <CardUserDesc>Front-End Developer</CardUserDesc>
+          </CardUnit>
+
+          {/* {idols.length === 0 ? (
+            <EmptyFanIdol>No Idol</EmptyFanIdol>
+          ) : (
+            <>
+              {idols.map((data, idx) => (
+                <CardUnit key={idx}>
+                  <CardImgNameBox>
+                    <CardImg
+                      src={require("../../../static/profile-img.png")}
+                    ></CardImg>
+                    <CardUserName>도영</CardUserName>
+                  </CardImgNameBox>
+                  <CardUserDesc>Front-End Developer</CardUserDesc>
+                </CardUnit>
+              ))}
+            </>
+          )} */}
+        </PopupBox>
+      </PopupDiv>
+    </>
+  );
+});
+
+export default MyIdolPopup;

@@ -6,11 +6,17 @@ import {
   PopupInput,
 } from "../../../styledComponents";
 
-const PopupInputComp = memo(({ text, name, value, onChange }) => {
+const PopupInputComp = memo(({ text, name, value, onChange, placeholder }) => {
   return (
     <PopupInputDiv>
       <PopupInputText>{text}</PopupInputText>
-      <PopupInput type="text" name={name} value={value} onChange={onChange} />
+      <PopupInput
+        type="text"
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
     </PopupInputDiv>
   );
 });

@@ -24,10 +24,9 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
   const [src, setSrc] = useState(getCookie("user_img"));
   const [inputs, setInputs] = useState({
     _name: name,
-    _id: id,
     _email: email,
   });
-  const { _name, _id, _email } = inputs;
+  const { _name, _email } = inputs;
 
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -48,36 +47,26 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
     });
   };
 
-  const sendRequest = () => {
-    axios({
-      url: `${APIURL}/account/user/${id}/`,
-      method: "patch",
-      body: {
-        id: _id,
-        email: _email,
-        name: _name,
-        image: src,
+  const editInfo = async () => {
+    const body = {
+      email: _email,
+      name: _name,
+      image: src,
+    };
+    const res = await axios.patch(`${APIURL}/account/user/${id}/`, {
+      headers: {
+        Authorization: "token " + getCookie("token"),
       },
-    })
-      .then((res) => {
-        console.log(res);
-        setCookie("user_id", _id);
-        setCookie("user_img");
-        setPopup(false);
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      body: body,
+    });
 
-    // if (res.status == 200) {
-    //   setCookie("user_id", _id);
-    //   setCookie("user_img", src);
-    //   setPopup(false);
-    //   window.location.reload();
-    // } else {
-    //   console.log("edit profile info fail");
-    // }
+    if (res.status == 200) {
+      console.log(res);
+      setPopup(false);
+      window.location.reload();
+    } else {
+      console.log("edit info fail");
+    }
   };
 
   return (
@@ -108,10 +97,10 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
             />
           </EditProfileDiv>
 
-          <EditProfileDiv>
+          {/* <EditProfileDiv>
             <EditLabel>아이디</EditLabel>
             <EditInput type="text" name="_id" value={_id} onChange={onChange} />
-          </EditProfileDiv>
+          </EditProfileDiv> */}
 
           <EditProfileDiv style={{ marginBottom: "50px" }}>
             <EditLabel>이메일</EditLabel>
@@ -123,7 +112,7 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
             />
           </EditProfileDiv>
 
-          <PopupSaveBtn onClick={sendRequest}>저장하기</PopupSaveBtn>
+          <PopupSaveBtn onClick={editInfo}>저장하기</PopupSaveBtn>
         </PopupBox>
       </PopupDiv>
     </>
