@@ -46,13 +46,14 @@ const Details = memo(() => {
       .get(`${APIURL}/profile/profile/${id}/`)
       .then((res) => {
         console.log("get profile success");
+        console.log(res);
         setDetails(res.data);
       })
       .catch((err) => {
         console.log(err);
         setIsInit(true);
       });
-  }, []);
+  }, [id]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -84,29 +85,6 @@ const Details = memo(() => {
         }
       })
       .catch((err) => console.log(err));
-
-    // setIsEdit(false)
-
-    // if(isInit){
-    //   axios.post(`${APIURL}/profile/details/`, {
-    //     user: id,
-    //     belongs, major, position, subposition,
-    //     introduction
-    //   })
-    //   .then(res => {
-    //     console.log('detail post success')
-    //   })
-    //   .catch(err => console.log(err))
-    // } else {
-    //   axios.patch(`${APIURL}/profile/${id}/`, {
-    //     belong, major, main_position, sub_position,
-    //     introduction
-    //   })
-    //   .then(res => {
-    //     console.log('detail patch success');
-    //   })
-    //   .catch(err => console.log(err))
-    // }
 
     window.location.reload();
   };

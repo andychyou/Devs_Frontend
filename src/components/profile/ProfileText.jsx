@@ -14,8 +14,10 @@ import { APIURL } from "../../config/key";
 import { getCookie } from "../../config/cookie";
 import { useState } from "react";
 import ImgPopup from "./popup/ImgPopup";
+import { useOutletContext } from "react-router-dom";
 
 const ProfileText = memo(({ name, email, id }) => {
+  const { isAdmin } = useOutletContext();
   const [isEdit, setIsEdit] = useState(false);
 
   return (
@@ -26,9 +28,11 @@ const ProfileText = memo(({ name, email, id }) => {
       <ProfileTextDiv>
         <ProfileName>
           {name}
-          <ProfileEditBtn onClick={() => setIsEdit(true)}>
-            <FontAwesomeIcon icon={faGear} />
-          </ProfileEditBtn>
+          {isAdmin && (
+            <ProfileEditBtn onClick={() => setIsEdit(true)}>
+              <FontAwesomeIcon icon={faGear} />
+            </ProfileEditBtn>
+          )}
         </ProfileName>
         <ProfileDesc>{id}</ProfileDesc>
         <ProfileDesc>{email}</ProfileDesc>

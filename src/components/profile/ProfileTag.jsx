@@ -14,8 +14,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
+import { useOutletContext } from "react-router-dom";
 
 const ProfileTag = () => {
+  const { isAdmin } = useOutletContext();
   const [hashtag, setHashtag] = useState([]);
   const [clickAdd, setClickAdd] = useState(false);
   const [input, setInput] = useState("");
@@ -96,9 +98,11 @@ const ProfileTag = () => {
         {hashtag.map((tag, idx) => (
           <Tag key={idx}>
             #{tag}
-            <TagXmark onClick={() => deleteHashtag({ hashtag_name: tag })}>
-              <FontAwesomeIcon icon={faXmark} />
-            </TagXmark>
+            {isAdmin && (
+              <TagXmark onClick={() => deleteHashtag({ hashtag_name: tag })}>
+                <FontAwesomeIcon icon={faXmark} />
+              </TagXmark>
+            )}
           </Tag>
         ))}
 
@@ -115,9 +119,11 @@ const ProfileTag = () => {
           />
         )}
 
-        <TagAddIcon onClick={() => setClickAdd(clickAdd ? false : true)}>
-          {clickAdd ? <>취소</> : <>추가</>}
-        </TagAddIcon>
+        {isAdmin && (
+          <TagAddIcon onClick={() => setClickAdd(clickAdd ? false : true)}>
+            {clickAdd ? <>취소</> : <>추가</>}
+          </TagAddIcon>
+        )}
       </TagDiv>
     </>
   );

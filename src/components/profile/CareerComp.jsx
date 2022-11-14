@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import { getCookie } from "../../config/cookie";
 import { APIURL } from "../../config/key";
 import {
@@ -16,6 +17,7 @@ import {
 } from "../../styledComponents";
 
 const CareerComp = ({ career }) => {
+  const { isAdmin } = useOutletContext();
   const [hover, setHover] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [inputs, setInputs] = useState({
@@ -86,7 +88,11 @@ const CareerComp = ({ career }) => {
     <>
       {!isEdit ? (
         <CareerDiv
-          onMouseEnter={() => setHover(true)}
+          onMouseEnter={() => {
+            if (isAdmin) {
+              setHover(true);
+            }
+          }}
           onMouseLeave={() => setHover(false)}
         >
           {hover && (
@@ -183,4 +189,4 @@ const CareerComp = ({ career }) => {
   );
 };
 
-export default React.memo(CareerComp);
+export default CareerComp;

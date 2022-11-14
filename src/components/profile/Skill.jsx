@@ -37,7 +37,7 @@ const Skill = memo(() => {
     getPL().then(() => {
       getFL();
     });
-  }, []);
+  }, [id]);
 
   const navigate = useNavigate();
   const onClick = (e, category, name, id) => {

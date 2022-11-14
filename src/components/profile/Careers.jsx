@@ -15,10 +15,12 @@ import {
 import DescHead from "./DescHead";
 import CareerPopup from "./popup/CareerPopup";
 import CareerComp from "./CareerComp";
+import { useParams } from "react-router-dom";
 
 const Careers = memo(() => {
   const id = getCookie("user_id");
   const [isAdd, setIsAdd] = useState(false);
+  const params = useParams();
 
   // profile, company, position, locate,
   // start_date, end_date, skill, detail
@@ -26,7 +28,7 @@ const Careers = memo(() => {
 
   useEffect(() => {
     axios
-      .get(`${APIURL}/profile/career/${id}/`)
+      .get(`${APIURL}/profile/career/${params.user_id}/`)
       .then((res) => {
         console.log("career: ", res.data);
         setCareer(res.data);
@@ -34,7 +36,7 @@ const Careers = memo(() => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [params.user_id]);
 
   return (
     <>

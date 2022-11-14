@@ -13,15 +13,7 @@ import { faPen, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../config/cookie";
 
-const ProfileImage = ({ image, setPopup }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const onClick = () => {
-    // navigate(`${location.pathname}/image`)
-    setPopup(true);
-  };
-  const user_id = getCookie("user_id");
-
+const ProfileImage = ({ image }) => {
   return (
     <>
       <ProfileImgDiv>
@@ -32,10 +24,6 @@ const ProfileImage = ({ image, setPopup }) => {
         ) : (
           <ProfileImg src={image} />
         )}
-
-        {/* <ProfileImgEditBtn>
-          <FontAwesomeIcon onClick={onClick} icon={faPen} />
-        </ProfileImgEditBtn> */}
       </ProfileImgDiv>
     </>
   );

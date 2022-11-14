@@ -16,7 +16,6 @@ const ProfileInfo = memo(() => {
   //const id = getCookie('user_id');
   const params = useParams();
   const id = params.user_id;
-  const [isImgUpdate, setIsImageUpdate] = useState(false);
   const [fan, setFan] = useState(false);
   const [idol, setIdol] = useState(false);
   const [followers, setFollowers] = useState([]);
@@ -47,16 +46,15 @@ const ProfileInfo = memo(() => {
 
   useEffect(() => {
     getUserInfo();
-  }, []);
+  }, [id]);
 
   return (
     <>
-      {isImgUpdate && <ImgPopup setPopup={setIsImageUpdate} />}
       {fan && <MyFanPopup setPopup={setFan} />}
       {idol && <MyIdolPopup setPopup={setIdol} />}
 
       <ProfileInfoDiv>
-        <ProfileImage image={image} setPopup={setIsImageUpdate} />
+        <ProfileImage image={image} />
 
         <ProfileFunctDiv>
           <ProfileText name={name} id={id} email={email} />

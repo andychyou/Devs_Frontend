@@ -31,7 +31,7 @@ const OnGoing = memo(() => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (isEdit) {

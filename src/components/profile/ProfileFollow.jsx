@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
 import {
-  FollowDiv, FanIdolDiv, 
-  FanIdolSmallDiv, FanIdolText, FanIdolNum,
-  FollowBtn
-} from '../../styledComponents'
+  FollowDiv,
+  FanIdolDiv,
+  FanIdolSmallDiv,
+  FanIdolText,
+  FanIdolNum,
+  FollowBtn,
+} from "../../styledComponents";
 
 const ProfileFollow = ({ setFan, setIdol }) => {
-
-  const clickFan = () =>{
+  const { isAdmin } = useOutletContext();
+  const clickFan = () => {
     setFan(true);
-  }
+  };
 
-  const clickIdol = () =>{
+  const clickIdol = () => {
     setIdol(true);
-  }
+  };
 
   return (
     <>
       <FollowDiv>
-
         <FanIdolDiv>
-
           <FanIdolSmallDiv onClick={clickFan}>
             <FanIdolText>FAN</FanIdolText>
             <FanIdolNum>10</FanIdolNum>
@@ -31,12 +33,9 @@ const ProfileFollow = ({ setFan, setIdol }) => {
             <FanIdolText>IDOL</FanIdolText>
             <FanIdolNum>10</FanIdolNum>
           </FanIdolSmallDiv>
-
         </FanIdolDiv>
 
-        <FollowBtn>
-          IDOL 등록
-        </FollowBtn>
+        {!isAdmin && <FollowBtn>IDOL 등록</FollowBtn>}
       </FollowDiv>
     </>
   );
