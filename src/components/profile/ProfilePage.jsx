@@ -7,6 +7,7 @@ import OnGoing from "./OnGoing";
 import Skill from "./Skill";
 import Certification from "./Certification";
 import Careers from "./Careers";
+import Projects from "./Projects";
 
 const ProfilePage = memo(() => {
   return (
@@ -22,6 +23,8 @@ const ProfilePage = memo(() => {
       {/* <Certification /> */}
 
       <Careers />
+
+      <Projects />
     </>
   );
 });
