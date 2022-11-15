@@ -68,12 +68,12 @@ const CareerComp = ({ career }) => {
     };
     const res = await axios.patch(
       `${APIURL}/profile/career/${career.id}/`,
-      body,
-      {
-        headers: {
-          Authorization: "token " + getCookie("token"),
-        },
-      }
+      body
+      // {
+      //   headers: {
+      //     Authorization: "token " + getCookie("token"),
+      //   },
+      // }
     );
 
     if (res.status == 200) {

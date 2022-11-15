@@ -23,18 +23,20 @@ const MyFanPopup = memo(({ setPopup, fans, goUserProfile }) => {
           ) : (
             <>
               {fans.map((data, idx) => (
-                <CardUnit
-                  key={idx}
-                  onClick={(e) => goUserProfile(e, data.user)}
-                >
-                  <CardImgNameBox>
-                    <CardImg src={`${APIURL}${data.image}`} />
-                    <CardUserName>{data.user}</CardUserName>
-                  </CardImgNameBox>
-                  {data.position != null && data.position != undefined && (
-                    <CardUserDesc>{data.position}</CardUserDesc>
-                  )}
-                </CardUnit>
+                <>
+                  <CardUnit key={idx}>
+                    <CardImgNameBox>
+                      <CardImg
+                        src={`${APIURL}${data.image}`}
+                        onClick={(e) => goUserProfile(e, data.user)}
+                      />
+                      <CardUserName>{data.user}</CardUserName>
+                    </CardImgNameBox>
+                    {data.position != null && data.position != undefined && (
+                      <CardUserDesc>{data.position}</CardUserDesc>
+                    )}
+                  </CardUnit>
+                </>
               ))}
             </>
           )}

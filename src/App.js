@@ -15,6 +15,7 @@ import NavigationBar from "./components/navigationbar/NavigationBar";
 import Profile from "./components/profile/Profile";
 import ImageEdit from "./components/profile/edit/ImageEdit";
 import PostPage from "./components/profile/profile3/PostPage";
+import PostDetail from "./components/profile/profile3/PostDetail";
 
 const App = () => {
   axios.defaults.xsrfCookieName = "csrftoken";
@@ -50,6 +51,10 @@ const App = () => {
           <Route path="" element={<ProfilePage />} />
           <Route path=":category/:name/:id" element={<ProfilePage3 />} />
           <Route path=":category/:name/:id/write" element={<PostPage />} />
+          <Route
+            path=":category/:name/:id/:detail_id"
+            element={<PostDetail />}
+          />
           {/* <Route path="image" element={<ImageEdit />} /> */}
         </Route>
       </Routes>

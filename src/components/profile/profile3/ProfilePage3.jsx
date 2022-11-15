@@ -55,16 +55,10 @@ const ProfilePage3 = () => {
           ) : (
             <>
               {details.map((detail) => (
-                <ProfileSkillSpecific />
+                <ProfileSkillSpecific key={detail.id} detail={detail} />
               ))}
             </>
           )}
-
-          {/* <ProfileSkillSpecific
-            title={"[Javascript] 자바스크립트의 데이터 타입"}
-          />
-
-          <ProfileSkillSpecific title={"[Javascript] 자바스크립트의 비동기"} /> */}
         </ProfileSkillDiv>
       </ProfileContentSection>
     </>

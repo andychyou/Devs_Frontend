@@ -24,12 +24,12 @@ const MyIdolPopup = memo(({ setPopup, idols, goUserProfile }) => {
           ) : (
             <>
               {idols.map((data, idx) => (
-                <CardUnit
-                  key={idx}
-                  onClick={(e) => goUserProfile(e, data.user)}
-                >
+                <CardUnit key={idx}>
                   <CardImgNameBox>
-                    <CardImg src={`${APIURL}${data.image}`}></CardImg>
+                    <CardImg
+                      src={`${APIURL}${data.image}`}
+                      onClick={(e) => goUserProfile(e, data.user)}
+                    />
                     <CardUserName>{data.user}</CardUserName>
                   </CardImgNameBox>
                   {data.position != null && data.position != undefined && (

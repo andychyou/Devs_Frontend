@@ -1,28 +1,49 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import {
   ProfileSkillEditBtn,
+  ProfileSkillEditBtnDiv,
   ProfileSkillHeader,
   ProfileSkillName,
 } from "../../../styledComponents";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { faPen, faGear } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import SkillEditPopup from "../popup/SkillEditPopup";
 
 const SkillHeader = ({ skill_name, skill_type }) => {
+  const { isAdmin } = useOutletContext();
+  const [isEdit, setIsEdit] = useState(false);
   const navigate = useNavigate();
   const goPost = () => {
     navigate("write");
   };
   return (
-    <ProfileSkillHeader>
-      <ProfileSkillName>
-        {skill_type} - {skill_name}
-      </ProfileSkillName>
+    <>
+      {isEdit && (
+        <SkillEditPopup
+          setPopup={setIsEdit}
+          name={skill_name}
+          type={skill_type}
+        />
+      )}
+      <ProfileSkillHeader>
+        <ProfileSkillName>
+          {skill_type} - {skill_name}
+        </ProfileSkillName>
 
-      <ProfileSkillEditBtn onClick={goPost}>
-        <FontAwesomeIcon icon={faPen} />
-      </ProfileSkillEditBtn>
-    </ProfileSkillHeader>
+        {isAdmin && (
+          <ProfileSkillEditBtnDiv>
+            <ProfileSkillEditBtn onClick={goPost}>
+              <FontAwesomeIcon icon={faPen} />
+            </ProfileSkillEditBtn>
+
+            <ProfileSkillEditBtn>
+              <FontAwesomeIcon icon={faGear} onClick={() => setIsEdit(true)} />
+            </ProfileSkillEditBtn>
+          </ProfileSkillEditBtnDiv>
+        )}
+      </ProfileSkillHeader>
+    </>
   );
 };
 
