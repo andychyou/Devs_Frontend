@@ -1,5 +1,9 @@
 import React, { memo, useEffect, useState } from "react";
-import { ProfileInfoDiv, ProfileFunctDiv } from "../../styledComponents";
+import {
+  ProfileInfoDiv,
+  ProfileFunctDiv,
+  ProfileFunctWrap,
+} from "../../styledComponents";
 import ProfileImage from "./ProfileImage";
 import ProfileText from "./ProfileText";
 import ProfileFollow from "./ProfileFollow";
@@ -16,10 +20,6 @@ const ProfileInfo = memo(() => {
   //const id = getCookie('user_id');
   const params = useParams();
   const id = params.user_id;
-  const [fan, setFan] = useState(false);
-  const [idol, setIdol] = useState(false);
-  const [followers, setFollowers] = useState([]);
-  const [followings, setFollowings] = useState([]);
 
   const [userInfo, setUserInfo] = useState({
     id: "",
@@ -40,28 +40,21 @@ const ProfileInfo = memo(() => {
     }
   };
 
-  const getFollowers = async () => {
-    const res = await axios.get(`${APIURL}/profile/follow/${id}/get_follower/`);
-  };
-
   useEffect(() => {
     getUserInfo();
   }, [id]);
   return (
     <>
-      {fan && <MyFanPopup setPopup={setFan} />}
-      {idol && <MyIdolPopup setPopup={setIdol} />}
-
       <ProfileInfoDiv>
         <ProfileImage image={image} />
 
-        <ProfileFunctDiv>
-          <ProfileText name={name} id={id} email={email} />
-
-          <ProfileFollow setFan={setFan} setIdol={setIdol} />
-
+        <ProfileFunctWrap>
+          <ProfileFunctDiv>
+            <ProfileText name={name} id={id} email={email} />
+            <ProfileFollow />
+          </ProfileFunctDiv>
           <ProfileTag />
-        </ProfileFunctDiv>
+        </ProfileFunctWrap>
       </ProfileInfoDiv>
     </>
   );

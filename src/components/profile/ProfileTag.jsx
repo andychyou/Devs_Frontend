@@ -94,7 +94,7 @@ const ProfileTag = () => {
   };
   return (
     <>
-      <TagDiv>
+      <TagDiv type={hashtag.length === 0 ? "init" : "else"}>
         {hashtag.map((tag, idx) => (
           <Tag key={idx}>
             #{tag}
@@ -108,6 +108,7 @@ const ProfileTag = () => {
 
         {clickAdd && (
           <TagAddInput
+            margin={hashtag.length === 0 ? "init" : "else"}
             type="text"
             placeholder="입력 후 ENTER"
             value={input}
@@ -121,7 +122,7 @@ const ProfileTag = () => {
 
         {isAdmin && (
           <TagAddIcon onClick={() => setClickAdd(clickAdd ? false : true)}>
-            {clickAdd ? <>취소</> : <>추가</>}
+            {clickAdd ? <>취소</> : <>해시태그 추가</>}
           </TagAddIcon>
         )}
       </TagDiv>

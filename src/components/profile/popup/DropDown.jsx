@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   PopupDropBox,
   PopupDropDiv,
@@ -9,9 +9,9 @@ import {
 } from "../../../styledComponents";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
-const DropDown = ({ setCategory }) => {
+const DropDown = ({ setCategory, category }) => {
   const [down, setDown] = useState(false);
-  const [text, setText] = useState("선택");
+  const [text, setText] = useState(category);
 
   const onDown = (e) => {
     if (e.target === e.currentTarget) {
@@ -32,6 +32,14 @@ const DropDown = ({ setCategory }) => {
 
     setDown(false);
   };
+
+  useEffect(() => {
+    if (category === "pl") {
+      setText("프로그래밍 언어");
+    } else if (category === "fl") {
+      setText("프레임워크/라이브러리");
+    }
+  }, []);
 
   return (
     <PopupInputDiv style={{ marginBottom: "50px" }}>

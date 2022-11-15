@@ -263,7 +263,7 @@ export const ProfileInfoDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  /* background-color: orange; */
+  // background-color: orange;
   position: relative;
 `;
 
@@ -312,11 +312,16 @@ export const ProfileImgEditBtn = styled.span`
   cursor: pointer;
 `;
 // --------------------------------------
+export const ProfileFunctWrap = styled.div`
+  width: calc(100% - 150px);
+  // background-color: aqua;
+`;
+
 export const ProfileFunctDiv = styled.div`
   // background-color: orange;
-  width: calc(100% - 150px);
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 `;
@@ -370,14 +375,17 @@ export const FanIdolSmallDiv = styled.div`
 export const FanIdolText = styled.div`
   font-size: 12px;
   margin: 6px;
+  // background-color: orange;
 `;
 export const FanIdolNum = styled.div`
   font-size: 18px;
   font-weight: bold;
+  // background-color: aqua;
+  margin-top: 3px;
 `;
 export const FollowBtn = styled.div`
-  width: 130px;
-  line-height: 60px;
+  width: 124px;
+  line-height: 54px;
   border-radius: 7px;
   background-color: #b299b0;
   text-align: center;
@@ -385,10 +393,16 @@ export const FollowBtn = styled.div`
   font-weight: bold;
   margin-left: 30px;
   cursor: pointer;
+  border: 3px solid #b299b0;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: white;
+  }
 `;
 // ----------
 export const TagDiv = styled.div`
-  // background-color: orange;
+  // background-color: white;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -396,7 +410,15 @@ export const TagDiv = styled.div`
   width: max-content;
   height: max-content;
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
+
+  ${(props) => {
+    if (props.type === "init") {
+      return css`
+        margin-left: 10px;
+      `;
+    }
+  }}
 `;
 export const Tag = styled.div`
   line-height: 20px;
@@ -438,8 +460,17 @@ export const TagAddInput = styled.input`
   padding: 0 10px;
   margin: 7px 7px 0;
   background-color: white;
+  border: none;
   border-radius: 20px;
   font-size: 12px;
+
+  ${(props) => {
+    if (props.margin === "init") {
+      return css`
+        margin-left: 20px;
+      `;
+    }
+  }}
 `;
 // --------------------------------------
 export const DescDiv = styled.div`
@@ -476,8 +507,9 @@ export const DescHeadText = styled.p`
 `;
 export const DescEditBtn = styled.span`
   // display: inline-block;
-  width: 40px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -962,6 +994,18 @@ export const ProfileSkillSpecificDiv = styled.div`
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  position: relative;
+`;
+
+export const ProfileSkillSpecificTitle = styled.p`
+  // background-color: orange;
+`;
+
+export const ProfileSkillSpecificDate = styled.p`
+  color: #979797;
+  font-size: 14px;
+  position: absolute;
+  right: 20px;
 `;
 
 export const ProfileSkillName = styled.p`
@@ -969,8 +1013,13 @@ export const ProfileSkillName = styled.p`
   font-weight: bold;
 `;
 
+export const ProfileSkillEditBtnDiv = styled.div`
+  // background-color: orange;
+  display: flex;
+`;
+
 export const ProfileSkillEditBtn = styled.button`
-  width: 40px;
+  width: 30px;
   height: 30px;
   display: flex;
   justify-content: center;
@@ -981,6 +1030,7 @@ export const ProfileSkillEditBtn = styled.button`
   // text-align: center;
   border-radius: 7px;
   cursor: pointer;
+  margin: 0 5px;
 `;
 
 // POPUP
@@ -1155,7 +1205,7 @@ export const PopupSaveBtn = styled.div`
 // Post Page
 export const PostDiv = styled.div`
   width: calc(100% - 60px);
-  padding: 0 30px;
+  padding: 0 30px 100px;
   min-height: 750px;
   padding-bottom: 50px;
   background-color: white;
@@ -1190,6 +1240,18 @@ export const PostTitleInput = styled.input`
   }
 `;
 
+export const PostTitle = styled.div`
+  margin: 0 0 20px;
+  width: calc(100% - 20px);
+  // padding: 50px 10px 15px;
+  padding: 50px 10px 0;
+  // background-color: orange;
+  border-bottom: 1px solid rgba(72, 72, 72, 0.5);
+  line-height: 80px;
+  font-weight: bold;
+  font-size: 30px;
+`;
+
 export const PostContents = styled.textarea`
   width: 100%;
   max-width: 100%;
@@ -1204,6 +1266,87 @@ export const PostContents = styled.textarea`
   &:focus {
     outline: none;
   }
+`;
+
+export const PostDetailContents = styled.div`
+  width: 100%;
+  max-width: 100%;
+  // background-color: orange;
+  border: none;
+  padding: 0;
+  // min-height: calc(100% - 121px);
+  line-height: 35px;
+  resize: none;
+  font-size: 16px;
+  white-space: pre-wrap;
+`;
+
+export const PostBtnDiv = styled.div`
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+
+  ${(props) => {
+    if (props.size === "big") {
+      return css`
+        right: 20px;
+        bottom: 20px;
+      `;
+    }
+  }}
+`;
+
+export const PostBtn = styled.div`
+  background-color: #ffb300;
+  padding: 5px 10px;
+  color: white;
+  border: 2px solid #ffb300;
+  transition: 0.3s;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: #ffb300;
+  }
+
+  ${(props) => {
+    if (props.size === "big") {
+      if (props.type === "delete") {
+        return css`
+          background-color: black;
+          border-color: black;
+          margin-left: 10px;
+          padding: 0 15px;
+          line-height: 36px;
+          font-size: 18px;
+          font-weight: bold;
+
+          &:hover {
+            color: black;
+          }
+        `;
+      } else {
+        return css`
+          padding: 0 15px;
+          line-height: 36px;
+          font-size: 18px;
+          font-weight: bold;
+        `;
+      }
+    } else if (props.type === "delete") {
+      return css`
+        background-color: black;
+        border-color: black;
+        margin-left: 10px;
+
+        &:hover {
+          color: black;
+        }
+      `;
+    }
+  }}
 `;
 
 //팬, 아이돌 팝업
@@ -1221,31 +1364,40 @@ export const CardUnit = styled.section`
   align-items: center;
   background-color: #ede4b4;
   border-radius: 20px;
-  width: 600px;
-  height: 180px;
+  // width: 600px;
+  width: 90%;
+  // height: 180px;
+  padding: 10px;
+  margin: 5px 0;
 `;
 
 export const CardImgNameBox = styled.div`
   display: flex;
-  flex: 1;
-  justify-content: space-evenly;
+  // flex: 1;
+  // justify-content: space-evenly;
   align-items: center;
+  // background-color: orange;
 `;
 export const CardImg = styled.img`
-  width: 66px;
-  height: 66px;
+  width: 50px;
+  height: 50px;
   border: none;
   border-radius: 50%;
+  margin: 0 20px;
+  cursor: pointer;
 `;
 
 export const CardUserName = styled.div`
-  font-size: 26px;
+  font-size: 24px;
   font-weight: bold;
+  margin-right: 20px;
 `;
 
 export const CardUserDesc = styled.div`
-  flex: 2;
-  font-size: 24px;
+  // flex: 2;
+  font-size: 18px;
+  // background-color: aqua;
+  color: #979797;
 `;
 
 export const TwoButtons = styled.div`

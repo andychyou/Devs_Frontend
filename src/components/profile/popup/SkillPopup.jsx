@@ -9,7 +9,7 @@ import PopupInputComp from "./PopupInputComp";
 
 const SkillPopup = ({ setPopup }) => {
   const [skill, setSkill] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("선택");
 
   const onChange = (e) => {
     const { value } = e.target;
@@ -18,7 +18,7 @@ const SkillPopup = ({ setPopup }) => {
   };
 
   const postSkill = async () => {
-    if (!skill || !category) {
+    if (!skill || !category || category === "선택") {
       alert("모든 정보를 입력해주세요!");
       return;
     }
@@ -40,7 +40,7 @@ const SkillPopup = ({ setPopup }) => {
     <PopupDiv>
       <PopupBox style={{ paddingBottom: "80px" }}>
         <PopupHeader setPopup={setPopup} text="기술스택 카테고리 추가" />
-        <DropDown setCategory={setCategory} />
+        <DropDown setCategory={setCategory} category={category} />
 
         <PopupInputComp
           name="skill"
