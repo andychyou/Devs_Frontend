@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseUser,faBell,faGear,faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAllCookie, getCookie, removeCookie } from "../../config/cookie";
+import { APIURL } from '../../config/key';
+import axios from 'axios';
 
 const NavigationBar = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -47,6 +49,21 @@ const NavigationBar = () => {
     
   }
 
+  const Search = (keyword) =>{
+    axios.get(`${APIURL}/search/${keyword}`)
+      .then(res => {
+        console.log('search: ', res.data)
+      })
+      .catch(err => {
+        console.log("search api error")
+        console.log(err)
+      })
+  }
+  
+  // useEffect(() => {
+  //   Search()
+  // },[])
+
   if (location === "/" || location === "/login") {
     return <></>;
   }
@@ -66,14 +83,10 @@ const NavigationBar = () => {
 
         <NavSearchbar>
           <NavSearchInput type='text' placeholder="Search"></NavSearchInput>
-          <NavSearchButton>
+          <NavSearchButton >
             <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
           </NavSearchButton>
         </NavSearchbar>
-
-        
-        
-    
 
         {isLogin ? (
           <NavIconsContainer>
@@ -92,7 +105,7 @@ const NavigationBar = () => {
           </NavIconsContainer>
         ) : (
           <NavIconsContainer >
-            <NavAccountSpan onClick={goLogin}>로그인</NavAccountSpan>
+            <NavAccountSpan style={{marginLeft:"130px"}}onClick={goLogin}>로그인</NavAccountSpan>
             <NavAccountSpan onClick={goRegister}>회원가입</NavAccountSpan>
           </NavIconsContainer>
         )}
