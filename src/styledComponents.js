@@ -263,7 +263,7 @@ export const ProfileInfoDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  /* background-color: orange; */
+  // background-color: orange;
   position: relative;
 `;
 
@@ -312,11 +312,16 @@ export const ProfileImgEditBtn = styled.span`
   cursor: pointer;
 `;
 // --------------------------------------
+export const ProfileFunctWrap = styled.div`
+  width: calc(100% - 150px);
+  // background-color: aqua;
+`;
+
 export const ProfileFunctDiv = styled.div`
   // background-color: orange;
-  width: calc(100% - 150px);
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 `;
@@ -370,14 +375,17 @@ export const FanIdolSmallDiv = styled.div`
 export const FanIdolText = styled.div`
   font-size: 12px;
   margin: 6px;
+  // background-color: orange;
 `;
 export const FanIdolNum = styled.div`
   font-size: 18px;
   font-weight: bold;
+  // background-color: aqua;
+  margin-top: 3px;
 `;
 export const FollowBtn = styled.div`
-  width: 130px;
-  line-height: 60px;
+  width: 124px;
+  line-height: 54px;
   border-radius: 7px;
   background-color: #b299b0;
   text-align: center;
@@ -385,10 +393,16 @@ export const FollowBtn = styled.div`
   font-weight: bold;
   margin-left: 30px;
   cursor: pointer;
+  border: 3px solid #b299b0;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: white;
+  }
 `;
 // ----------
 export const TagDiv = styled.div`
-  // background-color: orange;
+  // background-color: white;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -396,7 +410,15 @@ export const TagDiv = styled.div`
   width: max-content;
   height: max-content;
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
+
+  ${(props) => {
+    if (props.type === "init") {
+      return css`
+        margin-left: 10px;
+      `;
+    }
+  }}
 `;
 export const Tag = styled.div`
   line-height: 20px;
@@ -438,8 +460,17 @@ export const TagAddInput = styled.input`
   padding: 0 10px;
   margin: 7px 7px 0;
   background-color: white;
+  border: none;
   border-radius: 20px;
   font-size: 12px;
+
+  ${(props) => {
+    if (props.margin === "init") {
+      return css`
+        margin-left: 20px;
+      `;
+    }
+  }}
 `;
 // --------------------------------------
 export const DescDiv = styled.div`

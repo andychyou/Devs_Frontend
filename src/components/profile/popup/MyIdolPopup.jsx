@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo } from "react";
 import {
   PopupBox,
   PopupDiv,
@@ -10,59 +10,35 @@ import {
   EmptyFanIdol,
 } from "../../../styledComponents";
 import PopupHeader from "./PopupHeader";
-import { useParams } from "react-router-dom";
-import axios from "axios";
 import { APIURL } from "../../../config/key";
 
-const MyIdolPopup = memo(({ setPopup }) => {
-  const params = useParams();
-  const id = params.user_id;
-  const [idols, setIdols] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${APIURL}/profile/follow/${id}/get_following/`)
-      .then((res) => {
-        console.log(res);
-        setIdols(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+const MyIdolPopup = memo(({ setPopup, idols, goUserProfile }) => {
   return (
     <>
       <PopupDiv>
         <PopupBox>
           <PopupHeader setPopup={setPopup} text="IDOL" />
-          <CardUnit>
-            <CardImgNameBox>
-              <CardImg
-                src={require("../../../static/profile-img.png")}
-              ></CardImg>
-              <CardUserName>도영</CardUserName>
-            </CardImgNameBox>
-            <CardUserDesc>Front-End Developer</CardUserDesc>
-          </CardUnit>
 
-          {/* {idols.length === 0 ? (
+          {idols.length === 0 ? (
             <EmptyFanIdol>No Idol</EmptyFanIdol>
           ) : (
             <>
               {idols.map((data, idx) => (
-                <CardUnit key={idx}>
+                <CardUnit
+                  key={idx}
+                  onClick={(e) => goUserProfile(e, data.user)}
+                >
                   <CardImgNameBox>
-                    <CardImg
-                      src={require("../../../static/profile-img.png")}
-                    ></CardImg>
-                    <CardUserName>도영</CardUserName>
+                    <CardImg src={`${APIURL}${data.image}`}></CardImg>
+                    <CardUserName>{data.user}</CardUserName>
                   </CardImgNameBox>
-                  <CardUserDesc>Front-End Developer</CardUserDesc>
+                  {data.position != null && data.position != undefined && (
+                    <CardUserDesc>{data.position}</CardUserDesc>
+                  )}
                 </CardUnit>
               ))}
             </>
-          )} */}
+          )}
         </PopupBox>
       </PopupDiv>
     </>
