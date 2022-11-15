@@ -842,6 +842,81 @@ export const EditInput = styled.input`
   border-radius: 5px;
 `;
 
+export const ProjectDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  // background-color: orange;
+`;
+
+export const ProjectBox = styled.div`
+  background-color: #f4f4f4;
+  width: calc(100% / 4 - 34px);
+  max-width: calc(100% / 3 - 34px);
+  overflow: hidden;
+  // height: 268px;
+  height: 212px;
+  margin: 15px;
+  border: 2px solid rgba(72, 72, 72, 0.5);
+  border-radius: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid rgba(72, 72, 72, 1);
+  }
+`;
+
+export const ProjectName = styled.div`
+  text-decoration: underline;
+  text-underline-position: under;
+  text-weight: bold;
+  font-size: 22px;
+  // background-color: orange;
+  max-width: calc(100% - 30px);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  word-wrap: break-word;
+`;
+
+export const ProjectTextWrap = styled.div`
+  // background-color: aqua;
+  margin: 15px 0;
+  margin-left: 5px;
+`;
+
+export const ProjectTextDiv = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  overflow: hidden;
+  word-wrap: break-word;
+`;
+
+export const ProjectTextLabel = styled.div`
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin: 10px;
+  font-size: 12px;
+
+  ${(props) => {
+    if (props.type === "position") {
+      return css`
+        background-color: #7bcdcf;
+      `;
+    } else if (props.type === "skill") {
+      return css`
+        background-color: #8dcf7b;
+      `;
+    }
+  }}
+`;
+
+export const ProjectText = styled.div``;
+
 //Profile3
 
 export const ProfileContentSection = styled.section`
