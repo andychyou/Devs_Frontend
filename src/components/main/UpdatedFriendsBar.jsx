@@ -104,7 +104,6 @@ const UpdatedFriendsBar = () => {
   return (
     <>
         <section>
-                {/* 최대 8개 까지 보이도록 js 짜기 */}
                 <div style={{gap:'10px', alignItems:'center' ,justifyContent:'center', display:'flex'}}>        
                     {
                     userlist[0] != undefined &&

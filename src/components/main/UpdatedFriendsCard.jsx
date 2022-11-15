@@ -52,7 +52,29 @@ const UpdatedFriendsCard = ({profile, type}) => {
   useEffect(() => {
   if(hashtag){ getUserInfo() } 
   }, [])
-
+  const [sentence, setSentence] = useState("")
+  const [suffix, setSuffix] = useState("을")
+  useEffect(()=>{
+    if(type === "profile"){
+      setSentence("프로필")
+    }
+    else if(type === "study"){
+      setSentence("스터디")
+      setSuffix("를")
+    }
+    else if(type === "skill"){
+      setSentence("스킬")
+    }
+    else if(type === "project"){
+      setSentence("프로젝트")
+      setSuffix("를")
+    }
+    else if(type === "career"){
+      setSentence("커리어")
+      setSuffix("를")
+    }
+  },[])
+  
   return (
     <>
         <section style={{display:'flex', justifyContent:'center', marginBottom: '20px'}}>
@@ -66,11 +88,11 @@ const UpdatedFriendsCard = ({profile, type}) => {
               
               <UpdatedFriendsCardName>{profile}</UpdatedFriendsCardName>
               <UpdatedFriendsCardText>
-                <span>{profile}님이</span>
+                <span>{profile} 님이 </span>
                 <span style={{fontWeight:'bold'}}>
-                  {type}
+                  {sentence}
                 </span>
-                <span>을 업데이트 했습니다</span>
+                <span>{suffix} 업데이트 했습니다</span>
               </UpdatedFriendsCardText>
               
               {/* hashtage 예시 */}

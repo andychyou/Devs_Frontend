@@ -1683,6 +1683,8 @@ export const UpdatedFriendsImg = styled.img`
   width: 35px;
   border-radius: 50%;
   color: red;
+  box-shadow: 1px 1px 3px 1px rgba(107, 104, 104, 0.67);
+
 `;
 
 export const UpdatedFriendsDot = styled.span`
@@ -1694,6 +1696,8 @@ export const UpdatedFriendsDot = styled.span`
   position: relative;
   left: -8px;
   top: -28px;
+  box-shadow: 1px 1px 6px 1px rgba(107, 104, 104, 0.67);
+
 `;
 
 export const UpdatedFriendsCardDiv = styled.div`
