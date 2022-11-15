@@ -3,7 +3,7 @@ import { UpdatedFriendsBox, UpdatedFriendsCardDiv, UpdatedFriendsCardIcons, Upda
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faMessage } from '@fortawesome/free-regular-svg-icons';
-const UpdatedFriendsCard = (props) => {
+const UpdatedFriendsCard = ({profile, type}) => {
   return (
     <>
         <section style={{display:'flex', justifyContent:'center', marginBottom: '20px'}}>
@@ -12,11 +12,11 @@ const UpdatedFriendsCard = (props) => {
               <UpdatedFriendsCardImg            
                 src={require("../../static/profile-img.png")}
               ></UpdatedFriendsCardImg>
-              <UpdatedFriendsCardName>{props.updated_id}</UpdatedFriendsCardName>
+              <UpdatedFriendsCardName>{profile}</UpdatedFriendsCardName>
               <UpdatedFriendsCardText>
-                <span>세은님이</span>
+                <span>{profile}님이</span>
                 <span style={{fontWeight:'bold'}}>
-                  사이드 프로젝트/개발스타그램
+                  {type}
                 </span>
                 <span>을 업데이트 했습니다</span>
               </UpdatedFriendsCardText>
