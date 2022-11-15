@@ -3,7 +3,7 @@ import UpdatedFriendsStat from './UpdatedFriendsStat';
 import UpdatedFriendsCards from './UpdatedFriendsCards';
 import UpdatedFriendsRecommend from './UpdatedFriendsRecommend';
 import { useState, useEffect } from 'react';
-import { Outlet, useParams } from "react-router-dom";
+import { useNavigate, Outlet, useParams } from "react-router-dom";
 import { getCookie } from '../../config/cookie';
 import { APIURL } from '../../config/key';
 import axios from 'axios';
@@ -11,96 +11,56 @@ import UpdatedFriendsCard from './UpdatedFriendsCard';
 
 const MainPage = () => {
   const id = getCookie('user_id')
-  const [mainfeed, setMainfeed] = useState([]);
+  const [feed, setFeed] = useState([]);
+  const [updatedId, setUpdatedId] = useState([]);
+  
   const [search, setsearch] = useState(null);
   const [userlist, setUserlist] = useState();
   //메인 피드 api
   
   const getMainfeed = () => {
-  var updated_list = []
+  var feed_list = []
     axios.get(`${APIURL}/mainfeed/`,{headers:{Authorization: 'token '+getCookie("token")} })
     .then(res => {
-      setMainfeed(res.data.feed)
-      console.log('mainfeed-res.data', res.data)
-      // console.log('mainfeed', mainfeed)
+      // console.log('feed-res.data', res.data)
+      // console.log('feed', feed)
       //이렇게 바로 콘솔하면 안나옴
       for(let i = 0 ; i < res.data.feed.length; i++){
         if(i % 2 == 1){
-          updated_list.push(res.data.feed[i])
+          feed_list.push(res.data.feed[i])
         }
       }
-      setMainfeed(updated_list)
+      setFeed(feed_list)
+      setUpdatedId(res.data.updated_id)
     })
     .catch(err => {
       console.log("main api error")
       console.log(err)
     })
-  
-}
+  }
 
-// console.log('mainfeed', mainfeed)
-console.log('mainfeed', mainfeed)
+// console.log('feed', feed)
+// console.log('feed', feed)
+// console.log('updated_id', updatedId)
 //밖에서 콘솔하기
 useEffect(() => {
   getMainfeed()
 },[])
 
-// const getSearch = () =>{
-//   axios.get(`${APIURL}/search/${"tes"}`)
-//     .then(res => {
-//       console.log('search-res.data ', res.data)
-//       setsearch(res.data)
-//       console.log('search: ', search)
-//     })
-//     .catch(err => {
-//       console.log("search api error")
-//       console.log(err)
-//     })
-// }
-
-// useEffect(() => {
-//   getMainfeed()
-//   getSearch()
-// },[])
-
- 
-
-  // useEffect(()=>{
-  //   axios.get(`${APIURL}/mainfeed/`,{headers:{Authorization: 'token '+getCookie("token")} })
-  //   .then(res => {
-  //     setMainfeed(res.data)
-  //     console.log(mainfeed)
-  //     console.log(res.data)
-  //   })
-  //   .catch(err => {
-  //     console.log("mainfeed api error")
-  //     console.log(err)
-  //   })
-  // }, [])
-
-  //search api
-  // useEffect(() => {
-  //   axios.get(`${APIURL}/search/${"admin"}`)
-  //   .then(res => {
-  //     console.log('search: ', res.data)
-  //   })
-  //   .catch(err => {
-  //     console.log("search api error")
-  //     console.log(err)
-  //   })
-  // }, [])
-
-  
+  const navigate = useNavigate();
+  const goProfile = (userid) => {
+      navigate(`/profile/${userid}`);
+  };
   return (
     <>
-        <UpdatedFriendsStat></UpdatedFriendsStat>
+        <UpdatedFriendsStat ></UpdatedFriendsStat>
 
         {/* <UpdatedFriendsCards></UpdatedFriendsCards> */}
-          {mainfeed[0]!=null && <UpdatedFriendsCard profile={mainfeed[0].profile} type={mainfeed[0].type}></UpdatedFriendsCard>}
-          {mainfeed[1]!=null && <UpdatedFriendsCard profile={mainfeed[1].profile} type={mainfeed[1].type}></UpdatedFriendsCard>}
-          {mainfeed[2]!=null && <UpdatedFriendsCard profile={mainfeed[2].profile} type={mainfeed[2].type}></UpdatedFriendsCard>}
-          {mainfeed[3]!=null && <UpdatedFriendsCard profile={mainfeed[3].profile} type={mainfeed[3].type}></UpdatedFriendsCard>}
-          {mainfeed[4]!=null && <UpdatedFriendsCard profile={mainfeed[4].profile} type={mainfeed[4].type}></UpdatedFriendsCard>}
+          {feed[0]!=null && <div onClick={()=>goProfile(feed[0].profile)}><UpdatedFriendsCard profile={feed[0].profile} type={feed[0].type} ></UpdatedFriendsCard></div>}
+          {feed[1]!=null && <div onClick={()=>goProfile(feed[1].profile)}><UpdatedFriendsCard profile={feed[1].profile} type={feed[1].type} ></UpdatedFriendsCard></div>}
+          {feed[2]!=null && <div onClick={()=>goProfile(feed[2].profile)}><UpdatedFriendsCard profile={feed[2].profile} type={feed[2].type} ></UpdatedFriendsCard></div>}
+          {feed[3]!=null && <div onClick={()=>goProfile(feed[3].profile)}><UpdatedFriendsCard profile={feed[3].profile} type={feed[3].type} ></UpdatedFriendsCard></div>}
+          {feed[4]!=null && <div onClick={()=>goProfile(feed[4].profile)}><UpdatedFriendsCard profile={feed[4].profile} type={feed[4].type} ></UpdatedFriendsCard></div>}
         
         
         <UpdatedFriendsRecommend></UpdatedFriendsRecommend>

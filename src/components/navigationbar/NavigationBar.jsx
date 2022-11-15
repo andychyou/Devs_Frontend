@@ -48,6 +48,18 @@ const NavigationBar = () => {
     }, 500);
     
   }
+  const [userInfo, setUserInfo] = useState(false);
+  const getUserInfo = async () => {
+    const res = await axios.get(`${APIURL}/account/user/${getCookie('user_id')}`);
+    if (res.status == 200) {
+      setUserInfo(res.data);
+    } else {
+      console.log("get user info fail");
+    }
+  };
+  useEffect(()=>{
+    getUserInfo()
+  },[])
 
   const Search = (keyword) =>{
     axios.get(`${APIURL}/search/${keyword}`)
@@ -90,13 +102,13 @@ const NavigationBar = () => {
 
         {isLogin ? (
           <NavIconsContainer>
-            <FontAwesomeIcon style={{cursor: 'pointer'}}size="2x" icon={faHouseUser} />
+            <div onClick={goMain}><FontAwesomeIcon style={{cursor: 'pointer'}}size="2x" icon={faHouseUser} /></div>
             <FontAwesomeIcon style={{cursor: 'pointer'}}size="2x"icon={faBell} />
             <FontAwesomeIcon style={{cursor: 'pointer'}}size="2x"icon={faGear} />
 
             <img style={{width:"40px", borderRadius:"50%",cursor: 'pointer'}}
               className="profile-pic"
-              src={require("../search/profile-img.png")}
+              src={userInfo.image}
               // src={getCookie('user_img')}
               onClick={goProfile}
             />

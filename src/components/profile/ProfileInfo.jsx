@@ -47,7 +47,6 @@ const ProfileInfo = memo(() => {
   useEffect(() => {
     getUserInfo();
   }, [id]);
-
   return (
     <>
       {fan && <MyFanPopup setPopup={setFan} />}

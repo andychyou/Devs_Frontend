@@ -3,6 +3,8 @@ import { UpdatedFriendsBox, UpdatedFriendsSection} from '../../styledComponents'
 import UpdatedFriendsBar from './UpdatedFriendsBar';
 
 
+
+
 const UpdatedFriendsStat = () => {
   return (
     <>
@@ -15,7 +17,7 @@ const UpdatedFriendsStat = () => {
                 </p>
   
                 <UpdatedFriendsBox >             
-                    <UpdatedFriendsBar></UpdatedFriendsBar>
+                    <UpdatedFriendsBar ></UpdatedFriendsBar>
                 </UpdatedFriendsBox>
             </div>
             </div>
