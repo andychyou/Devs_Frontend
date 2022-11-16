@@ -15,6 +15,7 @@ const NavigationBar = () => {
   useEffect(() => {
     if(getCookie('user_id')){
       setIsLogin(true)
+      getUserInfo()
     } else {
       setIsLogin(false)
     }
@@ -48,7 +49,7 @@ const NavigationBar = () => {
     }, 500);
     
   }
-  const [userInfo, setUserInfo] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
   const getUserInfo = async () => {
     const res = await axios.get(`${APIURL}/account/user/${getCookie('user_id')}`);
     if (res.status == 200) {
@@ -57,9 +58,7 @@ const NavigationBar = () => {
       console.log("get user info fail");
     }
   };
-  useEffect(()=>{
-    getUserInfo()
-  },[])
+  
 
   const Search = (keyword) =>{
     axios.get(`${APIURL}/search/${keyword}`)
