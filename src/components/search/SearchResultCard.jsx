@@ -8,29 +8,24 @@ import axios from 'axios';
 import { SearchResultDiv, SearchResultImg, SearchResultDetail, SearchResultIntroBox, SearchResultButton } from '../../styledComponents';
 
 
-
-
-
 const SearchResultCard = ({id}) => {
   const [userInfo, setUserInfo] = useState({})
-  const [g, setg] = useState(0)
-
   const getUserInfo = async () => {
     const res = await axios.get(`${APIURL}/account/user/${id}`);
     if (res.status == 200) {
       console.log("get user info: ", res.data);
       setUserInfo(res.data);
-      setUserInfo(1);
     } else {
       console.log("get user info fail");
     }
   };
   useEffect(()=>{
-    getUserInfo()
-  },[g])
+  console.log('id',id)
+  getUserInfo()
+  },[])
   return (
     <SearchResultDiv>
-    <SearchResultImg src={require('../../static/profile-img.png')}></SearchResultImg>         
+    <SearchResultImg src={userInfo.image}></SearchResultImg>         
       <SearchResultDetail>
           <div style={{fontSize: '30px', fontWeight: '700'}}>{userInfo.name}</div>
           <div>

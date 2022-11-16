@@ -11,14 +11,19 @@ import SearchResultCard from './SearchResultCard';
 import RecommendBar from './RecommendBar';
 const SearchResultPage = () => {
   const location = useLocation()
-  console.log('location',location)
+  const [searchedList, setSearchList] = useState([])
+  const searched_list = location.state.searchResult.ids
+  console.log('searchedList',searchedList)
+  useEffect(()=>(
+    setSearchList(location.state.searchResult.ids)
+  ),[])
   return (
     <>
         <RecommendBar></RecommendBar>
 
-        {/* {searched_list && <SearchResultCard id = {searched_list[0]}></SearchResultCard>} */}
+        {searchedList  && <SearchResultCard id = {searchedList[0]}></SearchResultCard>}
 
-        <SearchResultCard></SearchResultCard>
+        {/* <SearchResultCard></SearchResultCard> */}
         
 
 

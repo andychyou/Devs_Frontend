@@ -63,23 +63,25 @@ const NavigationBar = () => {
   };
   
   const [searchResult, setSearchResult] = useState({})
-  const Search = () =>{
-    axios.get(`${APIURL}/search/${keyword}`)
-      .then(res => {
-        console.log('res.data', res.data)
-        setSearchResult(res.data,  goSearchResult())
-      })
-      .catch(err => {
-        console.log("search api error")
-        console.log(err)
-      })
-  }
+  const Search = async () => {
+    const res = await axios.get(`${APIURL}/search/${keyword}`);
+    if (res.status == 200) {
+      setSearchResult(res.data);
+      if(searchResult){
+        goSearchResult()
+      }
+    } else {
+      console.log("get user info fail");
+    }
+  };
+
   console.log('searchresult', searchResult)
+
+
   const [keyword, setKeyword] = useState("")
   const onChange = (e) => {
     const { value } = e.target;
     setKeyword(value);
-    console.log("keyword is ", value)
   };
 
   if (location === "/" || location === "/login") {
