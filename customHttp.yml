@@ -1,5 +1,11 @@
 customHeaders:
-  - pattern: '**/*'
+  - pattern: '**'
     headers:
-      - key: Access-Control-Allow-Origin
-        value: https://www.sogangfestival.com
+      - key: 'Access-Control-Allow-Origin'
+        value: 'https://www.sogangfestival.com'
+      - key: 'Access-Control-Allow-Credentials'
+        value: 'True'
+      - key: 'Access-Control-Allow-Methods'
+        value: 'DELETE, GET, OPTIONS, PATCH, POST, PUT'
+      - key: 'Access-Control-Max-Age'
+        value: '86400'
