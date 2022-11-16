@@ -14,7 +14,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 
 const ProfileTag = () => {
   const { isAdmin } = useOutletContext();
@@ -22,6 +22,7 @@ const ProfileTag = () => {
   const [clickAdd, setClickAdd] = useState(false);
   const [input, setInput] = useState("");
   const inputRef = useRef();
+  const params = useParams();
 
   const getHashtag = async () => {
     const res = await axios.get(
@@ -76,7 +77,7 @@ const ProfileTag = () => {
 
   useEffect(() => {
     getHashtag();
-  }, []);
+  }, [params.user_id]);
 
   useEffect(() => {
     if (clickAdd) {

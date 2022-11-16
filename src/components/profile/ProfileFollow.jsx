@@ -74,7 +74,7 @@ const ProfileFollow = () => {
     console.log("isFollowed: ", res);
 
     if (res.status == 200) {
-      if (res.data.is_follow == "True") {
+      if (res.data.is_follow) {
         setIsFollowd(true);
       } else {
         setIsFollowd(false);

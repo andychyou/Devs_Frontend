@@ -45,7 +45,10 @@ const SkillEditPopup = ({ setPopup, name, type }) => {
 
     if (res.status == 200) {
       setPopup(false);
-      window.location.reload();
+      //   window.location.reload();
+      window.location.replace(
+        `/profile/${params.user_id}/${category}/${skill}/${id}`
+      );
     }
   };
 

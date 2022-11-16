@@ -36,7 +36,13 @@ const Projects = () => {
 
   return (
     <>
-      {isAdd && <ProjectPopup setPopup={setIsAdd} />}
+      {isAdd && (
+        <ProjectPopup
+          setPopup={setIsAdd}
+          text="프로젝트 추가하기"
+          isCreate={true}
+        />
+      )}
       <DescDiv>
         <DescHead text="프로젝트" setPopup={setIsAdd} />
 

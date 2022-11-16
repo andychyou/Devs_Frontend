@@ -1104,6 +1104,10 @@ export const PopupInput = styled.input`
   border: none;
   border-radius: 5px;
   padding: 0 10px;
+
+  &:disabled {
+    background-color: white;
+  }
 `;
 
 export const PopupDropDiv = styled.div`
@@ -1169,6 +1173,10 @@ export const PopupDateInput = styled.input`
   border-radius: 5px;
   padding: 0 10px;
   margin-right: 25px;
+
+  &:disabled {
+    background-color: white;
+  }
 `;
 
 export const PopupTextarea = styled.textarea`
@@ -1177,6 +1185,9 @@ export const PopupTextarea = styled.textarea`
   padding: 10px;
   border: none;
   border-radius: 5px;
+  &:disabled {
+    background-color: white;
+  }
 `;
 
 export const PopupSaveBtn = styled.div`
@@ -1684,7 +1695,6 @@ export const UpdatedFriendsImg = styled.img`
   border-radius: 50%;
   color: red;
   box-shadow: 1px 1px 3px 1px rgba(107, 104, 104, 0.67);
-
 `;
 
 export const UpdatedFriendsDot = styled.span`
@@ -1697,7 +1707,6 @@ export const UpdatedFriendsDot = styled.span`
   left: -8px;
   top: -28px;
   box-shadow: 1px 1px 6px 1px rgba(107, 104, 104, 0.67);
-
 `;
 
 export const UpdatedFriendsCardDiv = styled.div`

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import { getCookie } from "../../../config/cookie";
 import { APIURL } from "../../../config/key";
 import {
@@ -15,6 +15,7 @@ import {
 } from "../../../styledComponents";
 
 const PostDetail = () => {
+  const { isAdmin } = useOutletContext();
   const params = useParams();
   const category = params.category;
   const name = params.name;
@@ -143,12 +144,14 @@ const PostDetail = () => {
 
               <PostDetailContents>{detail.content}</PostDetailContents>
 
-              <PostBtnDiv>
-                <PostBtn onClick={() => setIsEdit(true)}>수정</PostBtn>
-                <PostBtn type="delete" onClick={deleteDetail}>
-                  삭제
-                </PostBtn>
-              </PostBtnDiv>
+              {isAdmin && (
+                <PostBtnDiv>
+                  <PostBtn onClick={() => setIsEdit(true)}>수정</PostBtn>
+                  <PostBtn type="delete" onClick={deleteDetail}>
+                    삭제
+                  </PostBtn>
+                </PostBtnDiv>
+              )}
             </PostDiv>
           )}
         </>

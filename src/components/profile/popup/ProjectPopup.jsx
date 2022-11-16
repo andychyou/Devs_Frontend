@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import { getCookie } from "../../../config/cookie";
 import { APIURL } from "../../../config/key";
 import {
@@ -18,12 +19,15 @@ import {
   PopupDateInput,
   PopupTextarea,
   PopupSaveBtn,
+  PostBtnDiv,
+  PostBtn,
 } from "../../../styledComponents";
 
 import PopupHeader from "./PopupHeader";
 import PopupInputComp from "./PopupInputComp";
 
-const ProjectPopup = memo(({ setPopup }) => {
+const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
+  const { isAdmin } = useOutletContext();
   const [inputs, setInputs] = useState({
     name: "",
     position: "",
@@ -46,6 +50,25 @@ const ProjectPopup = memo(({ setPopup }) => {
     end_year,
     detail,
   } = inputs;
+
+  useEffect(() => {
+    if (data) {
+      const [s_y, s_m] = data.start_date.split("-");
+      const [e_y, e_m] = data.end_date.split("-");
+
+      setInputs({
+        name: data.project_name,
+        position: data.position,
+        skill: data.skill,
+        coworker: data.coworker,
+        start_year: s_y,
+        start_mon: s_m,
+        end_year: e_y,
+        end_mon: e_m,
+        detail: data.detail,
+      });
+    }
+  }, []);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -90,28 +113,73 @@ const ProjectPopup = memo(({ setPopup }) => {
       window.location.reload();
     });
   };
+
+  const onPatch = async () => {
+    // profile, project_name, position, skill,
+    // coworker, start_date, end_date, detail
+    const res = await axios.patch(
+      `${APIURL}/profile/project/${data.id}/`,
+      {
+        project_name: name,
+        detail,
+        coworker,
+        skill,
+        position,
+        profile: getCookie("user_id"),
+        start_date: start_year + start_mon + "-01",
+        end_date: end_year + end_mon + "-01",
+      },
+      {
+        headers: {
+          Authorization: "token " + getCookie("token"),
+        },
+      }
+    );
+
+    if (res.status == 200) {
+      alert("프로젝트 정보가 수정되었습니다.");
+      setPopup(false);
+      window.location.relaod();
+    }
+  };
+  const onDelete = async () => {
+    const res = await axios.delete(`${APIURL}/profile/project/${data.id}/`, {
+      headers: {
+        Authorization: "token " + getCookie("token"),
+      },
+    });
+
+    if (res.status == 204) {
+      alert("프로젝트 정보가 삭제되었습니다.");
+      setPopup(false);
+      window.location.reload();
+    }
+  };
   return (
     <PopupDiv>
       <PopupBox type="career">
-        <PopupHeader setPopup={setPopup} text="프로젝트 추가하기" />
+        <PopupHeader setPopup={setPopup} text={text} />
 
         <PopupInputComp
           onChange={onChange}
           name="name"
           value={name}
           text="프로젝트명"
+          disable={isAdmin ? false : true}
         />
         <PopupInputComp
           onChange={onChange}
           name="position"
           value={position}
           text="담당"
+          disable={isAdmin ? false : true}
         />
         <PopupInputComp
           onChange={onChange}
           name="skill"
           value={skill}
           text="사용한 기술 스택"
+          disable={isAdmin ? false : true}
         />
 
         <PopupDateDiv>
@@ -123,12 +191,14 @@ const ProjectPopup = memo(({ setPopup }) => {
                 name="start_year"
                 value={start_year}
                 placeholder="YEAR"
+                disabled={isAdmin ? false : true}
               />
               <PopupDateInput
                 onChange={onChange}
                 name="start_mon"
                 value={start_mon}
                 placeholder="MONTH"
+                disabled={isAdmin ? false : true}
               />
             </PopupDateInputDiv>
           </PopupDateSmall>
@@ -140,12 +210,14 @@ const ProjectPopup = memo(({ setPopup }) => {
                 name="end_year"
                 value={end_year}
                 placeholder="YEAR"
+                disabled={isAdmin ? false : true}
               />
               <PopupDateInput
                 onChange={onChange}
                 name="end_mon"
                 value={end_mon}
                 placeholder="MONTH"
+                disabled={isAdmin ? false : true}
               />
             </PopupDateInputDiv>
           </PopupDateSmall>
@@ -156,16 +228,35 @@ const ProjectPopup = memo(({ setPopup }) => {
           value={coworker}
           onChange={onChange}
           text="함께 한 동료"
+          disable={isAdmin ? false : true}
         />
 
         <PopupInputDiv style={{ flexGrow: "3" }}>
           <PopupInputText>상세설명</PopupInputText>
-          <PopupTextarea name="detail" value={detail} onChange={onChange} />
+          <PopupTextarea
+            name="detail"
+            value={detail}
+            onChange={onChange}
+            disabled={isAdmin ? false : true}
+          />
         </PopupInputDiv>
 
-        <PopupSaveBtn onClick={onClick}>
-          <div style={{ marginTop: "4px" }}>저장하기</div>
-        </PopupSaveBtn>
+        {isCreate ? (
+          <PopupSaveBtn onClick={onClick}>
+            <div style={{ marginTop: "4px" }}>저장하기</div>
+          </PopupSaveBtn>
+        ) : (
+          isAdmin && (
+            <PostBtnDiv size="big">
+              <PostBtn size="big" onClick={onPatch}>
+                수정
+              </PostBtn>
+              <PostBtn size="big" type="delete" onClick={onDelete}>
+                삭제
+              </PostBtn>
+            </PostBtnDiv>
+          )
+        )}
       </PopupBox>
     </PopupDiv>
   );

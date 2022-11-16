@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ProjectBox,
   ProjectName,
@@ -7,13 +7,24 @@ import {
   ProjectTextLabel,
   ProjectTextWrap,
 } from "../../styledComponents";
+import ProjectPopup from "./popup/ProjectPopup";
 
 // id(=pk), profile, project_name,
 // position, skill, coworker, start_date, end_date, detail
 const Project = ({ data }) => {
+  const [popup, setPopup] = useState(false);
+  console.log(data);
   return (
     <>
-      <ProjectBox>
+      {popup && (
+        <ProjectPopup
+          setPopup={setPopup}
+          text="프로젝트 상세"
+          isCreate={false}
+          data={data}
+        />
+      )}
+      <ProjectBox onClick={() => setPopup(true)}>
         <ProjectName>{data.project_name}</ProjectName>
 
         <ProjectTextWrap>
