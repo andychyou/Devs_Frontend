@@ -46,6 +46,10 @@ const ProfileTag = () => {
     const res = await axios.post(`${APIURL}/profile/hashtag/`, {
       profile: [getCookie("user_id")],
       hashtag_name: input,
+    },{
+      headers: {
+        Authorization: "token " + getCookie("token"),
+      }
     });
 
     if (res.status == 201) {
