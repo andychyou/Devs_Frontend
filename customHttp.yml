@@ -1,5 +1,5 @@
 customHeaders:
-  - pattern: /path/*
+  - pattern: **/*
     headers:
       - key: Access-Control-Allow-Origin
-        value: 'https://www.sogangfestival.com'
+        value: https://www.sogangfestival.com
