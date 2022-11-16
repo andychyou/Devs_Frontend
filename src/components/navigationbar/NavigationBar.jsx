@@ -35,6 +35,9 @@ const NavigationBar = () => {
   const goRegister = () => {
     navigate('/');
   }
+  const goSearchResult = () =>{
+    navigate("/searchresult", {state: {searchResult}})
+  }
   const goLogout = () => {
     const keys = Object.keys(getAllCookie());
     for(let i=0; i<keys.length; i++){
@@ -59,21 +62,25 @@ const NavigationBar = () => {
     }
   };
   
-
-  const Search = (keyword) =>{
+  const [searchResult, setSearchResult] = useState({})
+  const Search = () =>{
     axios.get(`${APIURL}/search/${keyword}`)
       .then(res => {
-        console.log('search: ', res.data)
+        console.log('res.data', res.data)
+        setSearchResult(res.data,  goSearchResult())
       })
       .catch(err => {
         console.log("search api error")
         console.log(err)
       })
   }
-  
-  // useEffect(() => {
-  //   Search()
-  // },[])
+  console.log('searchresult', searchResult)
+  const [keyword, setKeyword] = useState("")
+  const onChange = (e) => {
+    const { value } = e.target;
+    setKeyword(value);
+    console.log("keyword is ", value)
+  };
 
   if (location === "/" || location === "/login") {
     return <></>;
@@ -93,8 +100,8 @@ const NavigationBar = () => {
         </TitleWrap>
 
         <NavSearchbar>
-          <NavSearchInput type='text' placeholder="Search"></NavSearchInput>
-          <NavSearchButton >
+          <NavSearchInput onChange={onChange} name='search' type='text' placeholder="Search"></NavSearchInput>
+          <NavSearchButton onClick={Search}>
             <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
           </NavSearchButton>
         </NavSearchbar>

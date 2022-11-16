@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouseUser,faBell,faGear,faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getAllCookie, getCookie, removeCookie } from "../../config/cookie";
+import { APIURL } from '../../config/key';
+import axios from 'axios';
 import { SearchResultDiv, SearchResultImg, SearchResultDetail, SearchResultIntroBox, SearchResultButton } from '../../styledComponents';
 
-const SearchResultCard = () => {
+
+
+
+
+const SearchResultCard = ({id}) => {
+  const [userInfo, setUserInfo] = useState({})
+  const [g, setg] = useState(0)
+
+  const getUserInfo = async () => {
+    const res = await axios.get(`${APIURL}/account/user/${id}`);
+    if (res.status == 200) {
+      console.log("get user info: ", res.data);
+      setUserInfo(res.data);
+      setUserInfo(1);
+    } else {
+      console.log("get user info fail");
+    }
+  };
+  useEffect(()=>{
+    getUserInfo()
+  },[g])
   return (
     <SearchResultDiv>
     <SearchResultImg src={require('../../static/profile-img.png')}></SearchResultImg>         
       <SearchResultDetail>
-          <div style={{fontSize: '30px', fontWeight: '700'}}>도영</div>
+          <div style={{fontSize: '30px', fontWeight: '700'}}>{userInfo.name}</div>
           <div>
             <span style={{fontSize: '24px'}}>Frontend</span>
             <span style={{fontSize: '24px'}}>@ job</span>
