@@ -66,10 +66,7 @@ const LoginInput = () => {
       console.log("login success");
       setCookie("user_id", res.data.id);
       setCookie("user_img", res.data.img);
-      setCookie("token", res.data.token);
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${res.data.token}`;
+      setCookie("token", res.data.token, {httpOnly:true, secure:true})
       navigate("/main");
     } else {
       console.log("login fail");
