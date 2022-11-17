@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { getCookie } from "../../../config/cookie";
 import { APIURL } from "../../../config/key";
 import {
@@ -47,6 +47,30 @@ const CareerPopup = memo(({ setPopup }) => {
     detail,
   } = inputs;
 
+  const [yearErr, setYearErr] = useState(true);
+  const [monErr, setMonErr] = useState(true);
+
+  useEffect(() => {
+    const regex = /\d{2}/;
+    // console.log(regex.test("02"));
+
+    if (regex.test(start_month) && regex.test(end_month)) {
+      setMonErr(false);
+    } else {
+      setMonErr(true);
+    }
+  }, [start_month, end_month]);
+
+  useEffect(() => {
+    const regex = /\d{4}/;
+
+    if (regex.test(start_year) && regex.test(end_year)) {
+      setYearErr(false);
+    } else {
+      setYearErr(true);
+    }
+  }, [start_year, end_year]);
+
   const sendRequest = async () => {
     const body = {
       profile: getCookie("user_id"),
@@ -88,6 +112,11 @@ const CareerPopup = memo(({ setPopup }) => {
       !detail
     ) {
       alert("모든 정보를 입력해주세요!");
+      return;
+    }
+
+    if (yearErr || monErr) {
+      alert("날짜 표기에 맞게 작성해주세요!");
       return;
     }
 
