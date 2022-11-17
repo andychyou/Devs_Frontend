@@ -4,7 +4,7 @@ module.exports = function(app){
   app.use(
     createProxyMiddleware(['/api'], {
       // target: "http://127.0.0.1:8000",
-      target: "http://devs-tory.herokuapp.com",
+      target: "https://devs-tory.herokuapp.com",
       changeOrigin: true
     })
   )
