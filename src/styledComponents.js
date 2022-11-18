@@ -1776,6 +1776,7 @@ export const UpdatedFriendsRecommendChip = styled.button`
 `;
 
 export const UpdatedFriendsRecommendCardContainer = styled.div`
+  height: 310px;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -1816,10 +1817,10 @@ height: 60px;
 `
 
 export const FooterDiv = styled.div`
-position:absolute;
-left:0;
-bottom:0;
-right:0;
+// position:absolute;
+// left:0;
+// bottom:0;
+// right:0;
   background-color: #ffe082;
   height: 60px;
 `
