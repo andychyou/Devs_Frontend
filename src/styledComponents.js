@@ -2,10 +2,10 @@ import styled, { css } from "styled-components";
 
 // landing page
 export const LandingDiv = styled.div`
-  // width: 100%;
-  min-width: 100vw;
-  height: max-content;
-  min-height: 100vh;
+  width: 100%;
+  // min-width: 100vw;
+  // height: max-content;
+  // min-height: 100vh;
   padding-bottom: 100px;
   background-color: #ffe082;
   position: absolute;
@@ -88,8 +88,9 @@ export const LandingImg = styled.img`
 export const RegisterDiv = styled.div`
   background-color: #fff8e1;
   margin-left: 150px;
+  margin-top: -40px;
   width: 460px;
-  height: 690px;
+  height: 600px;
   //width: 30vw;
   //height: calc(30vw * 1.5);
   border-radius: 8px;
@@ -159,7 +160,7 @@ export const RegisterBtn = styled.div`
   border-radius: 50px;
   //border-radius: 5vh;
   cursor: pointer;
-  margin: 20px auto 0;
+  margin: 10px auto 0;
   //margin: 4.5vh auto 0;
 `;
 
@@ -172,7 +173,7 @@ export const AlreadyRegister = styled.div`
   color: #0d4ae9;
   position: absolute;
   left: calc(100% / 2);
-  bottom: 30px;
+  margin-top: 30px;
   //bottom: 4vh;
   //margin-left: -7.5vh;
   //font-size: 1.6vh;
@@ -210,7 +211,7 @@ export const LoginImg1 = styled.img`
   // background-color: aqua;
   display: inline-block;
   //width: 40vw;
-  width: 700px;
+  // width: 700px;
   height: calc(700px * 0.89);
   object-fit: contain;
   position: absolute;
