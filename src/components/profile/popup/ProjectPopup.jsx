@@ -50,6 +50,29 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
     end_year,
     detail,
   } = inputs;
+  const [yearErr, setYearErr] = useState(true);
+  const [monErr, setMonErr] = useState(true);
+
+  useEffect(() => {
+    const regex = /\d{2}/;
+    // console.log(regex.test("02"));
+
+    if (regex.test(start_mon) && regex.test(end_mon)) {
+      setMonErr(false);
+    } else {
+      setMonErr(true);
+    }
+  }, [start_mon, end_mon]);
+
+  useEffect(() => {
+    const regex = /\d{4}/;
+
+    if (regex.test(start_year) && regex.test(end_year)) {
+      setYearErr(false);
+    } else {
+      setYearErr(true);
+    }
+  }, [start_year, end_year]);
 
   useEffect(() => {
     if (data) {
@@ -108,6 +131,11 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
       return;
     }
 
+    if (yearErr || monErr) {
+      alert("날짜 표기에 맞게 작성해주세요!");
+      return;
+    }
+
     postProject().then(() => {
       setPopup(false);
       window.location.reload();
@@ -142,6 +170,17 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
       window.location.relaod();
     }
   };
+
+  const sendPatch = () => {
+    console.log(yearErr, monErr);
+    if (yearErr || monErr) {
+      alert("날짜 표기에 맞게 작성해주세요!");
+      return;
+    }
+
+    onPatch();
+  };
+
   const onDelete = async () => {
     const res = await axios.delete(`${APIURL}/profile/project/${data.id}/`, {
       headers: {
@@ -190,14 +229,14 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
                 onChange={onChange}
                 name="start_year"
                 value={start_year}
-                placeholder="YEAR"
+                placeholder="YEAR(ex 2022)"
                 disabled={isAdmin ? false : true}
               />
               <PopupDateInput
                 onChange={onChange}
                 name="start_mon"
                 value={start_mon}
-                placeholder="MONTH"
+                placeholder="MONTH(ex 01)"
                 disabled={isAdmin ? false : true}
               />
             </PopupDateInputDiv>
@@ -209,14 +248,14 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
                 onChange={onChange}
                 name="end_year"
                 value={end_year}
-                placeholder="YEAR"
+                placeholder="YEAR(ex 2022)"
                 disabled={isAdmin ? false : true}
               />
               <PopupDateInput
                 onChange={onChange}
                 name="end_mon"
                 value={end_mon}
-                placeholder="MONTH"
+                placeholder="MONTH(ex 01)"
                 disabled={isAdmin ? false : true}
               />
             </PopupDateInputDiv>
@@ -248,7 +287,7 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
         ) : (
           isAdmin && (
             <PostBtnDiv size="big">
-              <PostBtn size="big" onClick={onPatch}>
+              <PostBtn size="big" onClick={sendPatch}>
                 수정
               </PostBtn>
               <PostBtn size="big" type="delete" onClick={onDelete}>

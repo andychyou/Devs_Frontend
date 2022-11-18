@@ -1396,6 +1396,7 @@ export const CardImg = styled.img`
   border-radius: 50%;
   margin: 0 20px;
   cursor: pointer;
+  background-color: white;
 `;
 
 export const CardUserName = styled.div`

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { getCookie } from "../../config/cookie";
 import { APIURL } from "../../config/key";
@@ -31,6 +31,17 @@ const CareerComp = ({ career }) => {
   });
   const { company, position, locate, start_date, end_date, detail, skill } =
     inputs;
+  const [dateErr, setDateErr] = useState(true);
+
+  useEffect(() => {
+    const reg = /\d{4}-\d{2}-\d{2}/;
+    // console.log(reg.test(start_date));
+    if (reg.test(start_date) && reg.test(end_date)) {
+      setDateErr(false);
+    } else {
+      setDateErr(true);
+    }
+  }, [start_date, end_date]);
 
   const deleteCareer = async () => {
     const res = await axios.delete(`${APIURL}/profile/career/${career.id}/`, {
@@ -56,6 +67,11 @@ const CareerComp = ({ career }) => {
   };
 
   const patchCareer = async () => {
+    if (dateErr) {
+      alert("날짜 표기 YYYY-MM-DD 로 작성해주세요");
+      return;
+    }
+
     const body = {
       profile: getCookie("user_id"),
       company,

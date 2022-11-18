@@ -69,6 +69,19 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
     }
   };
 
+  const uploadImage = async (e) => {
+    e.preventDefault();
+    const desc = e.target[0].value;
+    const file = e.target[1].files[0];
+
+    const form = new FormData();
+    form.append("description", desc);
+    form.append("files", file);
+    form.append("enctype", "multipart/form-data");
+
+    const url = `${APIURL}/`;
+  };
+
   return (
     <>
       <PopupDiv>
