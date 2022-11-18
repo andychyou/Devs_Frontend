@@ -36,6 +36,7 @@ const NavigationBar = () => {
     navigate('/');
   }
   const goSearchResult = () =>{
+    console.log("giving", searchResult)
     navigate("/searchresult", {state: {searchResult}})
   }
   const goLogout = () => {
@@ -66,17 +67,18 @@ const NavigationBar = () => {
   const Search = async () => {
     const res = await axios.get(`${APIURL}/search/${keyword}`);
     if (res.status == 200) {
-      setSearchResult(res.data);
-      if(searchResult){
-        goSearchResult()
-      }
+      setSearchResult(res.data.ids);
     } else {
       console.log("get user info fail");
     }
   };
 
-  console.log('searchresult', searchResult)
-
+  useEffect(()=>{
+    if(searchResult){
+      console.log("goSearchResult")
+      goSearchResult()
+    }
+  },[searchResult])
 
   const [keyword, setKeyword] = useState("")
   const onChange = (e) => {
