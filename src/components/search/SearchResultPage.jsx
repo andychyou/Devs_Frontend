@@ -12,24 +12,16 @@ import RecommendBar from './RecommendBar';
 const SearchResultPage = () => {
   const location = useLocation()
   const [searchedList, setSearchList] = useState([])
-  const [g, setg] = useState(0)
-  console.log("got ", location.state.searchResult)
+  const searched_list = location.state.searchResult.ids
+  console.log('searchedList',searchedList)
   useEffect(()=>(
-    setSearchList(location.state.searchResult)
-  ),[setSearchList])
-  
- 
-
+    setSearchList(location.state.searchResult.ids)
+  ),[])
   return (
     <>
         <RecommendBar></RecommendBar>
-        {/* {searchedList.map((elem, idx)=>(
-          <>
-            <SearchResultCard key={idx} id = {elem}></SearchResultCard>
-          </>
-        ))} */}
-        {searchedList.length != 0 && <SearchResultCard id = {searchedList[0]}></SearchResultCard>}
-        {/* {searchedList && <SearchResultCard id = {searchedList[0]}></SearchResultCard>} */}
+
+        {searchedList  && <SearchResultCard id = {searchedList[0]}></SearchResultCard>}
 
         {/* <SearchResultCard></SearchResultCard> */}
         
