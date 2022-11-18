@@ -1802,3 +1802,30 @@ export const UpdatedFriendsRecommendCardName = styled.span`
   margin: 10px;
   font-weight: bold;
 `;
+
+export const FooterFlex = styled.div`
+margin-top:auto;
+width: 200px;
+height: 60px;
+ margin-left: 87%;
+ display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content: center;
+  gap:4px;
+`
+
+export const FooterDiv = styled.div`
+position:absolute;
+left:0;
+bottom:0;
+right:0;
+  background-color: #ffe082;
+  height: 60px;
+`
+
+export const FooterText = styled.div`
+  color: black;
+  font-size: 14px;
+  // margin-bottom: 4px;
+`
