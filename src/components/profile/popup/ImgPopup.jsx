@@ -39,6 +39,7 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
       });
     }
   };
+  console.log(src);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -49,10 +50,15 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
   };
 
   const editInfo = async () => {
+    // const body = {
+    //   email: _email,
+    //   name: _name,
+    //   image: src,
+    //   link: _link,
+    // };
     const body = {
-      email: _email,
       name: _name,
-      image: src,
+      email: _email,
       link: _link,
     };
     console.log(body);
@@ -61,7 +67,7 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
     if (res.status == 200) {
       console.log(res);
       setPopup(false);
-      // window.location.reload();
+      window.location.reload();
     } else {
       console.log("edit info fail");
     }
@@ -69,13 +75,12 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
 
   const uploadImage = async (e) => {
     e.preventDefault();
-    const desc = e.target[0].value;
     const file = e.target[1].files[0];
 
     const form = new FormData();
-    form.append("description", desc);
     form.append("files", file);
     form.append("enctype", "multipart/form-data");
+    console.log(form);
 
     const url = `${APIURL}/`;
   };
