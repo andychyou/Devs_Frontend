@@ -26,9 +26,11 @@ const SearchResultPage = () => {
                 <span style={{display:"table",margin:"auto",color:'#707070'}}>검색 결과</span>
           </RecommendToWho>
 
-        {searchedList  && <SearchResultCard id = {searchedList[0]}></SearchResultCard>}
-
-        {/* <SearchResultCard></SearchResultCard> */}
+        {/* {searchedList  && <SearchResultCard id = {searchedList[0]}></SearchResultCard>} */}
+        {searchedList.map((elem) => (
+                  <SearchResultCard id = {elem}>
+                  </SearchResultCard>
+                ))}
         
 
 
