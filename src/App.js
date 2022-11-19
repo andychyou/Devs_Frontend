@@ -59,8 +59,8 @@ const App = () => {
           {/* <Route path="image" element={<ImageEdit />} /> */}
         </Route>
       </Routes>
-      
-      <Footer></Footer>
+
+      <Footer />
     </div>
   );
 };

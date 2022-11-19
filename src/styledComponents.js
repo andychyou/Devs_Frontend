@@ -2,10 +2,8 @@ import styled, { css } from "styled-components";
 
 // landing page
 export const LandingDiv = styled.div`
-  width: 100%;
-  // min-width: 100vw;
-  // height: max-content;
-  // min-height: 100vh;
+  min-width: 100%;
+  min-height: calc(100vh - 100px);
   padding-bottom: 100px;
   background-color: #ffe082;
   position: absolute;
@@ -51,7 +49,6 @@ export const LandingContent = styled.div`
 export const LandingInfoDiv = styled.div`
   margin-top: 95px;
   margin-right: 150px;
-  //margin-top: 13vh;
   //  background-color: orange;
   //width: 40vw;
   width: 610px;
@@ -90,7 +87,8 @@ export const RegisterDiv = styled.div`
   margin-left: 150px;
   margin-top: -40px;
   width: 460px;
-  height: 600px;
+  // width: 500px;
+  height: 800px;
   //width: 30vw;
   //height: calc(30vw * 1.5);
   border-radius: 8px;
@@ -109,7 +107,8 @@ export const RegisterText = styled.div`
 `;
 
 export const RegisterUl = styled.ul`
-  width: 80%;
+  width: 85%;
+  // width: 100%;
   margin: 0 auto;
 `;
 
@@ -132,7 +131,7 @@ export const RegisterInput = styled.input`
   border: none;
   border-radius: 7px;
   //border-radius: 0.7vh;
-  width: 100%;
+  width: calc(100% - 20px);
   padding: 0 10px;
   height: 35px;
   margin: 5px 0 0;
@@ -174,9 +173,6 @@ export const AlreadyRegister = styled.div`
   position: absolute;
   left: calc(100% / 2);
   margin-top: 30px;
-  //bottom: 4vh;
-  //margin-left: -7.5vh;
-  //font-size: 1.6vh;
   margin-left: -75px;
   cursor: pointer;
 `;
@@ -349,7 +345,12 @@ export const ProfileEditBtn = styled.span`
 `;
 
 export const ProfileDesc = styled.p`
-  line-height: 22px;
+  // line-height: 22px;
+  margin-bottom: 7px;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  // background-color: white;
 `;
 // ----------
 export const FollowDiv = styled.div`
@@ -1475,6 +1476,8 @@ export const NavSearchButton = styled.button`
   float: right;
   display: inline-block;
   cursor: pointer;
+  transition: 0.3s;
+
   &:hover {
     background-color: #5fb352;
     color: black;
@@ -1805,28 +1808,42 @@ export const UpdatedFriendsRecommendCardName = styled.span`
 `;
 
 export const FooterFlex = styled.div`
-margin-top:auto;
-width: 200px;
-height: 60px;
- margin-left: 87%;
- display:flex;
-  flex-direction:column;
-  align-items:center;
+  margin-top: auto;
+  width: 200px;
+  height: 60px;
+  margin-left: 87%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap:4px;
-`
+  gap: 4px;
+`;
+
+export const ContentDiv = styled.div`
+  padding-bottom: 150px;
+  position: relative;
+  min-height: calc(100vh - 270px);
+  // background-color: orange;
+`;
 
 export const FooterDiv = styled.div`
-// position:absolute;
-// left:0;
-// bottom:0;
-// right:0;
-  background-color: #ffe082;
-  height: 60px;
-`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  // background-color: #ffe082;
+  background-color: #777;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const FooterText = styled.div`
-  color: black;
+  // color: black;
+  color: #e1e1e1;
   font-size: 14px;
   // margin-bottom: 4px;
-`
+  margin: 3px;
+`;

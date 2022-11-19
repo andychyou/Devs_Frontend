@@ -26,8 +26,9 @@ const ProfileInfo = memo(() => {
     email: "",
     name: "",
     image: "",
+    link: "",
   });
-  const { email, name, image } = userInfo;
+  const { email, name, image, link } = userInfo;
 
   const getUserInfo = async () => {
     const res = await axios.get(`${APIURL}/account/user/${id}`);
@@ -50,7 +51,7 @@ const ProfileInfo = memo(() => {
 
         <ProfileFunctWrap>
           <ProfileFunctDiv>
-            <ProfileText name={name} id={id} email={email} />
+            <ProfileText name={name} id={id} email={email} link={link} />
             <ProfileFollow />
           </ProfileFunctDiv>
           <ProfileTag />

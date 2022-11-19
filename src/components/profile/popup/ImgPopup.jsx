@@ -20,13 +20,14 @@ import {
 import PopupHeader from "./PopupHeader";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const ImgPopup = memo(({ setPopup, name, email, id }) => {
+const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
   const [src, setSrc] = useState(getCookie("user_img"));
   const [inputs, setInputs] = useState({
     _name: name,
     _email: email,
+    _link: link,
   });
-  const { _name, _email } = inputs;
+  const { _name, _email, _link } = inputs;
 
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -52,18 +53,15 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
       email: _email,
       name: _name,
       image: src,
+      link: _link,
     };
-    const res = await axios.patch(`${APIURL}/account/user/${id}/`, {
-      headers: {
-        Authorization: "token " + getCookie("token"),
-      },
-      body: body,
-    });
+    console.log(body);
+    const res = await axios.patch(`${APIURL}/account/user/${id}/`, body);
 
     if (res.status == 200) {
       console.log(res);
       setPopup(false);
-      window.location.reload();
+      // window.location.reload();
     } else {
       console.log("edit info fail");
     }
@@ -115,12 +113,22 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
             <EditInput type="text" name="_id" value={_id} onChange={onChange} />
           </EditProfileDiv> */}
 
-          <EditProfileDiv style={{ marginBottom: "50px" }}>
+          <EditProfileDiv>
             <EditLabel>이메일</EditLabel>
             <EditInput
               type="text"
               name="_email"
               value={_email}
+              onChange={onChange}
+            />
+          </EditProfileDiv>
+
+          <EditProfileDiv style={{ marginBottom: "50px" }}>
+            <EditLabel>Github 링크</EditLabel>
+            <EditInput
+              type="text"
+              name="_link"
+              value={_link}
               onChange={onChange}
             />
           </EditProfileDiv>
