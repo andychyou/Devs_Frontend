@@ -40,12 +40,17 @@ const UpdatedFriendsRecommendToYou = () => {
     <>
         <UpdatedFriendsRecommendToYouDiv> 
             <div style={{fontSize:'20px'}}>
-                <span id='user-name'>
+              {myHashtagList.length != 0 && 
+              <div>
+                    <span id='user-name'>
                     {id}
                 </span>
                 <span>
                     님과 비슷한 개발자
                 </span>
+              </div>
+              }
+                
             </div>
             <UpdatedFriendsRecommendChips>
             {myHashtagList.map((elem) => (

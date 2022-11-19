@@ -104,7 +104,12 @@ const UpdatedFriendsBar = () => {
   return (
     <>
         <section>
-                <div style={{gap:'10px', alignItems:'center' ,justifyContent:'center', display:'flex'}}>        
+                <div style={{gap:'10px', alignItems:'center' ,justifyContent:'center', display:'flex'}}> 
+                    {userlist[0] == undefined &&
+                    <span>
+                        아직 업데이트한 친구가 없어요
+                    </span>
+                    }       
                     {
                     userlist[0] != undefined &&
                     <div style={{cursor: 'pointer'}} onClick={() => goProfile(userlist[0].id)}>

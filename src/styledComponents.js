@@ -1639,6 +1639,7 @@ export const SuggestP = styled.p`
 export const SearchResultDiv = styled.div`
   display: flex;
   margin: 0 auto;
+  margin-bottom: 14px;
   width: 1000px;
   height: 134px;
   background-color: rgba(255, 224, 130, 0.2);
