@@ -24,12 +24,20 @@ const UpdatedFriendsRecommend = () => {
 
     if (res.status == 200) {
       const temp = [];
-      for (let i = 0; i < res.data.length; i++) {
-        temp.push(res.data[i].hashtag_name);
+      if(res.data.length > 5){
+        for (let i = 0; i < 5; i++) {
+          temp.push(res.data[i].hashtag_name);
+        }
+        const hey = await temp;
+        setMyHashtagList(hey);
       }
-      const hey = await temp;
-      setMyHashtagList(hey);
-      // myHashtagList.current = temp
+      else{
+        for (let i = 0; i < res.data.length; i++) {
+          temp.push(res.data[i].hashtag_name);
+        }
+        const hey = await temp;
+        setMyHashtagList(hey);
+      }
     } else {
       console.log("get hashtag fail");
     }
