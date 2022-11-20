@@ -2,12 +2,18 @@ import styled, { css } from "styled-components";
 
 // landing page
 export const LandingDiv = styled.div`
-  min-width: 100%;
-  min-height: calc(100vh - 100px);
-  padding-bottom: 100px;
+  width: 100%;
+  // min-height: calc(100vh - 100px);
+  // height: calc(100% - 240px);
+  // padding-bottom: 240px;
+  height: 100%;
   background-color: #ffe082;
   position: absolute;
   z-index: -5;
+  // position: relative;
+  // display: flex;
+  // justify-content: cetner;
+  // align-items: cetner;
 `;
 
 // ${() => {
@@ -20,75 +26,98 @@ export const LandingDiv = styled.div`
 export const LandingHead = styled.div`
   // background-color: orange;
   width: 100%;
-  height: 100px;
+  // height: 100px;
+  height: 10vh;
+  position: absolute;
+  top: 0;
+  right: 0;
 `;
 export const DevsText = styled.div`
   // background-color: aqua;
-  width: 1700px;
-  //width: 100%;
-  //line-height: 100%;
+  // width: 1700px;
+  // width: calc(100% - 80px);
   height: 100%;
   display: flex;
   align-items: center;
   margin: 0 auto;
-  padding-left: 100px;
-  font-weight: 500;
-  font-size: 28px;
-  //font-size: 3vh;
-  cursor: pointer;
+  // padding-left: 80px;
+  padding-left: 7vw;
+  // font-weight: 500;
+  font-weight: bold;
+  // font-size: 28px;
+  font-size: 3vh;
+  // cursor: pointer;
+`;
+
+export const LandingWrap = styled.div`
+  // width: 100%;
+  // height: 100%;
+  // background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const LandingContent = styled.div`
   // width: max-content;
   margin: 0 auto;
+  height: 80%;
+  width: 80%;
+  // width: max-content;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
   // background-color: aqua;
 `;
 
 export const LandingInfoDiv = styled.div`
-  margin-top: 95px;
-  margin-right: 150px;
-  //  background-color: orange;
-  //width: 40vw;
-  width: 610px;
-  //width: 50%;
+  // margin-top: 50px;
+  // margin-right: 100px;
+  // background-color: white;
+  height: max-content;
+  // width: 610px;
+  width: 45%;
 `;
 
 export const LandingInfoBig = styled.div`
   font-weight: 700;
-  font-size: 36px;
-  margin-bottom: 40px;
-  //font-size: 3.8vh;
-  //margin-bottom: 5vh;
+  // font-size: 32px;
+  font-size: 2vw;
+  // margin-bottom: 30px;
+  margin-bottom: 3vh;
 `;
 
 export const LandingInfoSmall = styled.div`
   font-weight: 400;
-  font-size: 22px;
-  line-height: 35px;
-  //line-height: 3.5vh;
-  //font-size: 2.2vh;
+  // font-size: 20px;
+  font-size: 1.2vw;
+  // line-height: 35px;
+  line-height: 3vh;
 `;
 // background-image: url(./landing-img.png);
 export const LandingImg = styled.img`
   display: inline-block;
   //width: 751px;
   //height: 599px;
+  // background-color: aqua;
   width: 100%;
-  height: calc(100% * 0.7976);
+  // height: calc(100% * 0.7976);
+  height: max-content;
   margin-top: 30px;
-  //margin-top: 3vh;
   object-fit: contain;
 `;
 
 export const RegisterDiv = styled.div`
   background-color: #fff8e1;
-  margin-left: 150px;
-  margin-top: -40px;
-  width: 460px;
+  // margin-left: 150px;
+  // margin-top: -40px;
+  // width: 460px;
   // width: 500px;
-  height: 800px;
+  // height: 800px;
+  height: 100%;
+  width: 35%;
   //width: 30vw;
   //height: calc(30vw * 1.5);
   border-radius: 8px;
@@ -98,12 +127,13 @@ export const RegisterDiv = styled.div`
 
 export const RegisterText = styled.div`
   font-weight: 700;
-  font-size: 26px;
-  line-height: 100px;
-  //line-height: 12vh;
-  //font-size: 3vh;
+  // font-size: 26px;
+  font-size: 1.2vw;
+  // line-height: 100px;
+  line-height: 4vw;
   width: 100%;
   text-align: center;
+  // background-color: white;
 `;
 
 export const RegisterUl = styled.ul`
@@ -114,74 +144,80 @@ export const RegisterUl = styled.ul`
 
 export const RegisterLi = styled.li`
   // margin-bottom: 30px;
-  padding-bottom: 25px;
+  // padding-bottom: 25px;
   // background-color: orange;
   position: relative;
-  //margin-bottom: 3vh;
+  margin-bottom: 3vh;
 `;
 
 export const RegisterInputText = styled.div`
   font-weight: 400;
-  font-size: 18px;
-  //font-size: 2vh;
+  // font-size: 18px;
+  font-size: 1.8vh;
 `;
 
 export const RegisterInput = styled.input`
   //display: inline-block;
   border: none;
-  border-radius: 7px;
+  border-radius: 0.7vh;
   //border-radius: 0.7vh;
-  width: calc(100% - 20px);
-  padding: 0 10px;
-  height: 35px;
-  margin: 5px 0 0;
-  //margin-top: 1vh;
-  //height: 4vh;
+  width: calc(100% - 2vw);
+  padding: 0 1vw;
+  // height: 35px;
+  height: 4vh;
+  // margin: 5px 0 0;
+  margin-top: 0.7vh;
+  font-size: 1.6vh;
 `;
 export const WrongInputText = styled.div`
-  font-size: 12px;
+  // font-size: 12px;
+  font-size: 1.1vh;
   color: red;
   position: absolute;
   right: 0;
-  top: 4px;
+  // top: 0.2vh;
+  top: 3px;
   //bottom: 0;
 `;
 
 export const RegisterBtn = styled.div`
   background-color: #ffd249;
-  width: 80%;
-  line-height: 35px;
-  //line-height: 5vh;
+  width: 85%;
+  // line-height: 35px;
+  line-height: 4vh;
   font-weight: 700;
-  font-size: 18px;
-  //font-size: 2vh;
+  // font-size: 18px;
+  font-size: 1.8vh;
   text-align: center;
-  border-radius: 50px;
-  //border-radius: 5vh;
+  // border-radius: 50px;
+  border-radius: 5vh;
   cursor: pointer;
-  margin: 10px auto 0;
-  //margin: 4.5vh auto 0;
+  // margin: 10px auto 0;
+  margin: 3vh auto 0;
 `;
 
 export const AlreadyRegister = styled.div`
-  width: 150px;
-  line-height: 30px;
-  //width: 15vh;
-  //line-height: 3vh;
+  // width: 150px;
+  // line-height: 30px;
+  // background-color: white;
+  width: 100%;
   text-align: center;
+  font-size: 1.3vh;
+  margin-top: 2vh;
+
   color: #0d4ae9;
-  position: absolute;
-  left: calc(100% / 2);
-  margin-top: 30px;
-  margin-left: -75px;
+  // position: absolute;
+  // left: calc(100% / 2);
+  // margin-top: 30px;
+  // margin-left: -75px;
   cursor: pointer;
 `;
 
 export const LandingFooter = styled.div`
   background-color: #ffb300;
   width: 100%;
-  height: 240px;
-  //height: 22vh;
+  // height: 240px;
+  height: 30vh;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -190,12 +226,13 @@ export const LandingFooter = styled.div`
 // login
 export const LoginDiv = styled.div`
   background-color: #fff8e1;
-  margin-top: 10vh;
-  width: 652px;
-  height: 541px;
-  border-radius: 8px;
-  //width: 37vw;
-  //height: 33vw;
+  // margin-top: 10vh;
+  // width: 652px;
+  // height: 541px;
+  // border-radius: 8px;
+  border-radius: 1vh;
+  width: 37vw;
+  height: 33vw;
   //border-radius: 0.8vh;
   position: relative;
   z-index: 10;
@@ -204,23 +241,27 @@ export const LoginImgDiv = styled.div`
   display: flex;
 `;
 export const LoginImg1 = styled.img`
-  // background-color: aqua;
+  // background-color: orange;
   display: inline-block;
-  //width: 40vw;
+  width: 35vw;
+  height: max-content;
   // width: 700px;
-  height: calc(700px * 0.89);
+  // height: calc(700px * 0.89);
+
   object-fit: contain;
   position: absolute;
-  top: 93px;
-  //top: 9vh;
+  // top: 93px;
+  top: 9vh;
   left: 0;
 `;
 
 export const LoginImg2 = styled.img`
   //background-color: aqua;
   display: inline-block;
-  width: 700px;
-  height: calc(700px * 0.79);
+  // width: 700px;
+  // height: calc(700px * 0.79);
+  width: 35vw;
+  height: max-content;
   object-fit: contain;
   position: absolute;
   bottom: 0;
@@ -233,14 +274,16 @@ export const LoginBtnDiv = styled.div`
   display: flex;
   // justify-content: space-between;
   justify-content: center;
-  width: max-content;
-  margin: 150px auto 0;
+  width: 100%;
+  margin-top: 3vh;
+  // margin: 150px auto 0;
 `;
 
 export const LoginBtn = styled.div`
   cursor: pointer;
-  margin: 0 30px;
-  //font-size: 1.8vh;
+  font-size: 0.8vw;
+  margin: 0 0.5vw;
+  width: max-content;
 `;
 
 // Profile Page
@@ -1779,7 +1822,6 @@ export const UpdatedFriendsCardIcons = styled.div`
   flex: 1;
   gap: 10px;
   margin: 10px;
-  
 `;
 
 export const UpdatedFriendsRecommendToYouDiv = styled.div`

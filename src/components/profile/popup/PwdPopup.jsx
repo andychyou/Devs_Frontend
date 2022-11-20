@@ -120,12 +120,18 @@ const PwdPopup = ({ setPopup }) => {
   };
 
   const sendChange = () => {
+    if (!token) {
+      alert("토큰을 입력해주세요!");
+      return;
+    }
     if (password != pwdcheck) {
       alert("비밀번호 불일치 입니다.");
       return;
     }
 
-    onPwdChange();
+    onPwdChange().catch((err) => {
+      alert("토큰 값이 정확하지 않습니다.");
+    });
   };
   return (
     <>
