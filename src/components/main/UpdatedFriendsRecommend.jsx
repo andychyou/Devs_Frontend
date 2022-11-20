@@ -42,7 +42,7 @@ const UpdatedFriendsRecommend = () => {
   const getProfilesList = async () => {
     const res =  await axios.get(
       `${APIURL}/profile/hashtag/get_user/${currHashtag}/`
-    );
+    ,{headers:{Authorization: 'token '+getCookie("token")} });
     if (res.status == 200) {
       console.log('profiles',res.data[0].profile)
       const row = await res.data[0].profile
