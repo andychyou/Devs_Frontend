@@ -10,7 +10,7 @@ const UpdatedFriendsRecommendCard = ({user}) => {
   const [userInfo, setUserInfo] = useState({})
   const [g, setg] = useState(0)
   const getUserInfo = async () => {
-    const res = await axios.get(`${APIURL}/account/user/${user}`);
+    const res = await axios.get(`${APIURL}/account/user/${user}`,{headers:{Authorization: 'token '+getCookie("token")} });
 
     if (res.status == 200) {
       setUserInfo(res.data);
