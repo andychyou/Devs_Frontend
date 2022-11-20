@@ -61,15 +61,12 @@ const LoginInput = () => {
       password: pwd,
     });
 
-    console.log(res);
     if (res.status == 200) {
-      console.log("login success");
       setCookie("user_id", res.data.id);
       setCookie("user_img", res.data.img);
       setCookie("token", res.data.token, { httpOnly: true, secure: true });
       navigate("/main");
     } else {
-      console.log("login fail");
       alert("로그인 실패! 아이디 또는 비밀번호를 확인해주세요.");
     }
   };
@@ -78,7 +75,9 @@ const LoginInput = () => {
     if (!id || !pwd) {
       alert("모든 정보를 입력해주세요!");
     } else {
-      sendRequest();
+      sendRequest().catch((err) => {
+        alert("로그인 실패! 아이디 또는 비밀번호를 확인해주세요.");
+      });
     }
   };
   const goRegister = () => {

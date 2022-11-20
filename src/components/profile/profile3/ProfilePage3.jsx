@@ -27,7 +27,6 @@ const ProfilePage3 = () => {
   const getDetails = async () => {
     const res = await axios.get(`${APIURL}/profile/skilldetail/${id}/`);
 
-    // console.log(res);
     setDetails(res.data);
   };
 

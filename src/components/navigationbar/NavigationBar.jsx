@@ -9,6 +9,8 @@ import {
   NavSearchButton,
   SubTitle,
   TitleWrap,
+  NavBtn,
+  NavBarInner,
 } from "../../styledComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -48,11 +50,11 @@ const NavigationBar = () => {
     navigate("/login");
   };
   const goRegister = () => {
-    navigate('/');
-  }
-  const goSearchResult = () =>{
-    navigate("/searchresult", {state: {searchResult}})
-  }
+    navigate("/");
+  };
+  const goSearchResult = () => {
+    navigate("/searchresult", { state: { searchResult } });
+  };
   const goLogout = () => {
     const keys = Object.keys(getAllCookie());
     for (let i = 0; i < keys.length; i++) {
@@ -82,18 +84,17 @@ const NavigationBar = () => {
     const res = await axios.get(`${APIURL}/search/${keyword}`);
     if (res.status == 200) {
       setSearchResult(res.data);
-      if(searchResult){
-        goSearchResult()
+      if (searchResult) {
+        goSearchResult();
       }
     } else {
       console.log("get user info fail");
     }
   };
 
-  console.log('searchresult', searchResult)
+  console.log("searchresult", searchResult);
 
-
-  const [keyword, setKeyword] = useState("")
+  const [keyword, setKeyword] = useState("");
   const onChange = (e) => {
     const { value } = e.target;
     setKeyword(value);
@@ -106,33 +107,34 @@ const NavigationBar = () => {
   return (
     <>
       <NavBar>
-        <TitleWrap onClick={goMain}>
-          <MainTitle href="#">뎁스</MainTitle>
-          <SubTitle href="#">devStory</SubTitle>
-        </TitleWrap>
+        <NavBarInner>
+          <TitleWrap onClick={goMain}>
+            <MainTitle href="#">뎁스</MainTitle>
+            <SubTitle href="#">devStory</SubTitle>
+          </TitleWrap>
 
-        <NavSearchbar>
-          <NavSearchInput
-            onChange={onChange}
-            name="search"
-            type="text"
-            placeholder="Search"
-          ></NavSearchInput>
-          <NavSearchButton onClick={Search}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
-          </NavSearchButton>
-        </NavSearchbar>
+          <NavSearchbar>
+            <NavSearchInput
+              onChange={onChange}
+              name="search"
+              type="text"
+              placeholder="Search"
+            ></NavSearchInput>
+            <NavSearchButton onClick={Search}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
+            </NavSearchButton>
+          </NavSearchbar>
 
-        {isLogin ? (
-          <NavIconsContainer>
-            <div onClick={goMain}>
-              <FontAwesomeIcon
-                style={{ cursor: "pointer" }}
-                size="2x"
-                icon={faHouseUser}
-              />
-            </div>
-            <FontAwesomeIcon
+          {isLogin ? (
+            <NavIconsContainer>
+              <NavBtn onClick={goMain}>
+                <FontAwesomeIcon
+                  style={{ cursor: "pointer" }}
+                  size="2x"
+                  icon={faHouseUser}
+                />
+              </NavBtn>
+              {/* <FontAwesomeIcon
               style={{ cursor: "pointer" }}
               size="2x"
               icon={faBell}
@@ -141,31 +143,36 @@ const NavigationBar = () => {
               style={{ cursor: "pointer" }}
               size="2x"
               icon={faGear}
-            />
+            /> */}
 
-            <img
-              style={{
-                width: "40px",
-                borderRadius: "50%",
-                cursor: "pointer",
-                backgroundColor: "white",
-              }}
-              className="profile-pic"
-              src={userInfo.image}
-              // src={getCookie('user_img')}
-              onClick={goProfile}
-            />
+              <NavBtn>
+                <img
+                  style={{
+                    width: "40px",
+                    borderRadius: "50%",
+                    cursor: "pointer",
+                    backgroundColor: "white",
+                  }}
+                  className="profile-pic"
+                  src={userInfo.image}
+                  // src={getCookie('user_img')}
+                  onClick={goProfile}
+                />
+              </NavBtn>
 
-            <NavAccountSpan onClick={goLogout}>로그아웃</NavAccountSpan>
-          </NavIconsContainer>
-        ) : (
-          <NavIconsContainer>
-            <NavAccountSpan style={{ marginLeft: "130px" }} onClick={goLogin}>
-              로그인
-            </NavAccountSpan>
-            <NavAccountSpan onClick={goRegister}>회원가입</NavAccountSpan>
-          </NavIconsContainer>
-        )}
+              <NavBtn>
+                <NavAccountSpan onClick={goLogout}>로그아웃</NavAccountSpan>
+              </NavBtn>
+            </NavIconsContainer>
+          ) : (
+            <NavIconsContainer>
+              <NavAccountSpan style={{ marginLeft: "130px" }} onClick={goLogin}>
+                로그인
+              </NavAccountSpan>
+              <NavAccountSpan onClick={goRegister}>회원가입</NavAccountSpan>
+            </NavIconsContainer>
+          )}
+        </NavBarInner>
       </NavBar>
     </>
   );

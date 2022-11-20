@@ -342,6 +342,7 @@ export const ProfileName = styled.p`
 export const ProfileEditBtn = styled.span`
   margin-left: 10px;
   cursor: pointer;
+  font-size: 18px;
 `;
 
 export const ProfileDesc = styled.p`
@@ -758,6 +759,7 @@ export const CareerDescDiv = styled.div`
   max-width: 100%;
   height: max-content;
   display: flex;
+  align-items: center;
   /* background-color: aqua; */
   margin-bottom: 20px;
 `;
@@ -768,14 +770,15 @@ export const CareerText = styled.div`
 `;
 export const CareerDesc = styled.div`
   background-color: white;
-  min-height: 35px;
+  min-height: 25px;
   /* height: max-content; */
   width: calc(923px - 100px);
   border-radius: 5px;
-  padding: 0 10px;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  white-space: pre-wrap;
 `;
 
 export const CareerDescInput = styled.textarea`
@@ -1094,6 +1097,19 @@ export const PopupInputDiv = styled.div`
   margin-bottom: 30px;
 `;
 
+export const PopupInputWrap = styled.div`
+  position: relative;
+  // background-color: orange;
+`;
+
+export const PopupWrongInput = styled.div`
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  color: red;
+`;
+
 export const PopupInputText = styled.div`
   font-weight: bold;
   font-size: 18px;
@@ -1108,7 +1124,7 @@ export const PopupInput = styled.input`
   padding: 0 10px;
 
   &:disabled {
-    background-color: white;
+    background-color: #f9f9f9;
   }
 `;
 
@@ -1177,7 +1193,7 @@ export const PopupDateInput = styled.input`
   margin-right: 25px;
 
   &:disabled {
-    background-color: white;
+    background-color: #f9f9f9;
   }
 `;
 
@@ -1188,7 +1204,7 @@ export const PopupTextarea = styled.textarea`
   border: none;
   border-radius: 5px;
   &:disabled {
-    background-color: white;
+    background-color: #f9f9f9;
   }
 `;
 
@@ -1431,8 +1447,18 @@ export const NavBarContainer = styled.div`
 export const NavBar = styled.div`
   height: 60px;
   background-color: #ffe082;
+  width: 100%;
+  // display: flex;
+  // align-items: center;
+`;
+
+export const NavBarInner = styled.div`
+  width: 1300px;
+  height: 100%;
   display: flex;
   align-items: center;
+  // background-color: orange;
+  margin: 0 auto;
 `;
 
 export const TitleWrap = styled.div`
@@ -1476,21 +1502,28 @@ export const NavSearchButton = styled.button`
   float: right;
   display: inline-block;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.45s;
+  border: 2px solid white;
 
   &:hover {
-    background-color: #5fb352;
-    color: black;
+    // background-color: #5fb352;
+    background-color: rgba(255, 179, 0, 1);
+    border-color: rgba(255, 179, 0, 1);
+    color: white;
   }
 `;
 
 export const NavIconsContainer = styled.div`
-  width: 300px;
+  // width: 300px;
   margin-left: auto;
   margin-right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const NavBtn = styled.div`
+  margin: 0 5px;
 `;
 
 export const NavAccountSpan = styled.span`
@@ -1506,6 +1539,12 @@ export const NavAccountSpan = styled.span`
   border-radius: 5px;
   cursor: pointer;
   transition: 0.45s;
+  font-weight: bold;
+
+  &:hover {
+    color: rgba(255, 179, 0, 1);
+    background-color: white;
+  }
 `;
 
 //ProfileCard

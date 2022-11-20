@@ -11,7 +11,6 @@ const Profile = memo(() => {
     const cookie_id = getCookie("user_id");
     const param_id = params.user_id;
 
-    // console.log(cookie_id, param_id);
     if (cookie_id === param_id) {
       setIsAdmin(true);
     } else {

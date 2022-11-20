@@ -8,7 +8,6 @@ const Footer = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    // console.log(path);
 
     if (path === "/" || path === "/login") {
       setDisplay(false);
@@ -20,17 +19,6 @@ const Footer = () => {
     <>
       {display && (
         <FooterDiv>
-          {/* <FooterFlex>
-        <FooterText style={{fontWeight:"bold"}}>
-        Team Devs
-        </FooterText>
-        <FooterText>
-            곽도영 김아영 
-        </FooterText>
-        <FooterText>
-        윤태호 최세은 유창호 
-        </FooterText>
-        </FooterFlex> */}
           <FooterText
             style={{
               fontWeight: "bold",

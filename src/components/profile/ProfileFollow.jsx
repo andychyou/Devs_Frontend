@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { myAxios } from "../../config/axios";
 import { getCookie } from "../../config/cookie";
 import { APIURL } from "../../config/key";
 
@@ -37,7 +38,6 @@ const ProfileFollow = () => {
   const getFan = async () => {
     const res = await axios.get(`${APIURL}/profile/follow/${id}/get_follower/`);
     setFans(res.data);
-    console.log(res.data);
   };
 
   const getIdols = async () => {
@@ -45,7 +45,6 @@ const ProfileFollow = () => {
       `${APIURL}/profile/follow/${id}/get_following/`
     );
     setIdols(res.data);
-    console.log(res.data);
   };
 
   const onFollow = async () => {
@@ -69,9 +68,7 @@ const ProfileFollow = () => {
   };
 
   const checkFollowed = async () => {
-    const res = await axios.get(`${APIURL}/profile/isfollow/${id}/`);
-
-    console.log("isFollowed: ", res);
+    const res = await myAxios.get(`/profile/isfollow/${id}/`);
 
     if (res.status == 200) {
       if (res.data.is_follow) {

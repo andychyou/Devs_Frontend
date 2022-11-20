@@ -34,10 +34,7 @@ const ProfileInfo = memo(() => {
     const res = await axios.get(`${APIURL}/account/user/${id}`);
 
     if (res.status == 200) {
-      console.log("get user info: ", res.data);
       setUserInfo(res.data);
-    } else {
-      console.log("get user info fail");
     }
   };
 

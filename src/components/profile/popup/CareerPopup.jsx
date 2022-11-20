@@ -52,7 +52,6 @@ const CareerPopup = memo(({ setPopup }) => {
 
   useEffect(() => {
     const regex = /\d{2}/;
-    // console.log(regex.test("02"));
 
     if (regex.test(start_month) && regex.test(end_month)) {
       setMonErr(false);
@@ -82,7 +81,7 @@ const CareerPopup = memo(({ setPopup }) => {
       skill,
       detail,
     };
-    console.log(body);
+
     const res = await axios.post(`${APIURL}/profile/career/`, body, {
       headers: {
         Authorization: "token " + getCookie("token"),

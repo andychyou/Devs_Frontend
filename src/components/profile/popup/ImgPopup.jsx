@@ -26,8 +26,9 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
     _name: name,
     _email: email,
     _link: link,
+    _image: "",
   });
-  const { _name, _email, _link } = inputs;
+  const { _name, _email, _link, _image } = inputs;
 
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -38,8 +39,14 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
         setSrc(reader.result);
       });
     }
+
+    const file = e.target.files[0];
+    // console.log(file);
+    // setSrc(file);
+    let newData = { ...inputs };
+    newData["_image"] = file;
+    setInputs(newData);
   };
-  console.log(src);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -60,6 +67,7 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
       name: _name,
       email: _email,
       link: _link,
+      image: _image,
     };
     console.log(body);
     const res = await axios.patch(`${APIURL}/account/user/${id}/`, body);
@@ -100,7 +108,12 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
           </ImageBox>
 
           <ImageInputDiv>
-            <ImageInput type="file" onChange={onSelectFile} />
+            <ImageInput
+              type="file"
+              onChange={onSelectFile}
+              name="image_url"
+              accept="image/jpeg,image/png,image/gif"
+            />
           </ImageInputDiv>
 
           <EditProfileDiv>

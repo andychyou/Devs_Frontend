@@ -36,7 +36,7 @@ const SkillEditPopup = ({ setPopup, name, type }) => {
       skill_name: skill,
       skill_type: category,
     };
-    console.log(body);
+
     const res = await axios.patch(`${APIURL}/profile/skill/${id}/`, body, {
       headers: {
         Authorization: "token " + getCookie("token"),

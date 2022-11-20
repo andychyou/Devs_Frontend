@@ -24,9 +24,8 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   const getProjects = async () => {
-    const res = await axios.get(`${APIURL}/profile/project/${id}/`);
+    const res = await axios.get(`${APIURL}/profile/project/${id}/get_project/`);
 
-    console.log(res.data);
     setProjects(res.data);
   };
 

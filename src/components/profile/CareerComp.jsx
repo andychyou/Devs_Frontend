@@ -35,7 +35,7 @@ const CareerComp = ({ career }) => {
 
   useEffect(() => {
     const reg = /\d{4}-\d{2}-\d{2}/;
-    // console.log(reg.test(start_date));
+
     if (reg.test(start_date) && reg.test(end_date)) {
       setDateErr(false);
     } else {
@@ -52,8 +52,6 @@ const CareerComp = ({ career }) => {
 
     if (res.status == 204) {
       window.location.reload();
-    } else {
-      console.log("delete career fail");
     }
   };
 
@@ -95,8 +93,6 @@ const CareerComp = ({ career }) => {
     if (res.status == 200) {
       setIsEdit(false);
       window.location.reload();
-    } else {
-      console.log("patch career fail");
     }
   };
 
