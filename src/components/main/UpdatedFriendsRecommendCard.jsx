@@ -68,9 +68,15 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
   useEffect(() => {
     getIsFollow();
   }, [isFollow]);
+
+  const navigate = useNavigate();
+  const goUserProfile = (e) => {
+    navigate(`/profile/${user}`);
+  };
+
   return (
     <>
-      <UpdatedFriendsRecommendCardDiv>
+      <UpdatedFriendsRecommendCardDiv onClick={goUserProfile}>
         <UpdatedFriendsRecommendCardImg
           src={userInfo.image}
         ></UpdatedFriendsRecommendCardImg>
