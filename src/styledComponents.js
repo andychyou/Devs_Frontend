@@ -282,6 +282,7 @@ export const LoginBtnDiv = styled.div`
 export const LoginBtn = styled.div`
   cursor: pointer;
   font-size: 0.8vw;
+  margin: 0 0.5vw;
   width: max-content;
 `;
 
@@ -1821,7 +1822,6 @@ export const UpdatedFriendsCardIcons = styled.div`
   flex: 1;
   gap: 10px;
   margin: 10px;
-  
 `;
 
 export const UpdatedFriendsRecommendToYouDiv = styled.div`

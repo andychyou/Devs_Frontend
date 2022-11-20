@@ -14,12 +14,14 @@ import axios from "axios";
 import { APIURL } from "../../config/key";
 import { getCookie, setCookie } from "../../config/cookie";
 import { useNavigate } from "react-router-dom";
+import PwdPopup from "../profile/popup/PwdPopup";
 
 const LoginInput = () => {
   const [input, setInput] = useState({
     id: "",
     pwd: "",
   });
+  const [pwdReset, setPwdReset] = useState(false);
   const { id, pwd } = input;
   const idRef = useRef();
   const pwdRef = useRef();
@@ -86,6 +88,7 @@ const LoginInput = () => {
 
   return (
     <>
+      {pwdReset && <PwdPopup setPopup={setPwdReset} />}
       <LoginDiv>
         <RegisterText>당신의 스토리를 알려주세요!</RegisterText>
 
@@ -120,6 +123,7 @@ const LoginInput = () => {
           {/* <LoginBtn>아이디 찾기</LoginBtn>
           <LoginBtn>비밀번호 찾기</LoginBtn> */}
           <LoginBtn onClick={goRegister}>회원가입</LoginBtn>
+          <LoginBtn onClick={() => setPwdReset(true)}>비밀번호 변경</LoginBtn>
         </LoginBtnDiv>
       </LoginDiv>
     </>
