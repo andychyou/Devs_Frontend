@@ -20,7 +20,7 @@ const UpdatedFriendsCard = ({profile, type}) => {
   const getHashtag = async () => {
     const res = await axios.get(
       `${APIURL}/profile/hashtag/get_hashtag/${profile}}/`
-    );
+      ,{headers:{Authorization: 'token '+getCookie("token")} });
   
     if (res.status == 200) {
       const temp = [];
@@ -35,7 +35,7 @@ const UpdatedFriendsCard = ({profile, type}) => {
     }
   };
   const getUserInfo = async () => {
-    const res = await axios.get(`${APIURL}/account/user/${profile}`);
+    const res = await axios.get(`${APIURL}/account/user/${profile}`,{headers:{Authorization: 'token '+getCookie("token")} });
 
     if (res.status == 200) {
       setUserInfo(res.data);
