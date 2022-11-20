@@ -9,8 +9,7 @@ const UpdatedFriendsStat = () => {
   return (
     <>
         <UpdatedFriendsSection>
-            <div style={{display:'flex', justifyContent:'center'}}>
-            <div style={{width:'1000px'}}>
+            <div style={{width:'60%', margin:'0 auto'}}>
                 
                 <p style={{fontSize:'18px', fontWeight:'bold'}}>
                     업데이트한 친구들
@@ -19,7 +18,6 @@ const UpdatedFriendsStat = () => {
                 <UpdatedFriendsBox >             
                     <UpdatedFriendsBar ></UpdatedFriendsBar>
                 </UpdatedFriendsBox>
-            </div>
             </div>
         </UpdatedFriendsSection>
 

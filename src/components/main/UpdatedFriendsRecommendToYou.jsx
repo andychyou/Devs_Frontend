@@ -8,54 +8,31 @@ import { UpdatedFriendsRecommendToYouDiv, UpdatedFriendsRecommendChips, UpdatedF
 
 
 
-const UpdatedFriendsRecommendToYou = () => {
+const UpdatedFriendsRecommendToYou = ({hashtag_list}) => {
   const id = getCookie('user_id')
-  const [myHashtagList, setMyHashtagList] = useState([]);
-  const [g, setg] = useState(0);
-  const getMyHashtagList = async () => {
-    const res = await axios.get(
-      `${APIURL}/profile/hashtag/get_hashtag/${getCookie("user_id")}}/`
-    );
-  
-    if (res.status == 200) {
-      const temp = [];
-  
-      for (let i = 0; i < res.data.length; i++) {
-        temp.push(res.data[i].hashtag_name);
-      }
-  
-      setMyHashtagList(temp);
-      setg(1)
-      console.log("get hashtag success");
-    } else {
-      console.log("get hashtag fail");
-    }
-  };
 
-  useEffect(()=>{
-    getMyHashtagList()
-  }, [g])
 
+  
+ 
   return (
     <>
         <UpdatedFriendsRecommendToYouDiv> 
             <div style={{fontSize:'20px'}}>
-              {myHashtagList.length != 0 && 
-              <div>
-                    <span id='user-name'>
+          <span id='user-name'>
                     {id}
                 </span>
                 <span>
                     님과 비슷한 개발자
                 </span>
-              </div>
-              }
+            
+              
+            {hashtag_list.length == 0 && <p style={{fontSize:'16px', fontWeight:'bold'}}>내 프로필에서 해시태그를 추가해 친구를 추천받아 보세요</p>}
                 
             </div>
             <UpdatedFriendsRecommendChips>
-            {myHashtagList.map((elem) => (
-                  <UpdatedFriendsRecommendChip>
-                    {elem}
+            {hashtag_list.length != 0 && hashtag_list.map((elem,idx) => (
+                  <UpdatedFriendsRecommendChip key={idx}>
+                    #{elem}
                   </UpdatedFriendsRecommendChip>
                 ))}
                 

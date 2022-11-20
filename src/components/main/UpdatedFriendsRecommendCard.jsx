@@ -9,21 +9,18 @@ import axios from 'axios';
 const UpdatedFriendsRecommendCard = ({user}) => {
   const [userInfo, setUserInfo] = useState({})
   const [g, setg] = useState(0)
-
   const getUserInfo = async () => {
-    const res = await axios.get(`${APIURL}/account/user/${user.id}`);
+    const res = await axios.get(`${APIURL}/account/user/${user}`);
 
     if (res.status == 200) {
-      console.log("get user info: ", res.data);
       setUserInfo(res.data);
-      setUserInfo(1);
     } else {
       console.log("get user info fail");
     }
   };
   useEffect(()=>{
     getUserInfo()
-  },[g])
+  },[])
 
   const onFollow = async () => {
     const follower = getCookie("user_id");
@@ -40,16 +37,37 @@ const UpdatedFriendsRecommendCard = ({user}) => {
 
     if (res.status == 201) {
       alert("나의 아이돌에 추가되었습니다.");
+      setIsFollow(true)
+      window.location.reload()
     } else if (res.status == 204) {
       alert("나의 아이돌에서 삭제되었습니다.");
+      setIsFollow(false)
+      window.location.reload()
     }
   };
+
+  const [isFollow, setIsFollow] = useState(false)
+  const getIsFollow = async () => {
+    const res = await axios.get(`${APIURL}/profile/isfollow/${user}/`);
+    console.log(`${user} followed `,res.data)
+    if (res.status == 200) {
+      if(res.data.is_follow == true)
+        setIsFollow(true)
+      else setIsFollow(false)
+    } 
+    else  {
+      console.log("is follow error")
+    }
+  };
+  useEffect(()=>{
+    getIsFollow()
+  },[isFollow])
   return (
     <>
         <UpdatedFriendsRecommendCardDiv>
             <UpdatedFriendsRecommendCardImg src={userInfo.image}></UpdatedFriendsRecommendCardImg>
             <UpdatedFriendsRecommendCardName>{userInfo.name}</UpdatedFriendsRecommendCardName>
-            <div onClick={onFollow}><UpdatedFriendsRecommendCardIdolButton>idol 등록</UpdatedFriendsRecommendCardIdolButton></div>
+            <div onClick={onFollow}><UpdatedFriendsRecommendCardIdolButton>{isFollow===false ? <span>Idol 추가</span>  : <span>Idol 삭제</span>}</UpdatedFriendsRecommendCardIdolButton></div>
         </UpdatedFriendsRecommendCardDiv>
     </>
   );

@@ -56,16 +56,18 @@ useEffect(() => {
         <UpdatedFriendsStat ></UpdatedFriendsStat>
 
         {/* <UpdatedFriendsCards></UpdatedFriendsCards> */}
+          
+          
           {feed[0]!=null && <div onClick={()=>goProfile(feed[0].profile)}><UpdatedFriendsCard profile={feed[0].profile} type={feed[0].type} ></UpdatedFriendsCard></div>}
           {feed[1]!=null && <div onClick={()=>goProfile(feed[1].profile)}><UpdatedFriendsCard profile={feed[1].profile} type={feed[1].type} ></UpdatedFriendsCard></div>}
           {feed[2]!=null && <div onClick={()=>goProfile(feed[2].profile)}><UpdatedFriendsCard profile={feed[2].profile} type={feed[2].type} ></UpdatedFriendsCard></div>}
-          {feed[3]!=null && <div onClick={()=>goProfile(feed[3].profile)}><UpdatedFriendsCard profile={feed[3].profile} type={feed[3].type} ></UpdatedFriendsCard></div>}
-          {feed[4]!=null && <div onClick={()=>goProfile(feed[4].profile)}><UpdatedFriendsCard profile={feed[4].profile} type={feed[4].type} ></UpdatedFriendsCard></div>}
-        
+          
         
         <UpdatedFriendsRecommend></UpdatedFriendsRecommend>
    
-    
+          {feed[3]!=null && <div onClick={()=>goProfile(feed[3].profile)}><UpdatedFriendsCard profile={feed[3].profile} type={feed[3].type} ></UpdatedFriendsCard></div>}
+          {feed[4]!=null && <div onClick={()=>goProfile(feed[4].profile)}><UpdatedFriendsCard profile={feed[4].profile} type={feed[4].type} ></UpdatedFriendsCard></div>}
+        
     </>
   );
 };

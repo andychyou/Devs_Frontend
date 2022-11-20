@@ -79,9 +79,9 @@ const NavigationBar = () => {
     }
   };
 
-  const [searchResult, setSearchResult] = useState({});
+  const [searchResult, setSearchResult] = useState();
   const Search = async () => {
-    const res = await axios.get(`${APIURL}/search/${keyword}`);
+    const res = await axios.get(`${APIURL}/search/${keyword}/`);
     if (res.status == 200) {
       setSearchResult(res.data);
       if (searchResult) {
