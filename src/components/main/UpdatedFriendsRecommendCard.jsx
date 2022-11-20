@@ -34,7 +34,9 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
       alert("로그인이 필요합니다!");
       return;
     }
-
+    if(follower === userInfo.id){
+      return
+    }
     const res = await axios.post(`${APIURL}/profile/follow/`, {
       follower,
       following: userInfo.id,
@@ -43,11 +45,9 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
     if (res.status == 201) {
       alert("나의 아이돌에 추가되었습니다.");
       setIsFollow(true);
-      window.location.reload();
     } else if (res.status == 204) {
       alert("나의 아이돌에서 삭제되었습니다.");
       setIsFollow(false);
-      window.location.reload();
     }
   };
 
@@ -58,6 +58,7 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
     });
     console.log(`${user} followed `, res.data);
     if (res.status == 200) {
+      console.log(`${user} follow`, res.data)
       if (res.data.is_follow == true) setIsFollow(true);
       else setIsFollow(false);
     } else {
