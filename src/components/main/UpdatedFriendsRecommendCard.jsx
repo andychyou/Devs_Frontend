@@ -70,19 +70,22 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
   }, [isFollow]);
 
   const navigate = useNavigate();
-  const goUserProfile = (e) => {
+  const goUserProfile = () => {
+    
     navigate(`/profile/${user}`);
   };
 
   return (
     <>
-      <UpdatedFriendsRecommendCardDiv onClick={goUserProfile}>
+      <UpdatedFriendsRecommendCardDiv >
+        <UpdatedFriendsRecommendCardDiv onClick={goUserProfile} style={{backgroundColor:'transparent'}}>
         <UpdatedFriendsRecommendCardImg
           src={userInfo.image}
         ></UpdatedFriendsRecommendCardImg>
         <UpdatedFriendsRecommendCardName>
           {userInfo.name}
         </UpdatedFriendsRecommendCardName>
+        </UpdatedFriendsRecommendCardDiv>
         <div onClick={onFollow}>
           <UpdatedFriendsRecommendCardIdolButton>
             {isFollow === false ? (

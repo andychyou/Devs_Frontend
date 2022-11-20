@@ -43,14 +43,27 @@ const UpdatedFriendsRecommend = () => {
 
   const [profiles, setProfiles] = useState([]);
   const getProfilesList = async () => {
+    var li = []
     const res = await axios.get(
-      `${APIURL}/profile/hashtag/get_user/${currHashtag}/`,
+      `${APIURL}/mainfeed/recommend/${currHashtag}/`,
       { headers: { Authorization: "token " + getCookie("token") } }
     );
+
     if (res.status == 200) {
-      console.log("profiles", res.data[0].profile);
-      const row = await res.data[0].profile;
-      setProfiles(row);
+      if(res.data.length > 5){
+        for(let i = 0 ;i<5;i++){
+          const row = await res.data[i].user
+          li.push(row)
+        }
+      }
+      else{
+        for(let i = 0 ;i<res.data.length;i++){
+          const row = await res.data[i].user
+          li.push(row)
+        }
+      }
+      
+      setProfiles(li);
     } else {
       console.log("get hashtag fail");
     }
@@ -64,9 +77,6 @@ const UpdatedFriendsRecommend = () => {
     }
   }, [currHashtag]);
 
-  console.log(myHashtagList);
-  console.log("profiles", profiles);
-  console.log("curr hashtag", currHashtag);
   return (
     <>
       <section>
@@ -100,7 +110,7 @@ const UpdatedFriendsRecommend = () => {
           <UpdatedFriendsRecommendChips>
             {myHashtagList.length != 0 &&
               myHashtagList.map((elem, idx) => (
-                <UpdatedFriendsRecommendChip
+                <UpdatedFriendsRecommendChip style={currHashtag === elem ? {fontWeight:'bold', borderColor:'#f25089'}: {fontWeight:'400'}}
                   onClick={() => {
                     setCurrHashtag(elem);
                   }}

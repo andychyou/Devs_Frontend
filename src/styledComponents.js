@@ -1835,7 +1835,7 @@ export const UpdatedFriendsRecommendToYouDiv = styled.div`
   margin-bottom: 40px;
 `;
 
-export const UpdatedFriendsRecommendCardIdolButton = styled.button`
+export const UpdatedFriendsRecommendCardIdolButton = styled.div`
   font-size: 14px;
   color: black;
   background-color: rgba(178, 153, 176, 1);
@@ -1859,6 +1859,7 @@ export const UpdatedFriendsRecommendChip = styled.button`
   padding: 8px 14px;
   margin: 5px;
   cursor: pointer;
+  border: 3px solid rgba(217, 217, 217, 1);
 `;
 
 export const UpdatedFriendsRecommendCardContainer = styled.div`
@@ -1873,6 +1874,7 @@ export const UpdatedFriendsRecommendCardDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content:center;
   width: 155px;
   height: 173px;
   background-color: rgba(255, 153, 0, 0.6);
