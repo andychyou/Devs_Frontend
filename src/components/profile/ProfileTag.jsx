@@ -33,7 +33,6 @@ const ProfileTag = () => {
 
     if (res.status == 200) {
       const temp = [];
-
       for (let i = 0; i < res.data.length; i++) {
         temp.push(res.data[i].hashtag_name);
       }

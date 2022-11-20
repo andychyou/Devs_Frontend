@@ -38,7 +38,6 @@ const UpdatedFriendsBar = () => {
         if(updatedId[0]){
             const res = await axios.get(`${APIURL}/account/user/${updatedId[0]}`);
             if (res.status == 200) {
-                console.log('user 1 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {
@@ -48,7 +47,6 @@ const UpdatedFriendsBar = () => {
         if(updatedId[1]){
             const res = await axios.get(`${APIURL}/account/user/${updatedId[1]}`);
             if (res.status == 200) {
-                console.log('user 2 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {
@@ -58,7 +56,6 @@ const UpdatedFriendsBar = () => {
         if(updatedId[2]){
             const res = await axios.get(`${APIURL}/account/user/${updatedId[2]}`);
             if (res.status == 200) {
-                console.log('user 3 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {
@@ -68,7 +65,6 @@ const UpdatedFriendsBar = () => {
         if(updatedId[3]){
             const res = await axios.get(`${APIURL}/account/user/${updatedId[3]}`);
             if (res.status == 200) {
-                console.log('user 4 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {
@@ -78,7 +74,6 @@ const UpdatedFriendsBar = () => {
         if(updatedId[4]){
             const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`);
             if (res.status == 200) {
-                console.log('user 4 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {

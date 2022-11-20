@@ -1768,7 +1768,6 @@ export const UpdatedFriendsBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 14px;
-  width: inherit;
   height: 55px;
   background-color: rgba(249, 249, 249, 1);
   box-shadow: 2px 2px 10px 2px rgba(107, 104, 104, 0.67);
@@ -1799,7 +1798,7 @@ export const UpdatedFriendsDot = styled.span`
 export const UpdatedFriendsCardDiv = styled.div`
   background-color: rgba(255, 224, 130, 0.6);
   border-radius: 10px;
-  width: 1600px;
+  width: 60%;
   cursor: pointer;
 `;
 
@@ -1822,15 +1821,17 @@ export const UpdatedFriendsCardIcons = styled.div`
   flex: 1;
   gap: 10px;
   margin: 10px;
+  
 `;
 
 export const UpdatedFriendsRecommendToYouDiv = styled.div`
   display: flex;
   align-items: center;
-  width: 1000px;
+  justify-content: space-between;
+  width: 60%;
   gap: 10px;
   margin: 0 auto;
-  margin-top: 60px;
+  margin-top: 100px;
   margin-bottom: 40px;
 `;
 

@@ -27,8 +27,8 @@ const SearchResultPage = () => {
           </RecommendToWho>
 
         {/* {searchedList  && <SearchResultCard id = {searchedList[0]}></SearchResultCard>} */}
-        {searchedList.map((elem) => (
-                  <SearchResultCard id = {elem}>
+        {searchedList != undefined &&searchedList.map((elem,idx) => (
+                  <SearchResultCard key={idx} id = {elem}>
                   </SearchResultCard>
                 ))}
         
