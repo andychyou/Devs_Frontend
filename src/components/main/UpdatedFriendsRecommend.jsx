@@ -61,9 +61,6 @@ const UpdatedFriendsRecommend = () => {
     }
   },[currHashtag])
 
-  console.log(myHashtagList)
-  console.log('profiles',profiles)
-  console.log('curr hashtag', currHashtag)
   return (
     <>
         <section>

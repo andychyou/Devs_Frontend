@@ -36,7 +36,7 @@ const UpdatedFriendsBar = () => {
     const getUserInfo = async () => {
         var li = []
         if(updatedId[0]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[0]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[0]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
                 li.push(res.data)
                 // setUser1(res.data)
@@ -45,7 +45,7 @@ const UpdatedFriendsBar = () => {
             }
         }
         if(updatedId[1]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[1]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[1]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
                 li.push(res.data)
                 // setUser1(res.data)
@@ -54,7 +54,7 @@ const UpdatedFriendsBar = () => {
             }
         }
         if(updatedId[2]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[2]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[2]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
                 li.push(res.data)
                 // setUser1(res.data)
@@ -63,7 +63,7 @@ const UpdatedFriendsBar = () => {
             }
         }
         if(updatedId[3]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[3]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[3]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
                 li.push(res.data)
                 // setUser1(res.data)
@@ -72,7 +72,7 @@ const UpdatedFriendsBar = () => {
             }
         }
         if(updatedId[4]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
                 li.push(res.data)
                 // setUser1(res.data)

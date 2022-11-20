@@ -49,7 +49,6 @@ const UpdatedFriendsRecommendCard = ({user}) => {
   const [isFollow, setIsFollow] = useState()
   const getIsFollow = async () => {
     const res = await axios.get(`${APIURL}/profile/isfollow/${user}/`,{headers:{Authorization: 'token '+getCookie("token")} });
-    console.log(`${user} followed `,res.data)
     if (res.status == 200) {
       if(res.data.is_follow == true)
         setIsFollow(true)
