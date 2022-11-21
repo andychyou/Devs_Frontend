@@ -101,6 +101,25 @@ const UpdatedFriendsBar = () => {
                 console.log("get user info fail");
             }
         }
+        if(updatedId[8]){
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`,{headers:{Authorization: 'token '+getCookie("token")} });
+            if (res.status == 200) {
+                li.push(res.data)
+                // setUser1(res.data)
+            } else {
+                console.log("get user info fail");
+            }
+        }
+        if(updatedId[9]){
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`,{headers:{Authorization: 'token '+getCookie("token")} });
+            if (res.status == 200) {
+                li.push(res.data)
+                // setUser1(res.data)
+            } else {
+                console.log("get user info fail");
+            }
+        }
+        
         setUserlist(li)
     }
 
@@ -152,6 +171,36 @@ const UpdatedFriendsBar = () => {
                     </div>
                     }
                     {userlist[4] != undefined &&
+                    <div style={{cursor: 'pointer'}} onClick={() => goProfile(userlist[4].id)}>
+                        <UpdatedFriendsImg src={userlist[4].image}></UpdatedFriendsImg>
+                        <UpdatedFriendsDot></UpdatedFriendsDot>
+                    </div>
+                    }
+                    {userlist[5] != undefined &&
+                    <div style={{cursor: 'pointer'}} onClick={() => goProfile(userlist[4].id)}>
+                        <UpdatedFriendsImg src={userlist[4].image}></UpdatedFriendsImg>
+                        <UpdatedFriendsDot></UpdatedFriendsDot>
+                    </div>
+                    }
+                    {userlist[6] != undefined &&
+                    <div style={{cursor: 'pointer'}} onClick={() => goProfile(userlist[4].id)}>
+                        <UpdatedFriendsImg src={userlist[4].image}></UpdatedFriendsImg>
+                        <UpdatedFriendsDot></UpdatedFriendsDot>
+                    </div>
+                    }
+                    {userlist[7] != undefined &&
+                    <div style={{cursor: 'pointer'}} onClick={() => goProfile(userlist[4].id)}>
+                        <UpdatedFriendsImg src={userlist[4].image}></UpdatedFriendsImg>
+                        <UpdatedFriendsDot></UpdatedFriendsDot>
+                    </div>
+                    }
+                    {userlist[8] != undefined &&
+                    <div style={{cursor: 'pointer'}} onClick={() => goProfile(userlist[4].id)}>
+                        <UpdatedFriendsImg src={userlist[4].image}></UpdatedFriendsImg>
+                        <UpdatedFriendsDot></UpdatedFriendsDot>
+                    </div>
+                    }
+                    {userlist[9] != undefined &&
                     <div style={{cursor: 'pointer'}} onClick={() => goProfile(userlist[4].id)}>
                         <UpdatedFriendsImg src={userlist[4].image}></UpdatedFriendsImg>
                         <UpdatedFriendsDot></UpdatedFriendsDot>
