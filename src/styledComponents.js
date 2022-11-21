@@ -1807,6 +1807,7 @@ export const UpdatedFriendsCardImg = styled.img`
   width: 66px;
   border-radius: 50%;
   margin: 10px 30px;
+  background-color: white;
 `;
 
 export const UpdatedFriendsCardName = styled.span`
@@ -1874,7 +1875,7 @@ export const UpdatedFriendsRecommendCardDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   width: 155px;
   height: 173px;
   background-color: rgba(255, 153, 0, 0.6);

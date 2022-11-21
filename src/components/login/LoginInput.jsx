@@ -15,6 +15,7 @@ import { APIURL } from "../../config/key";
 import { getCookie, setCookie } from "../../config/cookie";
 import { useNavigate } from "react-router-dom";
 import PwdPopup from "../profile/popup/PwdPopup";
+import { myAxios } from "../../config/axios";
 
 const LoginInput = () => {
   const [input, setInput] = useState({
@@ -67,9 +68,20 @@ const LoginInput = () => {
       setCookie("user_id", res.data.id);
       setCookie("user_img", res.data.img);
       setCookie("token", res.data.token, { httpOnly: true, secure: true });
-      navigate("/main");
+      // navigate("/main");
     } else {
       alert("로그인 실패! 아이디 또는 비밀번호를 확인해주세요.");
+    }
+  };
+
+  const getProfileInfo = async () => {
+    const res = await axios.get(`${APIURL}/profile/profile/${id}/`);
+    const belong = res.data.belong;
+
+    if (belong) {
+      navigate("/main");
+    } else {
+      navigate(`/profile/${id}`);
     }
   };
 
@@ -77,9 +89,13 @@ const LoginInput = () => {
     if (!id || !pwd) {
       alert("모든 정보를 입력해주세요!");
     } else {
-      sendRequest().catch((err) => {
-        alert("로그인 실패! 아이디 또는 비밀번호를 확인해주세요.");
-      });
+      sendRequest()
+        .then(() => {
+          getProfileInfo();
+        })
+        .catch((err) => {
+          alert("로그인 실패! 아이디 또는 비밀번호를 확인해주세요.");
+        });
     }
   };
   const goRegister = () => {
