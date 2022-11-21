@@ -11,7 +11,8 @@ import UpdatedFriendsCard from './UpdatedFriendsCard';
 
 const MainPage = () => {
   const id = getCookie('user_id')
-  const [feed, setFeed] = useState([]);
+  const [feed1, setFeed1] = useState([]);
+  const [feed2, setFeed2] = useState([]);
   const [updatedId, setUpdatedId] = useState([]);
   
   const [search, setsearch] = useState(null);
@@ -19,34 +20,40 @@ const MainPage = () => {
   //메인 피드 api
   
   const getMainfeed = () => {
-  var feed_list = []
+  var feed_list;
     axios.get(`${APIURL}/mainfeed/`,{headers:{Authorization: 'token '+getCookie("token")} })
     .then(res => {
       // console.log('feed-res.data', res.data)
       // console.log('feed', feed)
       //이렇게 바로 콘솔하면 안나옴
-      for(let i = 0 ; i < res.data.feed.length; i++){
-        if(i % 2 == 1){
-          feed_list.push(res.data.feed[i])
-        }
+      feed_list = res.data.feed
+      console.log('aaadfsafdsa0', feed_list)
+      if(feed_list.length <= 2){
+        setFeed1(feed_list)
       }
-      setFeed(feed_list)
-      setUpdatedId(res.data.updated_id)
+      else{
+        setFeed1(feed_list.slice(0,2))
+        setFeed2(feed_list.slice(2))
+      }
     })
     .catch(err => {
       console.log("main api error")
       console.log(err)
     })
   }
+  
+  
+
+  
 
 // console.log('feed', feed)
 // console.log('feed', feed)
-// console.log('updated_id', updatedId)
 //밖에서 콘솔하기
 useEffect(() => {
   getMainfeed()
 },[])
-
+console.log("feed1", feed1)
+console.log("feed2", feed2)
   const navigate = useNavigate();
   const goProfile = (userid) => {
       navigate(`/profile/${userid}`);
@@ -58,15 +65,15 @@ useEffect(() => {
         {/* <UpdatedFriendsCards></UpdatedFriendsCards> */}
           
           
-          {feed[0]!=null && <div onClick={()=>goProfile(feed[0].profile)}><UpdatedFriendsCard profile={feed[0].profile} type={feed[0].type} ></UpdatedFriendsCard></div>}
-          {feed[1]!=null && <div onClick={()=>goProfile(feed[1].profile)}><UpdatedFriendsCard profile={feed[1].profile} type={feed[1].type} ></UpdatedFriendsCard></div>}
-          {feed[2]!=null && <div onClick={()=>goProfile(feed[2].profile)}><UpdatedFriendsCard profile={feed[2].profile} type={feed[2].type} ></UpdatedFriendsCard></div>}
-          
+    
+           {feed1.map((li, idx) =>(<div onClick={()=>goProfile(li.user)}><UpdatedFriendsCard  profile={li.user} updated={li.update} ></UpdatedFriendsCard></div>))} 
+           {/* {feed1[0]!=null && <div onClick={()=>goProfile(feed1[0].user)}><UpdatedFriendsCard profile={feed1[0].user} updated={feed1[0].update} ></UpdatedFriendsCard></div>}  
+           {feed1[1]!=null && <div onClick={()=>goProfile(feed1[1].user)}><UpdatedFriendsCard profile={feed1[1].user} updated={feed1[1].update} ></UpdatedFriendsCard></div>}   */}
         
         <UpdatedFriendsRecommend></UpdatedFriendsRecommend>
-   
-          {feed[3]!=null && <div onClick={()=>goProfile(feed[3].profile)}><UpdatedFriendsCard profile={feed[3].profile} type={feed[3].type} ></UpdatedFriendsCard></div>}
-          {feed[4]!=null && <div onClick={()=>goProfile(feed[4].profile)}><UpdatedFriendsCard profile={feed[4].profile} type={feed[4].type} ></UpdatedFriendsCard></div>}
+        {feed2.map((li, idx) =>(<div onClick={()=>goProfile(li.user)}><UpdatedFriendsCard  profile={li.user} updated={li.update} ></UpdatedFriendsCard></div>))} 
+          {/* {feed2[0]!=null && <div onClick={()=>goProfile(feed2[0].user)}><UpdatedFriendsCard profile={feed2[0].user} updated={feed2[0].update} ></UpdatedFriendsCard></div>}  
+          {feed2[1]!=null && <div onClick={()=>goProfile(feed2[1].user)}><UpdatedFriendsCard profile={feed2[1].user} updated={feed2[1].update} ></UpdatedFriendsCard></div>}   */}
         
     </>
   );
