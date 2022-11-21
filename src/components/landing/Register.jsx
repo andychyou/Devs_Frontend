@@ -50,7 +50,6 @@ const Register = () => {
     var regExp =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     // 형식에 맞는 경우 true 리턴
-    //console.log('이메일 유효성 검사 :: ', regExp.test(email))
 
     if (regExp.test(email)) {
       setIsRightEmail(true);
@@ -68,7 +67,6 @@ const Register = () => {
 
     var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
     // 형식에 맞는 경우 true 리턴
-    //console.log('비밀번호 유효성 검사 :: ', regExp.test(pwd))
 
     if (regExp.test(pwd)) {
       setIsPwdRight(true);
@@ -131,13 +129,10 @@ const Register = () => {
       name: uname,
     });
 
-    console.log(res);
-
     if (res.status == 201) {
       alert("회원가입 성공! 환영합니다.");
       navigate("/login");
     } else {
-      console.log("sign up fail");
       alert("아이디 또는 이메일이 중복되었습니다.");
     }
   };

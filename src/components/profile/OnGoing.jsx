@@ -22,15 +22,9 @@ const OnGoing = memo(() => {
   const onRef = useRef();
 
   useEffect(() => {
-    axios
-      .get(`${APIURL}/profile/study/${id}/`)
-      .then((res) => {
-        console.log("ongoing: ", res.data);
-        setOnGoing(res.data.current_study);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.get(`${APIURL}/profile/study/${id}/`).then((res) => {
+      setOnGoing(res.data.current_study);
+    });
   }, [id]);
 
   useEffect(() => {
@@ -45,10 +39,7 @@ const OnGoing = memo(() => {
     });
 
     if (res.status == 200) {
-      console.log("ongoing patch success");
       window.location.reload();
-    } else {
-      console.log("ongoing patch fail");
     }
   };
 

@@ -15,6 +15,7 @@ import ProfileSkillSpecific from "./ProfileSkillSpecific";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { APIURL } from "../../../config/key";
+import { getCookie } from '../../../config/cookie';
 
 const ProfilePage3 = () => {
   const params = useParams();
@@ -25,9 +26,8 @@ const ProfilePage3 = () => {
   const [details, setDetails] = useState([]);
 
   const getDetails = async () => {
-    const res = await axios.get(`${APIURL}/profile/skilldetail/${id}/`);
+    const res = await axios.get(`${APIURL}/profile/skilldetail/${id}/`,{headers:{Authorization: 'token '+getCookie("token")} });
 
-    // console.log(res);
     setDetails(res.data);
   };
 

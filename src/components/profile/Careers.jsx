@@ -27,15 +27,9 @@ const Careers = memo(() => {
   const [career, setCareer] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${APIURL}/profile/career/${params.user_id}/`)
-      .then((res) => {
-        console.log("career: ", res.data);
-        setCareer(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.get(`${APIURL}/profile/career/${params.user_id}/`).then((res) => {
+      setCareer(res.data);
+    });
   }, [params.user_id]);
 
   return (

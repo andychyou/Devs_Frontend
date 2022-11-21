@@ -14,12 +14,15 @@ import axios from "axios";
 import { APIURL } from "../../config/key";
 import { getCookie, setCookie } from "../../config/cookie";
 import { useNavigate } from "react-router-dom";
+import PwdPopup from "../profile/popup/PwdPopup";
+import { myAxios } from "../../config/axios";
 
 const LoginInput = () => {
   const [input, setInput] = useState({
     id: "",
     pwd: "",
   });
+  const [pwdReset, setPwdReset] = useState(false);
   const { id, pwd } = input;
   const idRef = useRef();
   const pwdRef = useRef();
@@ -61,16 +64,24 @@ const LoginInput = () => {
       password: pwd,
     });
 
-    console.log(res);
     if (res.status == 200) {
-      console.log("login success");
       setCookie("user_id", res.data.id);
       setCookie("user_img", res.data.img);
       setCookie("token", res.data.token, { httpOnly: true, secure: true });
+      // navigate("/main");
+    } else {
+      alert("로그인 실패! 아이디 또는 비밀번호를 확인해주세요.");
+    }
+  };
+
+  const getProfileInfo = async () => {
+    const res = await axios.get(`${APIURL}/profile/profile/${id}/`);
+    const belong = res.data.belong;
+
+    if (belong) {
       navigate("/main");
     } else {
-      console.log("login fail");
-      alert("로그인 실패! 아이디 또는 비밀번호를 확인해주세요.");
+      navigate(`/profile/${id}`);
     }
   };
 
@@ -78,7 +89,13 @@ const LoginInput = () => {
     if (!id || !pwd) {
       alert("모든 정보를 입력해주세요!");
     } else {
-      sendRequest();
+      sendRequest()
+        .then(() => {
+          getProfileInfo();
+        })
+        .catch((err) => {
+          alert("로그인 실패! 아이디 또는 비밀번호를 확인해주세요.");
+        });
     }
   };
   const goRegister = () => {
@@ -87,6 +104,7 @@ const LoginInput = () => {
 
   return (
     <>
+      {pwdReset && <PwdPopup setPopup={setPwdReset} />}
       <LoginDiv>
         <RegisterText>당신의 스토리를 알려주세요!</RegisterText>
 
@@ -121,6 +139,7 @@ const LoginInput = () => {
           {/* <LoginBtn>아이디 찾기</LoginBtn>
           <LoginBtn>비밀번호 찾기</LoginBtn> */}
           <LoginBtn onClick={goRegister}>회원가입</LoginBtn>
+          <LoginBtn onClick={() => setPwdReset(true)}>비밀번호 변경</LoginBtn>
         </LoginBtnDiv>
       </LoginDiv>
     </>

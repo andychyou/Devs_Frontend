@@ -32,8 +32,6 @@ const SkillPopup = ({ setPopup }) => {
     if (res.status == 201) {
       setPopup(false);
       window.location.reload();
-    } else {
-      console.log("post skill fail");
     }
   };
   return (

@@ -9,6 +9,8 @@ import ProfileCard from './ProfileCard';
 import AdCard from './AdCard';
 import SearchResultCard from './SearchResultCard';
 import RecommendBar from './RecommendBar';
+import { RecommendToWho} from '../../styledComponents';
+
 const SearchResultPage = () => {
   const location = useLocation()
   const [searchedList, setSearchList] = useState([])
@@ -19,11 +21,16 @@ const SearchResultPage = () => {
   ),[])
   return (
     <>
-        <RecommendBar></RecommendBar>
+        {/* <RecommendBar></RecommendBar> */}
+        <RecommendToWho style={{marginTop:"20px", marginBottom:"20px"}}>
+                <span style={{display:"table",margin:"auto",color:'#707070'}}>검색 결과</span>
+          </RecommendToWho>
 
-        {searchedList  && <SearchResultCard id = {searchedList[0]}></SearchResultCard>}
-
-        {/* <SearchResultCard></SearchResultCard> */}
+        {/* {searchedList  && <SearchResultCard id = {searchedList[0]}></SearchResultCard>} */}
+        {searchedList != undefined &&searchedList.map((elem,idx) => (
+                  <SearchResultCard key={idx} id = {elem}>
+                  </SearchResultCard>
+                ))}
         
 
 

@@ -2,14 +2,18 @@ import styled, { css } from "styled-components";
 
 // landing page
 export const LandingDiv = styled.div`
-  // width: 100%;
-  min-width: 100vw;
-  height: max-content;
-  min-height: 100vh;
-  padding-bottom: 100px;
+  width: 100%;
+  // min-height: calc(100vh - 100px);
+  // height: calc(100% - 240px);
+  // padding-bottom: 240px;
+  height: 100%;
   background-color: #ffe082;
   position: absolute;
   z-index: -5;
+  // position: relative;
+  // display: flex;
+  // justify-content: cetner;
+  // align-items: cetner;
 `;
 
 // ${() => {
@@ -22,74 +26,98 @@ export const LandingDiv = styled.div`
 export const LandingHead = styled.div`
   // background-color: orange;
   width: 100%;
-  height: 100px;
+  // height: 100px;
+  height: 10vh;
+  position: absolute;
+  top: 0;
+  right: 0;
 `;
 export const DevsText = styled.div`
   // background-color: aqua;
-  width: 1700px;
-  //width: 100%;
-  //line-height: 100%;
+  // width: 1700px;
+  // width: calc(100% - 80px);
   height: 100%;
   display: flex;
   align-items: center;
   margin: 0 auto;
-  padding-left: 100px;
-  font-weight: 500;
-  font-size: 28px;
-  //font-size: 3vh;
-  cursor: pointer;
+  // padding-left: 80px;
+  padding-left: 7vw;
+  // font-weight: 500;
+  font-weight: bold;
+  // font-size: 28px;
+  font-size: 3vh;
+  // cursor: pointer;
+`;
+
+export const LandingWrap = styled.div`
+  // width: 100%;
+  // height: 100%;
+  // background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const LandingContent = styled.div`
   // width: max-content;
   margin: 0 auto;
+  height: 80%;
+  width: 80%;
+  // width: max-content;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
   // background-color: aqua;
 `;
 
 export const LandingInfoDiv = styled.div`
-  margin-top: 95px;
-  margin-right: 150px;
-  //margin-top: 13vh;
-  //  background-color: orange;
-  //width: 40vw;
-  width: 610px;
-  //width: 50%;
+  // margin-top: 50px;
+  // margin-right: 100px;
+  // background-color: white;
+  height: max-content;
+  // width: 610px;
+  width: 45%;
 `;
 
 export const LandingInfoBig = styled.div`
   font-weight: 700;
-  font-size: 36px;
-  margin-bottom: 40px;
-  //font-size: 3.8vh;
-  //margin-bottom: 5vh;
+  // font-size: 32px;
+  font-size: 2vw;
+  // margin-bottom: 30px;
+  margin-bottom: 3vh;
 `;
 
 export const LandingInfoSmall = styled.div`
   font-weight: 400;
-  font-size: 22px;
-  line-height: 35px;
-  //line-height: 3.5vh;
-  //font-size: 2.2vh;
+  // font-size: 20px;
+  font-size: 1.2vw;
+  // line-height: 35px;
+  line-height: 3vh;
 `;
 // background-image: url(./landing-img.png);
 export const LandingImg = styled.img`
   display: inline-block;
   //width: 751px;
   //height: 599px;
+  // background-color: aqua;
   width: 100%;
-  height: calc(100% * 0.7976);
+  // height: calc(100% * 0.7976);
+  height: max-content;
   margin-top: 30px;
-  //margin-top: 3vh;
   object-fit: contain;
 `;
 
 export const RegisterDiv = styled.div`
   background-color: #fff8e1;
-  margin-left: 150px;
-  width: 460px;
-  height: 690px;
+  // margin-left: 150px;
+  // margin-top: -40px;
+  // width: 460px;
+  // width: 500px;
+  // height: 800px;
+  height: 100%;
+  width: 35%;
   //width: 30vw;
   //height: calc(30vw * 1.5);
   border-radius: 8px;
@@ -99,92 +127,97 @@ export const RegisterDiv = styled.div`
 
 export const RegisterText = styled.div`
   font-weight: 700;
-  font-size: 26px;
-  line-height: 100px;
-  //line-height: 12vh;
-  //font-size: 3vh;
+  // font-size: 26px;
+  font-size: 1.2vw;
+  // line-height: 100px;
+  line-height: 4vw;
   width: 100%;
   text-align: center;
+  // background-color: white;
 `;
 
 export const RegisterUl = styled.ul`
-  width: 80%;
+  width: 85%;
+  // width: 100%;
   margin: 0 auto;
 `;
 
 export const RegisterLi = styled.li`
   // margin-bottom: 30px;
-  padding-bottom: 25px;
+  // padding-bottom: 25px;
   // background-color: orange;
   position: relative;
-  //margin-bottom: 3vh;
+  margin-bottom: 3vh;
 `;
 
 export const RegisterInputText = styled.div`
   font-weight: 400;
-  font-size: 18px;
-  //font-size: 2vh;
+  // font-size: 18px;
+  font-size: 1.8vh;
 `;
 
 export const RegisterInput = styled.input`
   //display: inline-block;
   border: none;
-  border-radius: 7px;
+  border-radius: 0.7vh;
   //border-radius: 0.7vh;
-  width: 100%;
-  padding: 0 10px;
-  height: 35px;
-  margin: 5px 0 0;
-  //margin-top: 1vh;
-  //height: 4vh;
+  width: calc(100% - 2vw);
+  padding: 0 1vw;
+  // height: 35px;
+  height: 4vh;
+  // margin: 5px 0 0;
+  margin-top: 0.7vh;
+  font-size: 1.6vh;
 `;
 export const WrongInputText = styled.div`
-  font-size: 12px;
+  // font-size: 12px;
+  font-size: 1.1vh;
   color: red;
   position: absolute;
   right: 0;
-  top: 4px;
+  // top: 0.2vh;
+  top: 3px;
   //bottom: 0;
 `;
 
 export const RegisterBtn = styled.div`
   background-color: #ffd249;
-  width: 80%;
-  line-height: 35px;
-  //line-height: 5vh;
+  width: 85%;
+  // line-height: 35px;
+  line-height: 4vh;
   font-weight: 700;
-  font-size: 18px;
-  //font-size: 2vh;
+  // font-size: 18px;
+  font-size: 1.8vh;
   text-align: center;
-  border-radius: 50px;
-  //border-radius: 5vh;
+  // border-radius: 50px;
+  border-radius: 5vh;
   cursor: pointer;
-  margin: 20px auto 0;
-  //margin: 4.5vh auto 0;
+  // margin: 10px auto 0;
+  margin: 3vh auto 0;
 `;
 
 export const AlreadyRegister = styled.div`
-  width: 150px;
-  line-height: 30px;
-  //width: 15vh;
-  //line-height: 3vh;
+  // width: 150px;
+  // line-height: 30px;
+  // background-color: white;
+  width: 100%;
   text-align: center;
+  font-size: 1.3vh;
+  margin-top: 2vh;
+
   color: #0d4ae9;
-  position: absolute;
-  left: calc(100% / 2);
-  bottom: 30px;
-  //bottom: 4vh;
-  //margin-left: -7.5vh;
-  //font-size: 1.6vh;
-  margin-left: -75px;
+  // position: absolute;
+  // left: calc(100% / 2);
+  // margin-top: 30px;
+  // margin-left: -75px;
   cursor: pointer;
 `;
 
 export const LandingFooter = styled.div`
   background-color: #ffb300;
   width: 100%;
-  height: 240px;
-  //height: 22vh;
+  // height: 240px;
+  height: 30vh;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -193,12 +226,13 @@ export const LandingFooter = styled.div`
 // login
 export const LoginDiv = styled.div`
   background-color: #fff8e1;
-  margin-top: 10vh;
-  width: 652px;
-  height: 541px;
-  border-radius: 8px;
-  //width: 37vw;
-  //height: 33vw;
+  // margin-top: 10vh;
+  // width: 652px;
+  // height: 541px;
+  // border-radius: 8px;
+  border-radius: 1vh;
+  width: 37vw;
+  height: 33vw;
   //border-radius: 0.8vh;
   position: relative;
   z-index: 10;
@@ -207,23 +241,27 @@ export const LoginImgDiv = styled.div`
   display: flex;
 `;
 export const LoginImg1 = styled.img`
-  // background-color: aqua;
+  // background-color: orange;
   display: inline-block;
-  //width: 40vw;
-  width: 700px;
-  height: calc(700px * 0.89);
+  width: 35vw;
+  height: max-content;
+  // width: 700px;
+  // height: calc(700px * 0.89);
+
   object-fit: contain;
   position: absolute;
-  top: 93px;
-  //top: 9vh;
+  // top: 93px;
+  top: 9vh;
   left: 0;
 `;
 
 export const LoginImg2 = styled.img`
   //background-color: aqua;
   display: inline-block;
-  width: 700px;
-  height: calc(700px * 0.79);
+  // width: 700px;
+  // height: calc(700px * 0.79);
+  width: 35vw;
+  height: max-content;
   object-fit: contain;
   position: absolute;
   bottom: 0;
@@ -236,14 +274,16 @@ export const LoginBtnDiv = styled.div`
   display: flex;
   // justify-content: space-between;
   justify-content: center;
-  width: max-content;
-  margin: 150px auto 0;
+  width: 100%;
+  margin-top: 3vh;
+  // margin: 150px auto 0;
 `;
 
 export const LoginBtn = styled.div`
   cursor: pointer;
-  margin: 0 30px;
-  //font-size: 1.8vh;
+  font-size: 0.8vw;
+  margin: 0 0.5vw;
+  width: max-content;
 `;
 
 // Profile Page
@@ -345,10 +385,16 @@ export const ProfileName = styled.p`
 export const ProfileEditBtn = styled.span`
   margin-left: 10px;
   cursor: pointer;
+  font-size: 18px;
 `;
 
 export const ProfileDesc = styled.p`
-  line-height: 22px;
+  // line-height: 22px;
+  margin-bottom: 7px;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  // background-color: white;
 `;
 // ----------
 export const FollowDiv = styled.div`
@@ -756,6 +802,7 @@ export const CareerDescDiv = styled.div`
   max-width: 100%;
   height: max-content;
   display: flex;
+  align-items: center;
   /* background-color: aqua; */
   margin-bottom: 20px;
 `;
@@ -766,14 +813,15 @@ export const CareerText = styled.div`
 `;
 export const CareerDesc = styled.div`
   background-color: white;
-  min-height: 35px;
+  min-height: 25px;
   /* height: max-content; */
   width: calc(923px - 100px);
   border-radius: 5px;
-  padding: 0 10px;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  white-space: pre-wrap;
 `;
 
 export const CareerDescInput = styled.textarea`
@@ -1092,6 +1140,19 @@ export const PopupInputDiv = styled.div`
   margin-bottom: 30px;
 `;
 
+export const PopupInputWrap = styled.div`
+  position: relative;
+  // background-color: orange;
+`;
+
+export const PopupWrongInput = styled.div`
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  color: red;
+`;
+
 export const PopupInputText = styled.div`
   font-weight: bold;
   font-size: 18px;
@@ -1106,7 +1167,7 @@ export const PopupInput = styled.input`
   padding: 0 10px;
 
   &:disabled {
-    background-color: white;
+    background-color: #f9f9f9;
   }
 `;
 
@@ -1175,7 +1236,7 @@ export const PopupDateInput = styled.input`
   margin-right: 25px;
 
   &:disabled {
-    background-color: white;
+    background-color: #f9f9f9;
   }
 `;
 
@@ -1186,7 +1247,7 @@ export const PopupTextarea = styled.textarea`
   border: none;
   border-radius: 5px;
   &:disabled {
-    background-color: white;
+    background-color: #f9f9f9;
   }
 `;
 
@@ -1429,8 +1490,18 @@ export const NavBarContainer = styled.div`
 export const NavBar = styled.div`
   height: 60px;
   background-color: #ffe082;
+  width: 100%;
+  // display: flex;
+  // align-items: center;
+`;
+
+export const NavBarInner = styled.div`
+  width: 1300px;
+  height: 100%;
   display: flex;
   align-items: center;
+  // background-color: orange;
+  margin: 0 auto;
 `;
 
 export const TitleWrap = styled.div`
@@ -1474,19 +1545,28 @@ export const NavSearchButton = styled.button`
   float: right;
   display: inline-block;
   cursor: pointer;
+  transition: 0.45s;
+  border: 2px solid white;
+
   &:hover {
-    background-color: #5fb352;
-    color: black;
+    // background-color: #5fb352;
+    background-color: rgba(255, 179, 0, 1);
+    border-color: rgba(255, 179, 0, 1);
+    color: white;
   }
 `;
 
 export const NavIconsContainer = styled.div`
-  width: 300px;
+  // width: 300px;
   margin-left: auto;
   margin-right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const NavBtn = styled.div`
+  margin: 0 5px;
 `;
 
 export const NavAccountSpan = styled.span`
@@ -1502,6 +1582,12 @@ export const NavAccountSpan = styled.span`
   border-radius: 5px;
   cursor: pointer;
   transition: 0.45s;
+  font-weight: bold;
+
+  &:hover {
+    color: rgba(255, 179, 0, 1);
+    background-color: white;
+  }
 `;
 
 //ProfileCard
@@ -1635,6 +1721,7 @@ export const SuggestP = styled.p`
 export const SearchResultDiv = styled.div`
   display: flex;
   margin: 0 auto;
+  margin-bottom: 14px;
   width: 1000px;
   height: 134px;
   background-color: rgba(255, 224, 130, 0.2);
@@ -1682,7 +1769,6 @@ export const UpdatedFriendsBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 14px;
-  width: inherit;
   height: 55px;
   background-color: rgba(249, 249, 249, 1);
   box-shadow: 2px 2px 10px 2px rgba(107, 104, 104, 0.67);
@@ -1713,7 +1799,7 @@ export const UpdatedFriendsDot = styled.span`
 export const UpdatedFriendsCardDiv = styled.div`
   background-color: rgba(255, 224, 130, 0.6);
   border-radius: 10px;
-  width: 1600px;
+  width: 60%;
   cursor: pointer;
 `;
 
@@ -1721,6 +1807,7 @@ export const UpdatedFriendsCardImg = styled.img`
   width: 66px;
   border-radius: 50%;
   margin: 10px 30px;
+  background-color: white;
 `;
 
 export const UpdatedFriendsCardName = styled.span`
@@ -1741,14 +1828,15 @@ export const UpdatedFriendsCardIcons = styled.div`
 export const UpdatedFriendsRecommendToYouDiv = styled.div`
   display: flex;
   align-items: center;
-  width: 1000px;
+  justify-content: space-between;
+  width: 60%;
   gap: 10px;
   margin: 0 auto;
-  margin-top: 60px;
+  margin-top: 100px;
   margin-bottom: 40px;
 `;
 
-export const UpdatedFriendsRecommendCardIdolButton = styled.button`
+export const UpdatedFriendsRecommendCardIdolButton = styled.div`
   font-size: 14px;
   color: black;
   background-color: rgba(178, 153, 176, 1);
@@ -1772,9 +1860,11 @@ export const UpdatedFriendsRecommendChip = styled.button`
   padding: 8px 14px;
   margin: 5px;
   cursor: pointer;
+  border: 3px solid rgba(217, 217, 217, 1);
 `;
 
 export const UpdatedFriendsRecommendCardContainer = styled.div`
+  height: 310px;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -1785,6 +1875,7 @@ export const UpdatedFriendsRecommendCardDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 155px;
   height: 173px;
   background-color: rgba(255, 153, 0, 0.6);
@@ -1800,4 +1891,45 @@ export const UpdatedFriendsRecommendCardImg = styled.img`
 export const UpdatedFriendsRecommendCardName = styled.span`
   margin: 10px;
   font-weight: bold;
+`;
+
+export const FooterFlex = styled.div`
+  margin-top: auto;
+  width: 200px;
+  height: 60px;
+  margin-left: 87%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+`;
+
+export const ContentDiv = styled.div`
+  padding-bottom: 150px;
+  position: relative;
+  min-height: calc(100vh - 270px);
+  // background-color: orange;
+`;
+
+export const FooterDiv = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  // background-color: #ffe082;
+  background-color: #777;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FooterText = styled.div`
+  // color: black;
+  color: #e1e1e1;
+  font-size: 14px;
+  // margin-bottom: 4px;
+  margin: 3px;
 `;

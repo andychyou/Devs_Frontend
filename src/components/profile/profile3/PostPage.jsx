@@ -66,7 +66,6 @@ const PostPage = () => {
       content,
     });
 
-    console.log(res);
     if (res.status == 201) {
       alert("작성되었습니다");
       window.location.replace(`/profile/${user}/${category}/${name}/${id}`);

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { myAxios } from "../../config/axios";
 import { getCookie } from "../../config/cookie";
 import { APIURL } from "../../config/key";
 
@@ -35,17 +36,17 @@ const ProfileFollow = () => {
   };
 
   const getFan = async () => {
-    const res = await axios.get(`${APIURL}/profile/follow/${id}/get_follower/`);
+    const res = await myAxios.get(
+      `${APIURL}/profile/follow/${id}/get_follower/`
+    );
     setFans(res.data);
-    console.log(res.data);
   };
 
   const getIdols = async () => {
-    const res = await axios.get(
+    const res = await myAxios.get(
       `${APIURL}/profile/follow/${id}/get_following/`
     );
     setIdols(res.data);
-    console.log(res.data);
   };
 
   const onFollow = async () => {
@@ -56,7 +57,7 @@ const ProfileFollow = () => {
       return;
     }
 
-    const res = await axios.post(`${APIURL}/profile/follow/`, {
+    const res = await myAxios.post(`${APIURL}/profile/follow/`, {
       follower,
       following: id,
     });
@@ -69,11 +70,10 @@ const ProfileFollow = () => {
   };
 
   const checkFollowed = async () => {
-    const res = await axios.get(`${APIURL}/profile/isfollow/${id}/`);
-
-    console.log("isFollowed: ", res);
+    const res = await myAxios.get(`/profile/isfollow/${id}/`);
 
     if (res.status == 200) {
+      console.log(res.data);
       if (res.data.is_follow) {
         setIsFollowd(true);
       } else {
@@ -83,6 +83,7 @@ const ProfileFollow = () => {
   };
 
   useEffect(() => {
+    console.log("follow apis");
     setFanClick(false);
     setIdolClick(false);
     getFan()
@@ -90,9 +91,7 @@ const ProfileFollow = () => {
         getIdols();
       })
       .then(() => {
-        if (!isAdmin) {
-          checkFollowed();
-        }
+        checkFollowed();
       });
   }, [id]);
 
@@ -148,4 +147,4 @@ const ProfileFollow = () => {
   );
 };
 
-export default React.memo(ProfileFollow);
+export default ProfileFollow;

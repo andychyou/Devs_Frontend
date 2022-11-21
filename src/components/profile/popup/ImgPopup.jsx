@@ -20,13 +20,15 @@ import {
 import PopupHeader from "./PopupHeader";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const ImgPopup = memo(({ setPopup, name, email, id }) => {
+const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
   const [src, setSrc] = useState(getCookie("user_img"));
   const [inputs, setInputs] = useState({
     _name: name,
     _email: email,
+    _link: link,
+    _image: "",
   });
-  const { _name, _email } = inputs;
+  const { _name, _email, _link, _image } = inputs;
 
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -37,6 +39,13 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
         setSrc(reader.result);
       });
     }
+
+    const file = e.target.files[0];
+    // console.log(file);
+    // setSrc(file);
+    let newData = { ...inputs };
+    newData["_image"] = file;
+    setInputs(newData);
   };
 
   const onChange = (e) => {
@@ -48,17 +57,20 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
   };
 
   const editInfo = async () => {
+    // const body = {
+    //   email: _email,
+    //   name: _name,
+    //   image: src,
+    //   link: _link,
+    // };
     const body = {
-      email: _email,
       name: _name,
-      image: src,
+      email: _email,
+      link: _link,
+      image: _image,
     };
-    const res = await axios.patch(`${APIURL}/account/user/${id}/`, {
-      headers: {
-        Authorization: "token " + getCookie("token"),
-      },
-      body: body,
-    });
+    console.log(body);
+    const res = await axios.patch(`${APIURL}/account/user/${id}/`, body);
 
     if (res.status == 200) {
       console.log(res);
@@ -71,13 +83,12 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
 
   const uploadImage = async (e) => {
     e.preventDefault();
-    const desc = e.target[0].value;
     const file = e.target[1].files[0];
 
     const form = new FormData();
-    form.append("description", desc);
     form.append("files", file);
     form.append("enctype", "multipart/form-data");
+    console.log(form);
 
     const url = `${APIURL}/`;
   };
@@ -97,7 +108,12 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
           </ImageBox>
 
           <ImageInputDiv>
-            <ImageInput type="file" onChange={onSelectFile} />
+            <ImageInput
+              type="file"
+              onChange={onSelectFile}
+              name="image_url"
+              accept="image/jpeg,image/png,image/gif"
+            />
           </ImageInputDiv>
 
           <EditProfileDiv>
@@ -115,12 +131,22 @@ const ImgPopup = memo(({ setPopup, name, email, id }) => {
             <EditInput type="text" name="_id" value={_id} onChange={onChange} />
           </EditProfileDiv> */}
 
-          <EditProfileDiv style={{ marginBottom: "50px" }}>
+          <EditProfileDiv>
             <EditLabel>이메일</EditLabel>
             <EditInput
               type="text"
               name="_email"
               value={_email}
+              onChange={onChange}
+            />
+          </EditProfileDiv>
+
+          <EditProfileDiv style={{ marginBottom: "50px" }}>
+            <EditLabel>Github 링크</EditLabel>
+            <EditInput
+              type="text"
+              name="_link"
+              value={_link}
               onChange={onChange}
             />
           </EditProfileDiv>

@@ -36,9 +36,8 @@ const UpdatedFriendsBar = () => {
     const getUserInfo = async () => {
         var li = []
         if(updatedId[0]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[0]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[0]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
-                console.log('user 1 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {
@@ -46,9 +45,8 @@ const UpdatedFriendsBar = () => {
             }
         }
         if(updatedId[1]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[1]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[1]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
-                console.log('user 2 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {
@@ -56,9 +54,8 @@ const UpdatedFriendsBar = () => {
             }
         }
         if(updatedId[2]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[2]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[2]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
-                console.log('user 3 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {
@@ -66,9 +63,8 @@ const UpdatedFriendsBar = () => {
             }
         }
         if(updatedId[3]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[3]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[3]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
-                console.log('user 4 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {
@@ -76,9 +72,8 @@ const UpdatedFriendsBar = () => {
             }
         }
         if(updatedId[4]){
-            const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`);
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`,{headers:{Authorization: 'token '+getCookie("token")} });
             if (res.status == 200) {
-                console.log('user 4 data',res.data);
                 li.push(res.data)
                 // setUser1(res.data)
             } else {
@@ -104,7 +99,12 @@ const UpdatedFriendsBar = () => {
   return (
     <>
         <section>
-                <div style={{gap:'10px', alignItems:'center' ,justifyContent:'center', display:'flex'}}>        
+                <div style={{gap:'10px', alignItems:'center' ,justifyContent:'center', display:'flex'}}> 
+                    {userlist[0] == undefined &&
+                    <span>
+                        아직 업데이트한 친구가 없어요
+                    </span>
+                    }       
                     {
                     userlist[0] != undefined &&
                     <div style={{cursor: 'pointer'}} onClick={() => goProfile(userlist[0].id)}>

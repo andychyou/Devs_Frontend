@@ -1,30 +1,30 @@
-import React from 'react';
-import { 
-  LandingDiv, DevsText, LandingContent, LandingFooter
-} from '../../styledComponents';
-import LandingInfo from './LandingInfo';
-import Register from './Register';
-import LandingTextComp from './LandingTextComp';
+import React from "react";
+import {
+  LandingDiv,
+  DevsText,
+  LandingContent,
+  LandingFooter,
+  LandingWrap,
+} from "../../styledComponents";
+import LandingInfo from "./LandingInfo";
+import Register from "./Register";
+import LandingTextComp from "./LandingTextComp";
 
 const LandingPage = () => {
   return (
     <>
       <LandingDiv>
-
         <LandingTextComp />
 
-        
-        <LandingContent>
+        <LandingWrap>
+          <LandingContent>
+            <LandingInfo />
 
-          <LandingInfo />
-
-          <Register />
-
-        </LandingContent>
-        
+            <Register />
+          </LandingContent>
+        </LandingWrap>
 
         <LandingFooter />
-
       </LandingDiv>
     </>
   );

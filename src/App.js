@@ -16,6 +16,7 @@ import Profile from "./components/profile/Profile";
 import ImageEdit from "./components/profile/edit/ImageEdit";
 import PostPage from "./components/profile/profile3/PostPage";
 import PostDetail from "./components/profile/profile3/PostDetail";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   axios.defaults.xsrfCookieName = "csrftoken";
@@ -58,6 +59,8 @@ const App = () => {
           {/* <Route path="image" element={<ImageEdit />} /> */}
         </Route>
       </Routes>
+
+      <Footer />
     </div>
   );
 };

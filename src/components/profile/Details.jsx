@@ -45,12 +45,9 @@ const Details = memo(() => {
     axios
       .get(`${APIURL}/profile/profile/${id}/`)
       .then((res) => {
-        console.log("get profile success");
-        console.log(res);
         setDetails(res.data);
       })
       .catch((err) => {
-        console.log(err);
         setIsInit(true);
       });
   }, [id]);
@@ -81,7 +78,7 @@ const Details = memo(() => {
       })
       .then((res) => {
         if (res.status == 200) {
-          console.log("patch profile success");
+          // console.log("patch profile success");
         }
       })
       .catch((err) => console.log(err));

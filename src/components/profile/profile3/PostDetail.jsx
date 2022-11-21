@@ -34,8 +34,6 @@ const PostDetail = () => {
     const res = await axios.get(
       `${APIURL}/profile/skilldetail/${id}/${detail_id}/`
     );
-
-    console.log(res.data[0]);
     setDetail(res.data[0]);
   };
 

@@ -15,12 +15,12 @@ import { faMessage } from '@fortawesome/free-regular-svg-icons';
 
 
 const UpdatedFriendsCard = ({profile, type}) => {
-  const [hashtag, setHashtag] = useState([]);
+  const [hashtag, setHashtag] = useState([]); 
   const [userInfo, setUserInfo] = useState(null)
   const getHashtag = async () => {
     const res = await axios.get(
       `${APIURL}/profile/hashtag/get_hashtag/${profile}}/`
-    );
+      ,{headers:{Authorization: 'token '+getCookie("token")} });
   
     if (res.status == 200) {
       const temp = [];
@@ -30,16 +30,14 @@ const UpdatedFriendsCard = ({profile, type}) => {
       }
   
       setHashtag(temp);
-      console.log("get hashtag success");
     } else {
       console.log("get hashtag fail");
     }
   };
   const getUserInfo = async () => {
-    const res = await axios.get(`${APIURL}/account/user/${profile}`);
+    const res = await axios.get(`${APIURL}/account/user/${profile}`,{headers:{Authorization: 'token '+getCookie("token")} });
 
     if (res.status == 200) {
-      console.log("get user info: ", res.data);
       setUserInfo(res.data);
     } else {
       console.log("get user info fail");
@@ -88,7 +86,7 @@ const UpdatedFriendsCard = ({profile, type}) => {
               
               <UpdatedFriendsCardName>{profile}</UpdatedFriendsCardName>
               <UpdatedFriendsCardText>
-                <span>{profile} 님이 </span>
+                <span>{profile} </span>
                 <span style={{fontWeight:'bold'}}>
                   {sentence}
                 </span>

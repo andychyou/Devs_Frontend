@@ -61,14 +61,14 @@ const SearchResultCard = ({id}) => {
       <SearchResultDetail>
           <div style={{fontSize: '30px', fontWeight: '700'}}>{userInfo.name}</div>
           <div>
-            <span style={{fontSize: '24px'}}>{profile.main_position}</span>
-            <span style={{fontSize: '24px'}}>@ {profile.belong}</span>
+            <span style={{fontSize: '24px'}}>{profile.main_position == undefined ? <div>입력안됨</div> : profile.main_position}</span>
+            <span style={{fontSize: '24px'}}>@ {profile.position == undefined ? <span>입력안됨</span> : profile.position}</span>
           </div>              
-          <div style={{fontSize: '24px'}}>{profile.major}</div>
+          <div style={{fontSize: '24px'}}>{profile.major == undefined ? <span>입력안됨</span> : profile.major}</div>
       </SearchResultDetail>
       <SearchResultIntroBox>
         <p>
-          {profile.introduction}
+        {profile.introduction == undefined ? <span>입력안됨</span> : profile.introduction}
         </p>
       </SearchResultIntroBox>
       

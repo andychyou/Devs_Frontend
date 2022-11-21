@@ -13,7 +13,6 @@ import ProjectPopup from "./popup/ProjectPopup";
 // position, skill, coworker, start_date, end_date, detail
 const Project = ({ data }) => {
   const [popup, setPopup] = useState(false);
-  console.log(data);
   return (
     <>
       {popup && (
@@ -21,7 +20,7 @@ const Project = ({ data }) => {
           setPopup={setPopup}
           text="프로젝트 상세"
           isCreate={false}
-          data={data}
+          id={data.id}
         />
       )}
       <ProjectBox onClick={() => setPopup(true)}>

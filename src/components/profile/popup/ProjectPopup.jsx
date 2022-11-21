@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { memo, useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
+import { myAxios } from "../../../config/axios";
 import { getCookie } from "../../../config/cookie";
 import { APIURL } from "../../../config/key";
 import {
@@ -26,7 +27,7 @@ import {
 import PopupHeader from "./PopupHeader";
 import PopupInputComp from "./PopupInputComp";
 
-const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
+const ProjectPopup = memo(({ setPopup, text, isCreate, id }) => {
   const { isAdmin } = useOutletContext();
   const [inputs, setInputs] = useState({
     name: "",
@@ -55,7 +56,6 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
 
   useEffect(() => {
     const regex = /\d{2}/;
-    // console.log(regex.test("02"));
 
     if (regex.test(start_mon) && regex.test(end_mon)) {
       setMonErr(false);
@@ -74,8 +74,13 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
     }
   }, [start_year, end_year]);
 
+  const getProject = async () => {
+    const res = await myAxios.get(`/profile/project/${id}/`);
+    return res.data;
+  };
+
   useEffect(() => {
-    if (data) {
+    getProject().then((data) => {
       const [s_y, s_m] = data.start_date.split("-");
       const [e_y, e_m] = data.end_date.split("-");
 
@@ -90,7 +95,7 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
         end_mon: e_m,
         detail: data.detail,
       });
-    }
+    });
   }, []);
 
   const onChange = (e) => {
@@ -143,26 +148,16 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
   };
 
   const onPatch = async () => {
-    // profile, project_name, position, skill,
-    // coworker, start_date, end_date, detail
-    const res = await axios.patch(
-      `${APIURL}/profile/project/${data.id}/`,
-      {
-        project_name: name,
-        detail,
-        coworker,
-        skill,
-        position,
-        profile: getCookie("user_id"),
-        start_date: start_year + start_mon + "-01",
-        end_date: end_year + end_mon + "-01",
-      },
-      {
-        headers: {
-          Authorization: "token " + getCookie("token"),
-        },
-      }
-    );
+    const res = await myAxios.patch(`/profile/project/${id}/`, {
+      project_name: name,
+      detail,
+      coworker,
+      skill,
+      position,
+      profile: getCookie("user_id"),
+      start_date: start_year + "-" + start_mon + "-01",
+      end_date: end_year + "-" + end_mon + "-01",
+    });
 
     if (res.status == 200) {
       alert("프로젝트 정보가 수정되었습니다.");
@@ -172,7 +167,6 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
   };
 
   const sendPatch = () => {
-    console.log(yearErr, monErr);
     if (yearErr || monErr) {
       alert("날짜 표기에 맞게 작성해주세요!");
       return;
@@ -182,7 +176,7 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, data }) => {
   };
 
   const onDelete = async () => {
-    const res = await axios.delete(`${APIURL}/profile/project/${data.id}/`, {
+    const res = await axios.delete(`${APIURL}/profile/project/${id}/`, {
       headers: {
         Authorization: "token " + getCookie("token"),
       },
