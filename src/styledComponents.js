@@ -1801,12 +1801,15 @@ export const UpdatedFriendsCardDiv = styled.div`
   border-radius: 10px;
   width: 60%;
   cursor: pointer;
+  margin: 0 auto;
+  margin-bottom: 30px;
 `;
 
 export const UpdatedFriendsCardImg = styled.img`
   width: 66px;
   border-radius: 50%;
   margin: 10px 30px;
+  margin-right: 60px;
   background-color: white;
 `;
 
@@ -1817,6 +1820,7 @@ export const UpdatedFriendsCardName = styled.span`
 
 export const UpdatedFriendsCardText = styled.div`
   flex: 6;
+  margin-right: 30px;
 `;
 export const UpdatedFriendsCardIcons = styled.div`
   display: flex;
@@ -1864,7 +1868,7 @@ export const UpdatedFriendsRecommendChip = styled.button`
 `;
 
 export const UpdatedFriendsRecommendCardContainer = styled.div`
-  height: 310px;
+  height: 260px;
   display: flex;
   justify-content: center;
   gap: 20px;

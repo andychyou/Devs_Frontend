@@ -43,35 +43,41 @@ const UpdatedFriendsRecommend = () => {
     }
   };
 
-  const [g, setg] = useState(0);
 
-  useEffect(() => {
-    getMyHashtagList();
-  }, []);
+  
 
   const [profiles, setProfiles] = useState([]);
   const getProfilesList = async () => {
-    var li = []
+    var li 
     const res = await axios.get(
-      `${APIURL}/mainfeed/recommend/${currHashtag}/`,
+      `${APIURL}/profile/hashtag/get_user/${currHashtag}/`,
       { headers: { Authorization: "token " + getCookie("token") } }
     );
 
     if (res.status == 200) {
-      if(res.data.length > 5){
+      li = res.data[0].profile
+      let len = li.length
+      for(let i = 0; i < len; i++){//사용자는 리스트에서 제외
+        if(li[i] === getCookie("user_id")){
+          li.splice(i, 1)
+        }
+      }
+      var p_list = []
+      console.log('afddsa', li)
+      if(li.length > 5){
         for(let i = 0 ;i<5;i++){
-          const row = await res.data[i].user
-          li.push(row)
+          const row = await li[i]
+          p_list.push(row)
         }
       }
       else{
-        for(let i = 0 ;i<res.data.length;i++){
-          const row = await res.data[i].user
-          li.push(row)
+        for(let i = 0 ;i<li.length;i++){
+          const row = await li[i]
+          p_list.push(row)
         }
       }
       
-      setProfiles(li);
+      setProfiles(p_list);
     } else {
       console.log("get hashtag fail");
     }
@@ -80,10 +86,25 @@ const UpdatedFriendsRecommend = () => {
   const [currHashtag, setCurrHashtag] = useState("");
 
   useEffect(() => {
+    getMyHashtagList();
+  }, []);
+  useEffect(() => {
     if (myHashtagList.length != 0) {
       getProfilesList();
     }
   }, [currHashtag]);
+
+  var displayStyle 
+  var showrecommendsent = 0
+  if(profiles.length == 0){
+    displayStyle = {display: 'none'}
+    console.log(displayStyle)
+    showrecommendsent = 1
+  }
+  else{
+    displayStyle = {}
+    showrecommendsent = 0
+  }
 
   return (
     <>
@@ -103,7 +124,7 @@ const UpdatedFriendsRecommend = () => {
                 내 프로필에서 해시태그를 추가해 친구를 추천받아 보세요
               </div>
             )}
-            {currHashtag === "" && (
+            {showrecommendsent === 1 && (
               <div
                 style={{
                   fontSize: "16px",
@@ -130,7 +151,7 @@ const UpdatedFriendsRecommend = () => {
           </UpdatedFriendsRecommendChips>
         </UpdatedFriendsRecommendToYouDiv>
 
-        <UpdatedFriendsRecommendCardContainer>
+        <UpdatedFriendsRecommendCardContainer style={displayStyle}>
           {profiles.length != 0 &&
             profiles.map((user, idx) => (
               <UpdatedFriendsRecommendCard

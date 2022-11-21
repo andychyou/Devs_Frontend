@@ -27,7 +27,6 @@ const MainPage = () => {
       // console.log('feed', feed)
       //이렇게 바로 콘솔하면 안나옴
       feed_list = res.data.feed
-      console.log('aaadfsafdsa0', feed_list)
       if(feed_list.length <= 2){
         setFeed1(feed_list)
       }
@@ -52,8 +51,6 @@ const MainPage = () => {
 useEffect(() => {
   getMainfeed()
 },[])
-console.log("feed1", feed1)
-console.log("feed2", feed2)
   const navigate = useNavigate();
   const goProfile = (userid) => {
       navigate(`/profile/${userid}`);

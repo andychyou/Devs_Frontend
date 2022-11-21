@@ -90,7 +90,6 @@ const UpdatedFriendsCard = ({profile, updated}) => {
   
   return (
     <>
-        <section style={{display:'flex', justifyContent:'center', marginBottom: '20px'}}>
           <UpdatedFriendsCardDiv>
             <div style={{ display: 'flex', alignItems: "center" }} >
               {
@@ -115,13 +114,13 @@ const UpdatedFriendsCard = ({profile, updated}) => {
                   #백엔드
                 </UpdatedFriendsRecommendChip>
               </div> */}
-              <div style={{display:'flex', justifyContent:'center', flex:'4'}}>
+              {/* <div style={{display:'flex', justifyContent:'center', flex:'4'}}>
                 {hashtag.map((elem) => (
                   <UpdatedFriendsRecommendChip>
                     {elem}
                   </UpdatedFriendsRecommendChip>
                 ))}
-              </div>
+              </div> */}
             
                   {/* 하트, 채팅 아이콘 */}
               {/* <UpdatedFriendsCardIcons>
@@ -132,7 +131,6 @@ const UpdatedFriendsCard = ({profile, updated}) => {
             
           </UpdatedFriendsCardDiv>
         
-        </section>
     </>
   );
 };
