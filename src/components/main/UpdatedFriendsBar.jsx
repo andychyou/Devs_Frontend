@@ -80,6 +80,33 @@ const UpdatedFriendsBar = () => {
                 console.log("get user info fail");
             }
         }
+        if(updatedId[5]){
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`,{headers:{Authorization: 'token '+getCookie("token")} });
+            if (res.status == 200) {
+                li.push(res.data)
+                // setUser1(res.data)
+            } else {
+                console.log("get user info fail");
+            }
+        }
+        if(updatedId[6]){
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`,{headers:{Authorization: 'token '+getCookie("token")} });
+            if (res.status == 200) {
+                li.push(res.data)
+                // setUser1(res.data)
+            } else {
+                console.log("get user info fail");
+            }
+        }
+        if(updatedId[7]){
+            const res = await axios.get(`${APIURL}/account/user/${updatedId[4]}`,{headers:{Authorization: 'token '+getCookie("token")} });
+            if (res.status == 200) {
+                li.push(res.data)
+                // setUser1(res.data)
+            } else {
+                console.log("get user info fail");
+            }
+        }
         setUserlist(li)
     }
 
