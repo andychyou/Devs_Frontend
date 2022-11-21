@@ -10,22 +10,16 @@ import { AxiosPromise } from 'axios';
 
 const UpdatedFriendsBar = () => {
     //mainfeed
-    const [feed, setFeed] = useState([]);
     const [updatedId, setUpdatedId] = useState([]);
     //this component
     const [user1, setUser1] = useState([]);
     const [userlist,setUserlist] = useState([])
     const getMainfeed = () => {
-        var feed_list = []
+        var user_list
         axios.get(`${APIURL}/mainfeed/`,{headers:{Authorization: 'token '+getCookie("token")} })
         .then(res => {
-        for(let i = 0 ; i < res.data.feed.length; i++){
-            if(i % 2 == 1){
-            feed_list.push(res.data.feed[i])
-            }
-        }
-        setFeed(feed_list)
-        setUpdatedId(res.data.updated_id)
+            user_list = res.data.updated_id
+            setUpdatedId(user_list)
         })
         .catch(err => {
         console.log("main api error")
