@@ -1845,7 +1845,7 @@ export const UpdatedFriendsRecommendToYouDiv = styled.div`
   width: 55%;
   gap: 10px;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 40px;
 `;
 
@@ -1877,23 +1877,32 @@ export const UpdatedFriendsRecommendChip = styled.button`
 `;
 
 export const UpdatedFriendsRecommendCardContainer = styled.div`
-  height: 260px;
+  height: 200px;
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 `;
 
-export const UpdatedFriendsRecommendCardDiv = styled.div`
+export const UpdatedFriendsRecommendCardDivParent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 155px;
   height: 173px;
   background-color: rgba(255, 153, 0, 0.6);
   border-radius: 10px;
   cursor: pointer;
+`;
+
+export const UpdatedFriendsRecommendCardDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 110px;
+  width: inherit;
+
 `;
 
 export const UpdatedFriendsRecommendCardImg = styled.img`

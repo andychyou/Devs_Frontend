@@ -9,7 +9,7 @@ const UpdatedFriendsStat = () => {
   return (
     <>
         <UpdatedFriendsSection>
-            <div style={{width:'60%', margin:'0 auto'}}>
+            <div style={{width:'55%', margin:'0 auto'}}>
                 
                 <p style={{fontSize:'18px', fontWeight:'bold'}}>
                     업데이트한 친구들

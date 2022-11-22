@@ -3,7 +3,7 @@ import {
   UpdatedFriendsRecommendCardDiv,
   UpdatedFriendsRecommendCardImg,
   UpdatedFriendsRecommendCardName,
-  UpdatedFriendsRecommendCardIdolButton,
+  UpdatedFriendsRecommendCardIdolButton,UpdatedFriendsRecommendCardDivParent
 } from "../../styledComponents";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -76,7 +76,7 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
 
   return (
     <>
-      <UpdatedFriendsRecommendCardDiv >
+      <UpdatedFriendsRecommendCardDivParent >
         <UpdatedFriendsRecommendCardDiv onClick={goUserProfile} style={{backgroundColor:'transparent'}}>
         <UpdatedFriendsRecommendCardImg
           src={userInfo.image}
@@ -85,16 +85,14 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
           {userInfo.name}
         </UpdatedFriendsRecommendCardName>
         </UpdatedFriendsRecommendCardDiv>
-        <div onClick={onFollow}>
-          <UpdatedFriendsRecommendCardIdolButton>
+          <UpdatedFriendsRecommendCardIdolButton onClick={onFollow}>
             {isFollow === false ? (
               <span>Idol 추가</span>
             ) : (
               <span>Idol 삭제</span>
             )}
           </UpdatedFriendsRecommendCardIdolButton>
-        </div>
-      </UpdatedFriendsRecommendCardDiv>
+      </UpdatedFriendsRecommendCardDivParent>
     </>
   );
 };

@@ -89,7 +89,6 @@ const UpdatedFriendsRecommend = () => {
   var showrecommendsent = 0
   if(profiles.length == 0){
     displayStyle = {display: 'none'}
-    console.log(displayStyle)
     showrecommendsent = 1
   }
   else{
