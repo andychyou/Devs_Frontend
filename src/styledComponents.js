@@ -1780,7 +1780,7 @@ export const UpdatedFriendsBox = styled.div`
   margin-top: 14px;
   height: 55px;
   background-color: rgba(249, 249, 249, 1);
-  box-shadow: 1px 2px 10px 2px rgba(107, 104, 104, 0.5);
+  box-shadow: 1px 2px 10px 2px rgba(107, 104, 104, 0.3);
   border-radius: 10px;
   justify-content: center;
 `;
@@ -1807,7 +1807,7 @@ export const UpdatedFriendsDot = styled.span`
 
 export const UpdatedFriendsCardDiv = styled.div`
   background-color: rgba(255, 224, 130, 0.6);
-  box-shadow: 1px 2px 8px 0px rgba(107, 104, 104, 0.5);
+  box-shadow: 1px 2px 8px 0px rgba(107, 104, 104, 0.3);
   border-radius: 10px;
   width: 60%;
   cursor: pointer;
