@@ -58,7 +58,6 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
     });
     console.log(`${user} followed `, res.data);
     if (res.status == 200) {
-      console.log(`${user} follow`, res.data)
       if (res.data.is_follow == true) setIsFollow(true);
       else setIsFollow(false);
     } else {

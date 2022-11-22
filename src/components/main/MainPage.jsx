@@ -55,7 +55,6 @@ useEffect(() => {
   const goProfile = (userid) => {
       navigate(`/profile/${userid}`);
   };
-  console.log('this is mainfeed', feed1)
   return (
     <>
         <UpdatedFriendsStat ></UpdatedFriendsStat>
