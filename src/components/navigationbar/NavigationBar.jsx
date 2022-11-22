@@ -113,7 +113,7 @@ const NavigationBar = () => {
       <NavBar>
         <NavBarInner>
           <TitleWrap onClick={goMain}>
-            <DevsLogo src="./logo.jpeg" />
+            <DevsLogo src="logo.jpeg" type="main" />
             <MainTitle href="#">뎁스</MainTitle>
             <SubTitle href="#">devStory</SubTitle>
           </TitleWrap>

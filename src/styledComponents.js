@@ -55,6 +55,18 @@ export const DevsLogo = styled.img`
   margin-right: 0.7vw;
   border-radius: 0.2vw;
   border: 0.12vw solid black;
+
+  ${(props) => {
+    if (props.type === "main") {
+      return css`
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+        border-radius: 3px;
+        border: 2px solid black;
+      `;
+    }
+  }}
 `;
 
 export const LandingWrap = styled.div`
