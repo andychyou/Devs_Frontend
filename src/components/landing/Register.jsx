@@ -145,7 +145,9 @@ const Register = () => {
     } else if (isPwdDiff) {
       alert("비밀번호가 일치하지 않습니다");
     } else {
-      sendRequest();
+      sendRequest().catch(() => {
+        alert("아이디 또는 이메일이 중복되었습니다.");
+      });
     }
   };
 
