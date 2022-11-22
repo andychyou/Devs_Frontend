@@ -1891,7 +1891,7 @@ export const UpdatedFriendsRecommendCardDivParent = styled.div`
   justify-content: space-evenly;
   width: 155px;
   height: 173px;
-  background-color: rgba(255, 153, 0, 0.6);
+  background-color: rgba(255, 179, 0, 0.62);
   border-radius: 10px;
   cursor: pointer;
 `;

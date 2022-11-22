@@ -113,7 +113,7 @@ const UpdatedFriendsRecommend = () => {
                 내 프로필에서 해시태그를 추가해 친구를 추천받아 보세요
               </div>
             )}
-            {showrecommendsent === 1 && (
+            {myHashtagList.length != 0 && (
               <div
                 style={{
                   fontSize: "16px",
