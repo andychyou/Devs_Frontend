@@ -1807,6 +1807,7 @@ export const UpdatedFriendsDot = styled.span`
 
 export const UpdatedFriendsCardDiv = styled.div`
   background-color: rgba(255, 224, 130, 0.6);
+  box-shadow: 2px 2px 10px 2px rgba(107, 104, 104, 0.50);
   border-radius: 10px;
   width: 60%;
   cursor: pointer;
@@ -1892,6 +1893,7 @@ export const UpdatedFriendsRecommendCardDivParent = styled.div`
   width: 155px;
   height: 173px;
   background-color: rgba(255, 179, 0, 0.62);
+  box-shadow: 2px 2px 10px 2px rgba(107, 104, 104, 0.50);
   border-radius: 10px;
   cursor: pointer;
 `;
