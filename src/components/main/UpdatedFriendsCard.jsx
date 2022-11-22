@@ -87,10 +87,15 @@ const UpdatedFriendsCard = ({profile, name, updated}) => {
     var c = checkBatchim()
     c ? setSuffix('을') : setSuffix('를')
   },[])
+
+  const navigate = useNavigate();
+  const goProfile = () => {
+      navigate(`/profile/${profile}`);
+  };
   
   return (
     <>
-          <UpdatedFriendsCardDiv>
+          <UpdatedFriendsCardDiv onClick={goProfile}>
             <div style={{ display: 'flex', alignItems: "center" }} >
               {
                 (userInfo != null) && <UpdatedFriendsCardImg            
