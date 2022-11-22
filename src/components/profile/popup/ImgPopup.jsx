@@ -60,12 +60,17 @@ const ImgPopup = ({ setPopup, name, email, id, link, image }) => {
     e.preventDefault();
 
     let form_data = new FormData();
-    form_data.append("name", _name);
-    form_data.append("email", _email);
-    form_data.append("link", _link);
+    if (_name) {
+      form_data.append("name", _name);
+    }
+    if (_email) {
+      form_data.append("email", _email);
+    }
+    if (_link != null) {
+      form_data.append("link", _link);
+    }
 
     if (_image) {
-      console.log(_image.name);
       form_data.append("image", _image);
     }
 
@@ -87,7 +92,7 @@ const ImgPopup = ({ setPopup, name, email, id, link, image }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        alert("Github 링크 주소가 유효하지 않습니다.");
       });
   };
 
@@ -147,6 +152,7 @@ const ImgPopup = ({ setPopup, name, email, id, link, image }) => {
                 name="_link"
                 value={_link}
                 onChange={onChange}
+                maxLength={100}
               />
             </EditProfileDiv>
             {/* <PopupSaveBtn onClick={editInfo}>저장하기</PopupSaveBtn> */}

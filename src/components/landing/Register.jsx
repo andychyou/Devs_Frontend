@@ -122,11 +122,22 @@ const Register = () => {
   // → 성공: status=201
   // → 실패: status=400
   const sendRequest = async () => {
-    const res = await axios.post(`${APIURL}/account/user/`, {
-      id: id,
-      email: email,
-      password: pwd,
-      name: uname,
+    const form_data = new FormData();
+    form_data.append("id", id);
+    form_data.append("email", email);
+    form_data.append("password", pwd);
+    form_data.append("name", uname);
+
+    // const res = await axios.post(`${APIURL}/account/user/`, {
+    //   id: id,
+    //   email: email,
+    //   password: pwd,
+    //   name: uname,
+    // });
+    const res = await axios.post(`${APIURL}/account/user/`, form_data, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
     });
 
     if (res.status == 201) {

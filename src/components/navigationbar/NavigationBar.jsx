@@ -11,6 +11,7 @@ import {
   TitleWrap,
   NavBtn,
   NavBarInner,
+  DevsLogo,
 } from "../../styledComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -112,6 +113,7 @@ const NavigationBar = () => {
       <NavBar>
         <NavBarInner>
           <TitleWrap onClick={goMain}>
+            <DevsLogo src="./logo.jpeg" />
             <MainTitle href="#">뎁스</MainTitle>
             <SubTitle href="#">devStory</SubTitle>
           </TitleWrap>
@@ -151,8 +153,9 @@ const NavigationBar = () => {
               <NavBtn>
                 <img
                   style={{
-                    width: "40px",
-                    height: "40px",
+                    width: "37px",
+                    height: "37px",
+                    border: "1px solid white",
                     objectFit: "cover",
                     borderRadius: "50%",
                     cursor: "pointer",

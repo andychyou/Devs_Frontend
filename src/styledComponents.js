@@ -49,6 +49,14 @@ export const DevsText = styled.div`
   // cursor: pointer;
 `;
 
+export const DevsLogo = styled.img`
+  width: 2vw;
+  height: 2vw;
+  margin-right: 0.7vw;
+  border-radius: 0.2vw;
+  border: 0.12vw solid black;
+`;
+
 export const LandingWrap = styled.div`
   // width: 100%;
   // height: 100%;
@@ -1816,6 +1824,8 @@ export const UpdatedFriendsBox = styled.div`
 export const UpdatedFriendsImg = styled.img`
   image-resolution: 1 / 1;
   width: 35px;
+  height: 35px;
+  object-fit: cover;
   border-radius: 50%;
   color: red;
   box-shadow: 1px 1px 3px 1px rgba(107, 104, 104, 0.67);
@@ -1844,11 +1854,13 @@ export const UpdatedFriendsCardDiv = styled.div`
 `;
 
 export const UpdatedFriendsCardImg = styled.img`
-  width: 66px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin: 10px 30px;
   margin-right: 40px;
   background-color: white;
+  object-fit: cover;
 `;
 
 export const UpdatedFriendsCardName = styled.span`
