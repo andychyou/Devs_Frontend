@@ -1846,7 +1846,7 @@ export const UpdatedFriendsRecommendToYouDiv = styled.div`
   gap: 10px;
   margin: 0 auto;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 `;
 
 export const UpdatedFriendsRecommendCardIdolButton = styled.div`

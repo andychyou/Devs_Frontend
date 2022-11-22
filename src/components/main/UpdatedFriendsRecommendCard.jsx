@@ -77,7 +77,7 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
   return (
     <>
       <UpdatedFriendsRecommendCardDivParent >
-        <UpdatedFriendsRecommendCardDiv onClick={goUserProfile} style={{backgroundColor:'transparent'}}>
+        <UpdatedFriendsRecommendCardDiv onClick={goUserProfile} >
         <UpdatedFriendsRecommendCardImg
           src={userInfo.image}
         ></UpdatedFriendsRecommendCardImg>
