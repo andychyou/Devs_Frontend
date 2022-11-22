@@ -41,6 +41,7 @@ const ProfileInfo = memo(() => {
   useEffect(() => {
     getUserInfo();
   }, [id]);
+
   return (
     <>
       <ProfileInfoDiv>
@@ -48,7 +49,13 @@ const ProfileInfo = memo(() => {
 
         <ProfileFunctWrap>
           <ProfileFunctDiv>
-            <ProfileText name={name} id={id} email={email} link={link} />
+            <ProfileText
+              name={name}
+              id={id}
+              email={email}
+              link={link}
+              image={image}
+            />
             <ProfileFollow />
           </ProfileFunctDiv>
           <ProfileTag />

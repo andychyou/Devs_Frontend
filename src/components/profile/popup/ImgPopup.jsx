@@ -16,12 +16,13 @@ import {
   EditProfileDiv,
   EditLabel,
   EditInput,
+  FormSubmitBtn,
 } from "../../../styledComponents";
 import PopupHeader from "./PopupHeader";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
-  const [src, setSrc] = useState(getCookie("user_img"));
+const ImgPopup = ({ setPopup, name, email, id, link, image }) => {
+  const [src, setSrc] = useState(image);
   const [inputs, setInputs] = useState({
     _name: name,
     _email: email,
@@ -33,19 +34,18 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const reader = new FileReader();
+      const file = e.target.files[0];
+
+      setInputs({
+        ...inputs,
+        _image: file,
+      });
 
       reader.readAsDataURL(e.target.files[0]);
       reader.addEventListener("load", () => {
         setSrc(reader.result);
       });
     }
-
-    const file = e.target.files[0];
-    // console.log(file);
-    // setSrc(file);
-    let newData = { ...inputs };
-    newData["_image"] = file;
-    setInputs(newData);
   };
 
   const onChange = (e) => {
@@ -56,41 +56,39 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
     });
   };
 
-  const editInfo = async () => {
-    // const body = {
-    //   email: _email,
-    //   name: _name,
-    //   image: src,
-    //   link: _link,
-    // };
-    const body = {
-      name: _name,
-      email: _email,
-      link: _link,
-      image: _image,
-    };
-    console.log(body);
-    const res = await axios.patch(`${APIURL}/account/user/${id}/`, body);
-
-    if (res.status == 200) {
-      console.log(res);
-      setPopup(false);
-      window.location.reload();
-    } else {
-      console.log("edit info fail");
-    }
-  };
-
-  const uploadImage = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const file = e.target[1].files[0];
 
-    const form = new FormData();
-    form.append("files", file);
-    form.append("enctype", "multipart/form-data");
-    console.log(form);
+    let form_data = new FormData();
+    form_data.append("name", _name);
+    form_data.append("email", _email);
+    form_data.append("link", _link);
 
-    const url = `${APIURL}/`;
+    if (_image) {
+      console.log(_image.name);
+      form_data.append("image", _image);
+    }
+
+    const headers = {
+      Authorization: "token " + getCookie("token"),
+      "content-type": "multipart/form-data",
+    };
+
+    axios
+      .patch(`${APIURL}/account/user/${id}/`, form_data, {
+        headers,
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          const img = `/media/users/${_image.name}`;
+          setCookie("user_img", img);
+          setPopup(false);
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -107,55 +105,57 @@ const ImgPopup = memo(({ setPopup, name, email, id, link }) => {
             )}
           </ImageBox>
 
-          <ImageInputDiv>
-            <ImageInput
-              type="file"
-              onChange={onSelectFile}
-              name="image_url"
-              accept="image/jpeg,image/png,image/gif"
-            />
-          </ImageInputDiv>
+          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+            <ImageInputDiv>
+              <ImageInput
+                type="file"
+                onChange={onSelectFile}
+                name="_image"
+                accept="image/jpeg,image/png,image/gif"
+              />
+            </ImageInputDiv>
 
-          <EditProfileDiv>
-            <EditLabel>이름</EditLabel>
-            <EditInput
-              type="text"
-              name="_name"
-              value={_name}
-              onChange={onChange}
-            />
-          </EditProfileDiv>
+            <EditProfileDiv>
+              <EditLabel>이름</EditLabel>
+              <EditInput
+                type="text"
+                name="_name"
+                value={_name}
+                onChange={onChange}
+              />
+            </EditProfileDiv>
 
-          {/* <EditProfileDiv>
+            {/* <EditProfileDiv>
             <EditLabel>아이디</EditLabel>
             <EditInput type="text" name="_id" value={_id} onChange={onChange} />
           </EditProfileDiv> */}
 
-          <EditProfileDiv>
-            <EditLabel>이메일</EditLabel>
-            <EditInput
-              type="text"
-              name="_email"
-              value={_email}
-              onChange={onChange}
-            />
-          </EditProfileDiv>
+            <EditProfileDiv>
+              <EditLabel>이메일</EditLabel>
+              <EditInput
+                type="text"
+                name="_email"
+                value={_email}
+                onChange={onChange}
+              />
+            </EditProfileDiv>
 
-          <EditProfileDiv style={{ marginBottom: "50px" }}>
-            <EditLabel>Github 링크</EditLabel>
-            <EditInput
-              type="text"
-              name="_link"
-              value={_link}
-              onChange={onChange}
-            />
-          </EditProfileDiv>
-
-          <PopupSaveBtn onClick={editInfo}>저장하기</PopupSaveBtn>
+            <EditProfileDiv style={{ marginBottom: "50px" }}>
+              <EditLabel>Github 링크</EditLabel>
+              <EditInput
+                type="text"
+                name="_link"
+                value={_link}
+                onChange={onChange}
+              />
+            </EditProfileDiv>
+            {/* <PopupSaveBtn onClick={editInfo}>저장하기</PopupSaveBtn> */}
+            <FormSubmitBtn type="submit" value="저장하기" />
+          </form>
         </PopupBox>
       </PopupDiv>
     </>
   );
-});
+};
 
 export default ImgPopup;

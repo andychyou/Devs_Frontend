@@ -19,7 +19,7 @@ import ImgPopup from "./popup/ImgPopup";
 import { useOutletContext } from "react-router-dom";
 import PwdPopup from "./popup/PwdPopup";
 
-const ProfileText = memo(({ name, email, id, link }) => {
+const ProfileText = memo(({ name, email, id, link, image }) => {
   const { isAdmin } = useOutletContext();
   const [isEdit, setIsEdit] = useState(false);
   const [pwdEdit, setPwdEdit] = useState(false);
@@ -33,6 +33,7 @@ const ProfileText = memo(({ name, email, id, link }) => {
           email={email}
           id={id}
           link={link}
+          image={image}
         />
       )}
       {pwdEdit && <PwdPopup setPopup={setPwdEdit} />}

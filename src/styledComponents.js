@@ -848,6 +848,7 @@ export const ImageInputDiv = styled.div`
   // background-color: white;
   // width: max-content;
   width: 82px;
+  margin: 0 auto;
   margin-bottom: 30px;
 `;
 
@@ -1274,6 +1275,29 @@ export const PopupSaveBtn = styled.div`
   }
 `;
 
+export const FormSubmitBtn = styled.input`
+  background-color: #ffb300;
+  font-weight: bold;
+  font-size: 18px;
+  width: 150px;
+  color: white;
+  line-height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10px;
+  border: 2px solid #ffb300;
+  transition: 0.45s;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+
+  &:hover {
+    color: #ffb300;
+    background-color: white;
+  }
+`;
+
 // Post Page
 export const PostDiv = styled.div`
   width: calc(100% - 60px);
@@ -1496,7 +1520,8 @@ export const NavBar = styled.div`
 `;
 
 export const NavBarInner = styled.div`
-  width: 1300px;
+  // width: 1300px;
+  width: 80%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -1756,7 +1781,7 @@ export const SearchResultIntroBox = styled.div`
   background-color: white;
   border-radius: 8px;
   margin-left: auto;
-  `;
+`;
 
 export const SearchResultButton = styled.button`
   font-size: 18px;
@@ -1766,7 +1791,7 @@ export const SearchResultButton = styled.button`
   background-color: #b299b0;
   border: none;
   border-radius: 7px;
-  margin-right:  30px;
+  margin-right: 30px;
 `;
 //UpdatedFriends.jsx
 
@@ -1907,7 +1932,6 @@ export const UpdatedFriendsRecommendCardDiv = styled.div`
   align-items: center;
   height: 110px;
   width: inherit;
-
 `;
 
 export const UpdatedFriendsRecommendCardImg = styled.img`
