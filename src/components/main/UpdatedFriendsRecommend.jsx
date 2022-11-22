@@ -48,6 +48,7 @@ const UpdatedFriendsRecommend = () => {
 
   const [profiles, setProfiles] = useState([]);
   const getProfilesList = async () => {
+    clicked.current = true
     var li = []
     const res = await axios.get(
       `${APIURL}/mainfeed/recommend/${currHashtag}/`,
@@ -67,7 +68,13 @@ const UpdatedFriendsRecommend = () => {
           li.push(row)
         }
       }
-      
+      if(li.length === 0){
+        li_empty.current = true
+      }
+      else{
+        li_empty.current = false
+
+      }
       setProfiles(li);
     } else {
       console.log("get hashtag fail");
@@ -85,6 +92,10 @@ const UpdatedFriendsRecommend = () => {
     }
   }, [currHashtag]);
 
+  const clicked = useRef(false)
+  const clicked_but_empty = useRef(false)
+  const li_empty = useRef(false)
+
   var displayStyle 
   var showrecommendsent = 0
   if(profiles.length == 0){
@@ -95,6 +106,9 @@ const UpdatedFriendsRecommend = () => {
     displayStyle = {}
     showrecommendsent = 0
   }
+  
+  console.log('myhashtag', myHashtagList.length)
+  console.log('li empty', li_empty.current)
 
   return (
     <>
@@ -102,7 +116,7 @@ const UpdatedFriendsRecommend = () => {
         <UpdatedFriendsRecommendToYouDiv>
           <div style={{ fontSize: "18px", fontWeight:"bold" }}>
             <span>친구추천</span>
-            {myHashtagList.length == 0 && (
+            {myHashtagList.length == 0  && (
               <div
                 style={{
                   fontSize: "16px",
@@ -113,7 +127,7 @@ const UpdatedFriendsRecommend = () => {
                 내 프로필에서 해시태그를 추가해 친구를 추천받아 보세요
               </div>
             )}
-            {myHashtagList.length != 0 && (
+            { myHashtagList.length != 0  && li_empty.current === false && (
               <div
                 style={{
                   fontSize: "16px",
@@ -122,6 +136,17 @@ const UpdatedFriendsRecommend = () => {
                 }}
               >
                 해시태그를 클릭해서 추천받아요
+              </div>
+            )}
+            { myHashtagList.length != 0  && li_empty.current === true && (
+              <div
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "normal",
+                  marginTop: "10px",
+                }}
+              >
+                해당 해시태그로 추천할 친구가 없어요
               </div>
             )}
           </div>
