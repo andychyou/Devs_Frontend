@@ -19,17 +19,11 @@ const Footer = () => {
     <>
       {display && (
         <FooterDiv>
-          <FooterText
-            style={{
-              fontWeight: "bold",
-              fontSize: "16px",
-              marginBottom: "7px",
-            }}
-          >
-            Team Devs
+          <FooterText>🦁 멋쟁이사자처럼 서강 🦁</FooterText>
+          <FooterText>곽도영 김아영 윤태호 최세은 유창호</FooterText>
+          <FooterText type="big">
+            Copyright ⓒ 2022 멍발자들. All right Reserved.
           </FooterText>
-          <FooterText>곽도영 김아영</FooterText>
-          <FooterText>윤태호 최세은 유창호</FooterText>
         </FooterDiv>
       )}
     </>

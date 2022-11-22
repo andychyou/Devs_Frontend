@@ -1982,7 +1982,7 @@ export const FooterDiv = styled.div`
   // background-color: #ffe082;
   background-color: #777;
   width: 100%;
-  height: 150px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1992,7 +1992,18 @@ export const FooterDiv = styled.div`
 export const FooterText = styled.div`
   // color: black;
   color: #e1e1e1;
-  font-size: 14px;
+  font-size: 12px;
   // margin-bottom: 4px;
   margin: 3px;
+  font-weight: bold;
+
+  ${(props) => {
+    if (props.type === "big") {
+      return css`
+        font-weight: bold;
+        font-size: 14px;
+        margin-top: 15px;
+      `;
+    }
+  }}
 `;

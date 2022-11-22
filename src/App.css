@@ -8,7 +8,7 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 .notosanskr * {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 .font {
   font-family: "Noto Sans KR", sans-serif;
@@ -20,7 +20,7 @@
   left: 0;
   z-index: -100;
   width: 100%;
-  padding-bottom: 150px;
+  padding-bottom: 200px;
 }
 
 .App {
