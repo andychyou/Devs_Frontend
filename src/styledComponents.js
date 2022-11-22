@@ -1722,7 +1722,7 @@ export const SearchResultDivParent = styled.div`
   display: flex;
   margin: 0 auto;
   margin-bottom: 14px;
-  width: 1200px;
+  width: 60%;
   height: 134px;
   background-color: rgba(255, 224, 130, 0.2);
   border-radius: 10px;
@@ -1733,7 +1733,7 @@ export const SearchResultDivParent = styled.div`
 export const SearchResultDiv = styled.div`
   display: flex;
   margin: 0 auto;
-  width: 800px;
+  width: 60%;
   justify-content: space-evenly;
   align-items: center;
 `;
@@ -1853,7 +1853,7 @@ export const UpdatedFriendsRecommendToYouDiv = styled.div`
 export const UpdatedFriendsRecommendCardIdolButton = styled.div`
   font-size: 14px;
   color: black;
-  background-color: #fbd9c5;
+  background-color: #ffb555;
   border: none;
   border-radius: 5px;
   padding: 8px 14px;

@@ -68,7 +68,7 @@ useEffect(() => {
            {feed1[1]!=null && <div onClick={()=>goProfile(feed1[1].user)}><UpdatedFriendsCard profile={feed1[1].user} updated={feed1[1].update} ></UpdatedFriendsCard></div>}   */}
         
         <UpdatedFriendsRecommend></UpdatedFriendsRecommend>
-        {feed2.map((li, idx) =>(<div onClick={()=>goProfile(li.user)}><UpdatedFriendsCard  profile={li.user} updated={li.update} ></UpdatedFriendsCard></div>))} 
+        {feed2.map((li, idx) =>(<div onClick={()=>goProfile(li.user)}><UpdatedFriendsCard  profile={li.user} name={li.name} updated={li.update} ></UpdatedFriendsCard></div>))} 
           {/* {feed2[0]!=null && <div onClick={()=>goProfile(feed2[0].user)}><UpdatedFriendsCard profile={feed2[0].user} updated={feed2[0].update} ></UpdatedFriendsCard></div>}  
           {feed2[1]!=null && <div onClick={()=>goProfile(feed2[1].user)}><UpdatedFriendsCard profile={feed2[1].user} updated={feed2[1].update} ></UpdatedFriendsCard></div>}   */}
         
