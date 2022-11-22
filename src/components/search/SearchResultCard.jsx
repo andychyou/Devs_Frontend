@@ -90,7 +90,8 @@ const SearchResultCard = ({id}) => {
             <div style={{fontSize: '18px', fontWeight: '700'}}>{userInfo.name}</div>
             <div>
               <span style={{fontSize: '18px'}}>{profile.main_position == undefined ? <span></span> : profile.main_position}</span>
-              <span style={{fontSize: '18px'}}>@ {profile.belong == undefined ? <span></span> : profile.belong}</span>
+              {profile.belong == undefined ? <span></span> : <span>@ {profile.belong}</span>}
+              {/* <span style={{fontSize: '18px'}}>@ {profile.belong == undefined ? <span></span> : profile.belong}</span> */}
             </div>              
             <div style={{fontSize: '18px'}}>{profile.major == undefined ? <span></span> : profile.major}</div>
             </div>
