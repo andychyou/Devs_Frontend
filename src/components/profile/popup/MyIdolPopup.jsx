@@ -30,7 +30,7 @@ const MyIdolPopup = memo(({ setPopup, idols, goUserProfile }) => {
                       src={`${APIURL}${data.image}`}
                       onClick={(e) => goUserProfile(e, data.user)}
                     />
-                    <CardUserName>{data.user}</CardUserName>
+                    <CardUserName>{data.name}</CardUserName>
                   </CardImgNameBox>
                   {data.position != null && data.position != undefined && (
                     <CardUserDesc>{data.position}</CardUserDesc>

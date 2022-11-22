@@ -73,7 +73,6 @@ const ProfileFollow = () => {
     const res = await myAxios.get(`/profile/isfollow/${id}/`);
 
     if (res.status == 200) {
-      console.log(res.data);
       if (res.data.is_follow) {
         setIsFollowd(true);
       } else {
@@ -83,7 +82,6 @@ const ProfileFollow = () => {
   };
 
   useEffect(() => {
-    console.log("follow apis");
     setFanClick(false);
     setIdolClick(false);
     getFan()
