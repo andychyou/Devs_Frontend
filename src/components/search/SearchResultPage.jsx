@@ -15,14 +15,14 @@ const SearchResultPage = () => {
   const location = useLocation()
   const [searchedList, setSearchList] = useState([])
   const searched_list = location.state.searchResult.ids
-  console.log('searchedList',searchedList)
+  // console.log('searchedList',searchedList)
   useEffect(()=>(
     setSearchList(location.state.searchResult.ids)
   ),[])
   return (
     <>
         {/* <RecommendBar></RecommendBar> */}
-        <RecommendToWho style={{marginTop:"80px", marginBottom:"80px"}}>
+        <RecommendToWho style={{marginTop:"40px", marginBottom:"40px", fontSize:'24px'}}>
                 <span style={{display:"table",margin:"auto",color:'#707070'}}>검색 결과</span>
           </RecommendToWho>
 

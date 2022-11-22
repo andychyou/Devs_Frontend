@@ -13,7 +13,7 @@ const SearchResultCard = ({id}) => {
   const getUserInfo = async () => {
     const res = await axios.get(`${APIURL}/account/user/${id}`);
     if (res.status == 200) {
-      console.log("get user info: ", res.data);
+      // console.log("get user info: ", res.data);
       setUserInfo(res.data);
     } else {
       console.log("get user info fail");
@@ -65,12 +65,14 @@ const SearchResultCard = ({id}) => {
       <SearchResultDiv onClick={goProfile}>
         <SearchResultImg src={userInfo.image}></SearchResultImg>         
         <SearchResultDetail>
-            <div style={{fontSize: '30px', fontWeight: '700'}}>{userInfo.name}</div>
-            <div>
-              <span style={{fontSize: '24px'}}>{profile.main_position == undefined ? <div></div> : profile.main_position}</span>
-              <span style={{fontSize: '24px'}}>@ {profile.position == undefined ? <span></span> : profile.position}</span>
-            </div>              
-            <div style={{fontSize: '24px'}}>{profile.major == undefined ? <span></span> : profile.major}</div>
+            <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+            <span style={{fontSize: '18px', fontWeight: '700'}}>{userInfo.name}</span>
+            <span>
+              <span style={{fontSize: '18px'}}>{profile.main_position == undefined ? <span></span> : profile.main_position}</span>
+              <span style={{fontSize: '18px'}}>@ {profile.position == undefined ? <span></span> : profile.position}</span>
+            </span>              
+            <span style={{fontSize: '18px'}}>{profile.major == undefined ? <span></span> : profile.major}</span>
+            </div>
         </SearchResultDetail>
         <SearchResultIntroBox>
           <p>

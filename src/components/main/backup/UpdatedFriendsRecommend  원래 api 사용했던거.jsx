@@ -81,7 +81,7 @@ const UpdatedFriendsRecommend = () => {
   useEffect(() => {
     getMyHashtagList();
   }, []);
-  console.log("myhashtag", myHashtagList)
+  // console.log("myhashtag", myHashtagList)
   useEffect(() => {
     if (myHashtagList.length != 0) {
       getProfilesList();
@@ -114,6 +114,7 @@ const UpdatedFriendsRecommend = () => {
                 내 프로필에서 해시태그를 추가해 친구를 추천받아 보세요
               </div>
             )}
+            
             
           </div>
           <UpdatedFriendsRecommendChips>

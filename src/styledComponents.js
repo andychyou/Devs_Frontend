@@ -1680,7 +1680,7 @@ export const RecommendBarDiv = styled.div`
 export const RecommendToWho = styled.div`
   padding: 5px;
   margin-right: 6px;
-  font-size: 36px;
+  font-size: 18px;
 `;
 
 export const RecommendChip = styled.button`
@@ -1733,9 +1733,9 @@ export const SearchResultDivParent = styled.div`
 export const SearchResultDiv = styled.div`
   display: flex;
   margin: 0 auto;
-  width: 60%;
-  justify-content: space-evenly;
+  width: 75%;
   align-items: center;
+  justify-content: space-in-between;
 `;
 export const SearchResultImg = styled.img`
   width: 66px;
@@ -1744,26 +1744,29 @@ export const SearchResultImg = styled.img`
 `;
 
 export const SearchResultDetail = styled.div`
+  width: 20%;
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
 export const SearchResultIntroBox = styled.div`
-  width: 550px;
-  height: 100px;
+  width: 60%;
+  height: 90px;
   background-color: white;
   border-radius: 8px;
-`;
+  margin-left: auto;
+  `;
 
 export const SearchResultButton = styled.button`
-  font-size: 24px;
-  width: 150px;
-  height: 57px;
+  font-size: 18px;
+  width: 100px;
+  height: 50px;
+  padding: 5px;
   background-color: #b299b0;
   border: none;
   border-radius: 7px;
-  margin-right:  76px;
+  margin-right:  30px;
 `;
 //UpdatedFriends.jsx
 
