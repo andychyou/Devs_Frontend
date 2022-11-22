@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getAllCookie, getCookie, removeCookie } from "../../config/cookie";
 import { APIURL } from '../../config/key';
 import axios from 'axios';
-import { SearchResultDiv, SearchResultImg, SearchResultDetail, SearchResultIntroBox, SearchResultButton } from '../../styledComponents';
+import { SearchResultDiv, SearchResultImg, SearchResultDetail, SearchResultIntroBox, SearchResultButton,SearchResultDivParent } from '../../styledComponents';
 
 
 const SearchResultCard = ({id}) => {
@@ -55,27 +55,33 @@ const SearchResultCard = ({id}) => {
   getProfile()
   },[id])
 
+  const navigate = useNavigate();
+  const goProfile = () => {
+    navigate(`/profile/${id}`);
+  };
+
   return (
-    <SearchResultDiv>
-    <SearchResultImg src={userInfo.image}></SearchResultImg>         
-      <SearchResultDetail>
-          <div style={{fontSize: '30px', fontWeight: '700'}}>{userInfo.name}</div>
-          <div>
-            <span style={{fontSize: '24px'}}>{profile.main_position == undefined ? <div>입력안됨</div> : profile.main_position}</span>
-            <span style={{fontSize: '24px'}}>@ {profile.position == undefined ? <span>입력안됨</span> : profile.position}</span>
-          </div>              
-          <div style={{fontSize: '24px'}}>{profile.major == undefined ? <span>입력안됨</span> : profile.major}</div>
-      </SearchResultDetail>
-      <SearchResultIntroBox>
-        <p>
-        {profile.introduction == undefined ? <span>입력안됨</span> : profile.introduction}
-        </p>
-      </SearchResultIntroBox>
-      
+    <SearchResultDivParent>
+      <SearchResultDiv onClick={goProfile}>
+        <SearchResultImg src={userInfo.image}></SearchResultImg>         
+        <SearchResultDetail>
+            <div style={{fontSize: '30px', fontWeight: '700'}}>{userInfo.name}</div>
+            <div>
+              <span style={{fontSize: '24px'}}>{profile.main_position == undefined ? <div></div> : profile.main_position}</span>
+              <span style={{fontSize: '24px'}}>@ {profile.position == undefined ? <span></span> : profile.position}</span>
+            </div>              
+            <div style={{fontSize: '24px'}}>{profile.major == undefined ? <span></span> : profile.major}</div>
+        </SearchResultDetail>
+        <SearchResultIntroBox>
+          <p>
+          {profile.introduction == undefined ? <span></span> : profile.introduction}
+          </p>
+        </SearchResultIntroBox>
+      </SearchResultDiv>
       <SearchResultButton onClick={onFollow}>
           IDOL 등록
       </SearchResultButton>
-    </SearchResultDiv>
+    </SearchResultDivParent>
   );
 };
 

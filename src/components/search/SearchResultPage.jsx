@@ -22,7 +22,7 @@ const SearchResultPage = () => {
   return (
     <>
         {/* <RecommendBar></RecommendBar> */}
-        <RecommendToWho style={{marginTop:"20px", marginBottom:"20px"}}>
+        <RecommendToWho style={{marginTop:"80px", marginBottom:"80px"}}>
                 <span style={{display:"table",margin:"auto",color:'#707070'}}>검색 결과</span>
           </RecommendToWho>
 

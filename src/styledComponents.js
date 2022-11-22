@@ -1718,14 +1718,22 @@ export const SuggestP = styled.p`
   margin-left: 20px;
 `;
 
-export const SearchResultDiv = styled.div`
+export const SearchResultDivParent = styled.div`
   display: flex;
   margin: 0 auto;
   margin-bottom: 14px;
-  width: 1000px;
+  width: 1200px;
   height: 134px;
   background-color: rgba(255, 224, 130, 0.2);
   border-radius: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+export const SearchResultDiv = styled.div`
+  display: flex;
+  margin: 0 auto;
+  width: 800px;
   justify-content: space-evenly;
   align-items: center;
 `;
@@ -1742,7 +1750,7 @@ export const SearchResultDetail = styled.div`
 `;
 
 export const SearchResultIntroBox = styled.div`
-  width: 400px;
+  width: 550px;
   height: 100px;
   background-color: white;
   border-radius: 8px;
@@ -1755,6 +1763,7 @@ export const SearchResultButton = styled.button`
   background-color: #b299b0;
   border: none;
   border-radius: 7px;
+  margin-right:  76px;
 `;
 //UpdatedFriends.jsx
 
