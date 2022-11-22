@@ -14,7 +14,7 @@ import { faMessage } from '@fortawesome/free-regular-svg-icons';
 
 
 
-const UpdatedFriendsCard = ({profile, updated}) => {
+const UpdatedFriendsCard = ({profile, name, updated}) => {
   const [hashtag, setHashtag] = useState([]); 
   const [userInfo, setUserInfo] = useState(null)
   const getHashtag = async () => {
@@ -99,8 +99,8 @@ const UpdatedFriendsCard = ({profile, updated}) => {
               }
               
               <UpdatedFriendsCardText>
-                <span style={{fontWeight:'bold'}}>{profile} </span>
-                <span>님이 </span>
+                <span style={{fontWeight:'bold'}}>{name}</span>
+                <span>님이&nbsp;</span>
                 <span style={{fontWeight:'bold'}}>{updated}</span>
                 <span>{suffix} 업데이트 했습니다</span>
               </UpdatedFriendsCardText>

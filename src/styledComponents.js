@@ -1853,7 +1853,7 @@ export const UpdatedFriendsRecommendToYouDiv = styled.div`
 export const UpdatedFriendsRecommendCardIdolButton = styled.div`
   font-size: 14px;
   color: black;
-  background-color: rgba(178, 153, 176, 1);
+  background-color: #fbd9c5;
   border: none;
   border-radius: 5px;
   padding: 8px 14px;
@@ -1892,8 +1892,8 @@ export const UpdatedFriendsRecommendCardDivParent = styled.div`
   justify-content: space-evenly;
   width: 155px;
   height: 173px;
-  background-color: rgba(255, 179, 0, 0.62);
-  box-shadow: 1px 2px 8px 0px rgba(107, 104, 104, 0.5);
+  background-color: #ffeab89e;
+  box-shadow: 1px 2px 8px 0px rgba(107, 104, 104, 0.2);
   border-radius: 10px;
   cursor: pointer;
 `;
