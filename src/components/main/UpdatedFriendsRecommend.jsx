@@ -48,36 +48,27 @@ const UpdatedFriendsRecommend = () => {
 
   const [profiles, setProfiles] = useState([]);
   const getProfilesList = async () => {
-    var li 
+    var li = []
     const res = await axios.get(
-      `${APIURL}/profile/hashtag/get_user/${currHashtag}/`,
+      `${APIURL}/mainfeed/recommend/${currHashtag}/`,
       { headers: { Authorization: "token " + getCookie("token") } }
     );
 
     if (res.status == 200) {
-      li = res.data[0].profile
-      let len = li.length
-      for(let i = 0; i < len; i++){//사용자는 리스트에서 제외
-        if(li[i] === getCookie("user_id")){
-          li.splice(i, 1)
-        }
-      }
-      var p_list = []
-      console.log('afddsa', li)
-      if(li.length > 5){
+      if(res.data.length > 5){
         for(let i = 0 ;i<5;i++){
-          const row = await li[i]
-          p_list.push(row)
+          const row = await res.data[i].user
+          li.push(row)
         }
       }
       else{
-        for(let i = 0 ;i<li.length;i++){
-          const row = await li[i]
-          p_list.push(row)
+        for(let i = 0 ;i<res.data.length;i++){
+          const row = await res.data[i].user
+          li.push(row)
         }
       }
       
-      setProfiles(p_list);
+      setProfiles(li);
     } else {
       console.log("get hashtag fail");
     }
