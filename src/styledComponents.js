@@ -1818,7 +1818,7 @@ export const UpdatedFriendsCardImg = styled.img`
   width: 66px;
   border-radius: 50%;
   margin: 10px 30px;
-  margin-right: 60px;
+  margin-right: 40px;
   background-color: white;
 `;
 
@@ -1842,10 +1842,10 @@ export const UpdatedFriendsRecommendToYouDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 60%;
+  width: 55%;
   gap: 10px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 40px;
   margin-bottom: 40px;
 `;
 

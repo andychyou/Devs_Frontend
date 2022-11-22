@@ -101,14 +101,13 @@ const UpdatedFriendsRecommend = () => {
     <>
       <section>
         <UpdatedFriendsRecommendToYouDiv>
-          <div style={{ fontSize: "20px" }}>
-            <span id="user-name">{getCookie("user_id")}</span>
-            <span>님과 비슷한 개발자</span>
+          <div style={{ fontSize: "18px", fontWeight:"bold" }}>
+            <span>친구추천</span>
             {myHashtagList.length == 0 && (
               <div
                 style={{
                   fontSize: "16px",
-                  fontWeight: "bold",
+                  fontWeight:'normal',
                   marginTop: "10px",
                 }}
               >
@@ -119,7 +118,7 @@ const UpdatedFriendsRecommend = () => {
               <div
                 style={{
                   fontSize: "16px",
-                  fontWeight: "bold",
+                  fontWeight: "normal",
                   marginTop: "10px",
                 }}
               >
