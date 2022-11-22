@@ -29,15 +29,16 @@ const NavigationBar = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isClick, setIsClick] = useState(false);
   const location = useLocation().pathname;
-
+  
   useEffect(() => {
-    if (getCookie("user_id")) {
+    if (getCookie("user_id") ) {
       setIsLogin(true);
       getUserInfo();
     } else {
       setIsLogin(false);
     }
   }, [getCookie("user_id")]);
+  
 
   const navigate = useNavigate();
   const goProfile = () => {
@@ -81,7 +82,7 @@ const NavigationBar = () => {
     }
   };
 
-  const PassKeyword = async () =>{
+  const PassKeyword =  () =>{
     navigate({pathname: "/searchresult", search: `?keyword=${keyword}`})
   }
  
@@ -103,7 +104,7 @@ const NavigationBar = () => {
       <NavBar>
         <NavBarInner>
           <TitleWrap onClick={goMain}>
-            <DevsLogo src="logo.jpeg" type="main" />
+            <DevsLogo src={require("./logo.jpeg")} type="main" />
             <MainTitle href="#">뎁스</MainTitle>
             <SubTitle href="#">devStory</SubTitle>
           </TitleWrap>
