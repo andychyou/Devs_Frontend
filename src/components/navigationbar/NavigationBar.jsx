@@ -66,7 +66,7 @@ const NavigationBar = () => {
 
     setTimeout(() => {
       window.location.replace("/login");
-    }, 500);
+    }, 1000);
   };
   const [userInfo, setUserInfo] = useState({});
   const getUserInfo = async () => {
