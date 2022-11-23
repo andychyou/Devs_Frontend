@@ -340,7 +340,7 @@ export const ProfileImg = styled.img`
   background-color: white;
   width: 150px;
   height: 150px;
-  object-fit: cover;
+  object-fit: contain;
 `;
 export const ProfileImgIcon = styled.div`
   border-radius: 50%;
@@ -639,14 +639,13 @@ export const BigDiv = styled.div`
 `;
 export const BigBox = styled.div`
   // width: calc(983px - 120px);
-  width: calc(100% - 160px);
+  width: calc(100% - 160px + 10px);
   min-height: 100px;
-  line-height: 25px;
+  line-height: 100px;
   background-color: #f4f4f4;
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 0 10px;
   // margin: 0 auto;
-  white-space: pre-wrap;
 `;
 
 export const BigInput = styled.textarea`
@@ -666,7 +665,6 @@ export const CurrentStudy = styled.div`
   max-width: 100%;
   padding: 30px;
   border-radius: 5px;
-  white-space: pre-wrap;
 `;
 export const CurrentInput = styled.input`
   background-color: #ffe5b2;
@@ -997,7 +995,6 @@ export const ProjectTextDiv = styled.div`
   font-size: 14px;
   overflow: hidden;
   word-wrap: break-word;
-  // background-color: white;
 `;
 
 export const ProjectTextLabel = styled.div`
@@ -1005,7 +1002,6 @@ export const ProjectTextLabel = styled.div`
   padding: 5px 10px;
   margin: 10px;
   font-size: 12px;
-  min-width: max-content;
 
   ${(props) => {
     if (props.type === "position") {
@@ -1020,24 +1016,7 @@ export const ProjectTextLabel = styled.div`
   }}
 `;
 
-export const ProjectText = styled.div`
-  // background-color: orange;
-  display: flex;
-  flex-wrap: wrap;
-  width: calc(100% - 90px);
-  max-width: calc(100% - 90px);
-  white-space: pre-wrap;
-  overflow: hidden;
-
-  ${(props) => {
-    if (props.type === "position") {
-      return css`
-        width: calc(100% - 73px);
-        max-width: calc(100% - 73px);
-      `;
-    }
-  }};
-`;
+export const ProjectText = styled.div``;
 
 //Profile3
 
@@ -1787,17 +1766,16 @@ export const SuggestP = styled.p`
 export const SearchResultDivParent = styled.div`
   display: flex;
   margin: 0 auto;
-  margin-bottom: 30px;
-  // width: 60%;
-  // height: 134px;
-  width: 700px;
-  height: 80px;
+  margin-bottom: 20px;
+  width: 60%;
+  height: 134px;
   background-color: rgba(255, 224, 130, 0.2);
   border-radius: 10px;
   justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
   box-shadow: 1px 2px 4px 2px rgba(107, 104, 104, 0.16);
+
 `;
 
 export const SearchResultDiv = styled.div`
@@ -1805,87 +1783,44 @@ export const SearchResultDiv = styled.div`
   margin: 0 auto;
   width: 80%;
   align-items: center;
-  // justify-content: space-in-between;
-  justify-content: flex-start;
-  // background-color: aqua;
+  justify-content: space-in-between;
 `;
 export const SearchResultImg = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
-  background-color: white;
-  margin-left: 20px;
 `;
 
 export const SearchResultDetail = styled.div`
-  // width: 20%;
-  width: 130px;
+  width: 20%;
   display: flex;
   flex-direction: column;
-  margin: 0 20px;
+  margin-left:2vw;
   gap: 8px;
-
-  // background-color: orange;
-`;
-
-export const SearchResultText = styled.div`
-  font-size: 13px;
-  color: #999;
-
-  ${(props) => {
-    if (props.type === "name") {
-      return css`
-        font-weight: bold;
-        font-size: 18px;
-        color: #333;
-      `;
-    }
-  }}
 `;
 
 export const SearchResultIntroBox = styled.div`
-  // width: 50%;
-  width: calc(100% - 280px);
-  padding: 10px 20px;
+  width: 60%;
   display: flex;
-  // justify-content: center;
+  justify-content: center;
   align-items: center;
-  // height: 90px;
-  height: 30px;
+  height: 90px;
   background-color: white;
   border-radius: 8px;
   margin-left: auto;
-  font-size: 13px;
-  // overflow: hidden;
-  white-space: pre-wrap;
-`;
-
-export const SearchResultIntro = styled.p`
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  // background-color: orange;
-  display: flex;
-  align-items: center;
-  color: #6c6c6c;
 `;
 
 export const SearchResultButton = styled.button`
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
-  width: 80px;
-  height: 35px;
+  width: 100px;
+  height: 50px;
   padding: 5px;
   background-color: #b299b0;
-  border: 2px solid #b299b0;
+  border: none;
   border-radius: 7px;
-  margin-right: 20px;
+  margin-right: 30px;
   cursor: pointer;
-  transition: 0.4s;
-
-  &:hover {
-    background-color: white;
-  }
 `;
 //UpdatedFriends.jsx
 
@@ -1967,11 +1902,8 @@ export const UpdatedFriendsCardIcons = styled.div`
 
 export const UpdatedFriendsRecommendToYouDiv = styled.div`
   display: flex;
-  flex-direction: column;
-  // justify-content: center;
   align-items: center;
-  // justify-content: space-between;
-  // width: max-content;
+  justify-content: space-between;
   width: 55%;
   gap: 10px;
   margin: 0 auto;
@@ -1992,8 +1924,6 @@ export const UpdatedFriendsRecommendCardIdolButton = styled.div`
 export const UpdatedFriendsRecommendChips = styled.div`
   display: flex;
   justify-content: center;
-  // background-color: orange;
-  width: max-content;
 `;
 
 export const UpdatedFriendsRecommendChip = styled.button`
@@ -2039,14 +1969,11 @@ export const UpdatedFriendsRecommendCardDiv = styled.div`
 
 export const UpdatedFriendsRecommendCardImg = styled.img`
   width: 66px;
-  height: 66px;
-  object-fit: cover;
   border-radius: 50%;
-  background-color: white;
   margin: 10px;
 `;
 export const UpdatedFriendsRecommendCardName = styled.span`
-  // margin: 10px;
+  margin: 10px;
   font-weight: bold;
 `;
 

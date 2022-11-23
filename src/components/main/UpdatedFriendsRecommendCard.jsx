@@ -3,8 +3,7 @@ import {
   UpdatedFriendsRecommendCardDiv,
   UpdatedFriendsRecommendCardImg,
   UpdatedFriendsRecommendCardName,
-  UpdatedFriendsRecommendCardIdolButton,
-  UpdatedFriendsRecommendCardDivParent,
+  UpdatedFriendsRecommendCardIdolButton,UpdatedFriendsRecommendCardDivParent
 } from "../../styledComponents";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -16,9 +15,7 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
   const [userInfo, setUserInfo] = useState({});
   const [g, setg] = useState(0);
   const getUserInfo = async () => {
-    const res = await axios.get(`${APIURL}/account/user/${user}`, {
-      headers: { Authorization: "token " + getCookie("token") },
-    });
+    const res = await axios.get(`${APIURL}/account/user/${user}`,{headers:{Authorization: 'token '+getCookie("token")} });
 
     if (res.status == 200) {
       setUserInfo(res.data);
@@ -37,8 +34,8 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
       alert("로그인이 필요합니다!");
       return;
     }
-    if (follower === userInfo.id) {
-      return;
+    if(follower === userInfo.id){
+      return
     }
     const res = await axios.post(`${APIURL}/profile/follow/`, {
       follower,
@@ -52,7 +49,6 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
       alert("나의 아이돌에서 삭제되었습니다.");
       setIsFollow(false);
     }
-    window.location.reload();
   };
 
   const [isFollow, setIsFollow] = useState();
@@ -60,7 +56,7 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
     const res = await axios.get(`${APIURL}/profile/isfollow/${user}/`, {
       headers: { Authorization: "token " + getCookie("token") },
     });
-    // console.log(`${user} followed `, res.data);
+    console.log(`${user} followed `, res.data);
     if (res.status == 200) {
       if (res.data.is_follow == true) setIsFollow(true);
       else setIsFollow(false);
@@ -74,23 +70,28 @@ const UpdatedFriendsRecommendCard = ({ user }) => {
 
   const navigate = useNavigate();
   const goUserProfile = () => {
+    
     navigate(`/profile/${user}`);
   };
 
   return (
     <>
-      <UpdatedFriendsRecommendCardDivParent>
-        <UpdatedFriendsRecommendCardDiv onClick={goUserProfile}>
-          <UpdatedFriendsRecommendCardImg
-            src={userInfo.image}
-          ></UpdatedFriendsRecommendCardImg>
-          <UpdatedFriendsRecommendCardName>
-            {userInfo.name}
-          </UpdatedFriendsRecommendCardName>
+      <UpdatedFriendsRecommendCardDivParent >
+        <UpdatedFriendsRecommendCardDiv onClick={goUserProfile} >
+        <UpdatedFriendsRecommendCardImg
+          src={userInfo.image}
+        ></UpdatedFriendsRecommendCardImg>
+        <UpdatedFriendsRecommendCardName>
+          {userInfo.name}
+        </UpdatedFriendsRecommendCardName>
         </UpdatedFriendsRecommendCardDiv>
-        <UpdatedFriendsRecommendCardIdolButton onClick={onFollow}>
-          {isFollow === false ? <span>Idol 추가</span> : <span>Idol 삭제</span>}
-        </UpdatedFriendsRecommendCardIdolButton>
+          <UpdatedFriendsRecommendCardIdolButton onClick={onFollow}>
+            {isFollow === false ? (
+              <span>Idol 추가</span>
+            ) : (
+              <span>Idol 삭제</span>
+            )}
+          </UpdatedFriendsRecommendCardIdolButton>
       </UpdatedFriendsRecommendCardDivParent>
     </>
   );

@@ -39,7 +39,7 @@ const App = () => {
         <Route path="/search" element={<SearchPage />} />
 
         {/*Search Result Page*/}
-        <Route path="/searchresult/:keyword" element={<SearchResultPage />} />
+        <Route path="/searchresult" element={<SearchResultPage />} />
 
         {/*Profile Page 3*/}
         {/* <Route path="/profile3" element={<ProfilePage3 />} /> */}

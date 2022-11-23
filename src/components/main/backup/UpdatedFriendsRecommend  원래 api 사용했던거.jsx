@@ -48,14 +48,15 @@ const UpdatedFriendsRecommend = () => {
 
   const [profiles, setProfiles] = useState([]);
   const getProfilesList = async () => {
-    clicked.current = true
     var li = []
+    console.log("doing hashtag: ", currHashtag)
     const res = await axios.get(
-      `${APIURL}/mainfeed/recommend/${currHashtag}/`,
+      `${APIURL}/mainfeed/recommend/${currHashtag}`,
       { headers: { Authorization: "token " + getCookie("token") } }
     );
 
     if (res.status == 200) {
+      console.log('result: ', res.data)
       if(res.data.length > 5){
         for(let i = 0 ;i<5;i++){
           const row = await res.data[i].user
@@ -68,13 +69,7 @@ const UpdatedFriendsRecommend = () => {
           li.push(row)
         }
       }
-      if(li.length === 0){
-        li_empty.current = true
-      }
-      else{
-        li_empty.current = false
-
-      }
+      
       setProfiles(li);
     } else {
       console.log("get hashtag fail");
@@ -86,69 +81,41 @@ const UpdatedFriendsRecommend = () => {
   useEffect(() => {
     getMyHashtagList();
   }, []);
+  // console.log("myhashtag", myHashtagList)
   useEffect(() => {
     if (myHashtagList.length != 0) {
       getProfilesList();
     }
   }, [currHashtag]);
+  console.log("currHashtag", currHashtag)
+  console.log("profiles", profiles)
 
-  const clicked = useRef(false)
-  const clicked_but_empty = useRef(false)
-  const li_empty = useRef(false)
-
-  var displayStyle 
-  var showrecommendsent = 0
-  if(profiles.length == 0){
-    displayStyle = {display: 'none'}
-    showrecommendsent = 1
-  }
-  else{
-    displayStyle = {}
-    showrecommendsent = 0
-  }
-  
-  console.log('myhashtag', myHashtagList.length)
-  console.log('li empty', li_empty.current)
+  // var displayStyle 
+  // if(profiles.length == 0){
+  //   displayStyle = {display: 'none'}
+  //   console.log(displayStyle)
+  // }
 
   return (
     <>
       <section>
         <UpdatedFriendsRecommendToYouDiv>
-          <div style={{ fontSize: "18px", fontWeight:"bold" }}>
-            <span>친구추천</span>
-            {myHashtagList.length == 0  && (
+          <div style={{ fontSize: "20px" }}>
+            <span id="user-name">{getCookie("user_id")}</span>
+            <span>님과 비슷한 개발자</span>
+            {myHashtagList.length == 0 && (
               <div
                 style={{
                   fontSize: "16px",
-                  fontWeight:'normal',
+                  fontWeight: "bold",
                   marginTop: "10px",
                 }}
               >
                 내 프로필에서 해시태그를 추가해 친구를 추천받아 보세요
               </div>
             )}
-            { myHashtagList.length != 0  && li_empty.current === false && (
-              <div
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "normal",
-                  marginTop: "10px",
-                }}
-              >
-                해시태그를 클릭해서 추천받아요
-              </div>
-            )}
-            { myHashtagList.length != 0  && li_empty.current === true && (
-              <div
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "normal",
-                  marginTop: "10px",
-                }}
-              >
-                해당 해시태그로 추천할 친구가 없어요
-              </div>
-            )}
+            
+            
           </div>
           <UpdatedFriendsRecommendChips>
             {myHashtagList.length != 0 &&
@@ -165,7 +132,7 @@ const UpdatedFriendsRecommend = () => {
           </UpdatedFriendsRecommendChips>
         </UpdatedFriendsRecommendToYouDiv>
 
-        <UpdatedFriendsRecommendCardContainer style={displayStyle}>
+        <UpdatedFriendsRecommendCardContainer >
           {profiles.length != 0 &&
             profiles.map((user, idx) => (
               <UpdatedFriendsRecommendCard

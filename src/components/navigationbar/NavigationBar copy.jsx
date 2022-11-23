@@ -11,7 +11,6 @@ import {
   TitleWrap,
   NavBtn,
   NavBarInner,
-  DevsLogo,
 } from "../../styledComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -29,16 +28,15 @@ const NavigationBar = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isClick, setIsClick] = useState(false);
   const location = useLocation().pathname;
-  
+
   useEffect(() => {
-    if (getCookie("user_id") ) {
+    if (getCookie("user_id")) {
       setIsLogin(true);
       getUserInfo();
     } else {
       setIsLogin(false);
     }
   }, [getCookie("user_id")]);
-  
 
   const navigate = useNavigate();
   const goProfile = () => {
@@ -82,10 +80,20 @@ const NavigationBar = () => {
     }
   };
 
-  const PassKeyword =  () =>{
-    navigate({pathname: "/searchresult", search: `?keyword=${keyword}`})
-  }
- 
+  const searchResult = useRef("");
+  const Search = async () => {
+    const res = await axios.get(`${APIURL}/search/${keyword}/`, {
+      headers: { Authorization: "token " + getCookie("token") },
+    });
+    if (res.status == 200) {
+      searchResult.current = res.data;
+      if (searchResult.current !== "") {
+        goSearchResult(searchResult.current);
+      }
+    } else {
+      console.log("get user info fail");
+    }
+  };
 
   //console.log("searchresult", searchResult);
 
@@ -104,7 +112,6 @@ const NavigationBar = () => {
       <NavBar>
         <NavBarInner>
           <TitleWrap onClick={goMain}>
-            <DevsLogo src={require("./logo.jpeg")} type="main" />
             <MainTitle href="#">뎁스</MainTitle>
             <SubTitle href="#">devStory</SubTitle>
           </TitleWrap>
@@ -116,7 +123,7 @@ const NavigationBar = () => {
               type="text"
               placeholder="Search"
             ></NavSearchInput>
-            <NavSearchButton onClick={PassKeyword}>
+            <NavSearchButton onClick={Search}>
               <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
             </NavSearchButton>
           </NavSearchbar>
@@ -144,9 +151,8 @@ const NavigationBar = () => {
               <NavBtn>
                 <img
                   style={{
-                    width: "37px",
-                    height: "37px",
-                    border: "1px solid white",
+                    width: "40px",
+                    height: "40px",
                     objectFit: "cover",
                     borderRadius: "50%",
                     cursor: "pointer",

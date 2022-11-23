@@ -78,15 +78,11 @@ const LoginInput = () => {
     const res = await axios.get(`${APIURL}/profile/profile/${id}/`);
     const belong = res.data.belong;
 
-    setTimeout(() => {
-      if (belong) {
-        // navigate("/main");
-        window.location.replace("/main");
-      } else {
-        // navigate(`/profile/${id}`);
-        window.location.replace(`/profile/${id}`);
-      }
-    }, 1000);
+    if (belong) {
+      navigate("/main");
+    } else {
+      navigate(`/profile/${id}`);
+    }
   };
 
   const onLogin = () => {
