@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useParams } from "react-router-dom";
 import { getCookie } from "../../config/cookie";
 import { APIURL } from "../../config/key";
+import { myAxios } from "../../config/axios";
 import {
   DescDiv,
   DescContentsDiv,
@@ -34,7 +35,7 @@ const OnGoing = memo(() => {
   }, [isEdit]);
 
   const ongoingPost = async () => {
-    const res = await axios.patch(`${APIURL}/profile/study/${id}/`, {
+    const res = await myAxios.patch(`${APIURL}/profile/study/${id}/`, {
       current_study: onGoing,
     });
 
@@ -57,6 +58,7 @@ const OnGoing = memo(() => {
             onChange={(e) => {
               setOnGoing(e.target.value);
             }}
+            maxLength={100}
           />
         ) : (
           <CurrentStudy>{onGoing}</CurrentStudy>
