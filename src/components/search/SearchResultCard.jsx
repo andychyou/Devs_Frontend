@@ -53,7 +53,7 @@ const SearchResultCard = ({id}) => {
   const checkFollowed = async () => {
     const res = await myAxios.get(`${APIURL}/profile/isfollow/${id}/`);
     if (res.status == 200) {
-      console.log(`${getCookie('user_id')} followed `,res.data)
+      // console.log(`${getCookie('user_id')} followed `,res.data)
       if (res.data.is_follow) {
         setIsFollowd(true);
       } else {

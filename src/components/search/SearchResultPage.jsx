@@ -22,9 +22,9 @@ const SearchResultPage = () => {
       headers: { Authorization: "token " + getCookie("token") },
     });
     if (res.status == 200) {
-      console.log('res.data', res.data)
+      // console.log('res.data', res.data)
       setSearchResult( res.data)
-      console.log('search result inside', searchResult)
+      // console.log('search result inside', searchResult)
     } else {
       console.log("get user info fail");
     }
@@ -34,9 +34,9 @@ const SearchResultPage = () => {
     setKeyword(location.search.substring(9))
     Search()
   } ,[location.search.substring(9)])
-  console.log('keyword', keyword)
-  console.log('locationnnnn', location.search.substring(9))
-  console.log('search resulttttt', searchResult)
+  // console.log('keyword', keyword)
+  // console.log('locationnnnn', location.search.substring(9))
+  // console.log('search resulttttt', searchResult)
 
   return (
     <>

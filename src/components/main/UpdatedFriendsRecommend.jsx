@@ -107,8 +107,8 @@ const UpdatedFriendsRecommend = () => {
     showrecommendsent = 0
   }
   
-  console.log('myhashtag', myHashtagList.length)
-  console.log('li empty', li_empty.current)
+  // console.log('myhashtag', myHashtagList.length)
+  // console.log('li empty', li_empty.current)
 
   return (
     <>
