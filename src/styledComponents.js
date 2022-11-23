@@ -340,7 +340,7 @@ export const ProfileImg = styled.img`
   background-color: white;
   width: 150px;
   height: 150px;
-  object-fit: contain;
+  object-fit: cover;
 `;
 export const ProfileImgIcon = styled.div`
   border-radius: 50%;
@@ -1775,7 +1775,6 @@ export const SearchResultDivParent = styled.div`
   align-items: center;
   cursor: pointer;
   box-shadow: 1px 2px 4px 2px rgba(107, 104, 104, 0.16);
-
 `;
 
 export const SearchResultDiv = styled.div`
@@ -1789,13 +1788,14 @@ export const SearchResultImg = styled.img`
   width: 66px;
   height: 66px;
   border-radius: 50%;
+  background-color: white;
 `;
 
 export const SearchResultDetail = styled.div`
   width: 20%;
   display: flex;
   flex-direction: column;
-  margin-left:2vw;
+  margin-left: 2vw;
   gap: 8px;
 `;
 
@@ -1969,11 +1969,14 @@ export const UpdatedFriendsRecommendCardDiv = styled.div`
 
 export const UpdatedFriendsRecommendCardImg = styled.img`
   width: 66px;
+  height: 66px;
+  object-fit: cover;
   border-radius: 50%;
+  background-color: white;
   margin: 10px;
 `;
 export const UpdatedFriendsRecommendCardName = styled.span`
-  margin: 10px;
+  // margin: 10px;
   font-weight: bold;
 `;
 
