@@ -997,6 +997,7 @@ export const ProjectTextDiv = styled.div`
   font-size: 14px;
   overflow: hidden;
   word-wrap: break-word;
+  // background-color: white;
 `;
 
 export const ProjectTextLabel = styled.div`
@@ -1004,6 +1005,7 @@ export const ProjectTextLabel = styled.div`
   padding: 5px 10px;
   margin: 10px;
   font-size: 12px;
+  min-width: max-content;
 
   ${(props) => {
     if (props.type === "position") {
@@ -1018,7 +1020,24 @@ export const ProjectTextLabel = styled.div`
   }}
 `;
 
-export const ProjectText = styled.div``;
+export const ProjectText = styled.div`
+  // background-color: orange;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 90px);
+  max-width: calc(100% - 90px);
+  white-space: pre-wrap;
+  overflow: hidden;
+
+  ${(props) => {
+    if (props.type === "position") {
+      return css`
+        width: calc(100% - 73px);
+        max-width: calc(100% - 73px);
+      `;
+    }
+  }};
+`;
 
 //Profile3
 
@@ -1948,8 +1967,11 @@ export const UpdatedFriendsCardIcons = styled.div`
 
 export const UpdatedFriendsRecommendToYouDiv = styled.div`
   display: flex;
+  flex-direction: column;
+  // justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
+  // width: max-content;
   width: 55%;
   gap: 10px;
   margin: 0 auto;
@@ -1970,6 +1992,8 @@ export const UpdatedFriendsRecommendCardIdolButton = styled.div`
 export const UpdatedFriendsRecommendChips = styled.div`
   display: flex;
   justify-content: center;
+  // background-color: orange;
+  width: max-content;
 `;
 
 export const UpdatedFriendsRecommendChip = styled.button`

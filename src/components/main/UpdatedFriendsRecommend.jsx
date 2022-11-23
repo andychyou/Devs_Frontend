@@ -24,14 +24,13 @@ const UpdatedFriendsRecommend = () => {
 
     if (res.status == 200) {
       const temp = [];
-      if(res.data.length > 5){
+      if (res.data.length > 5) {
         for (let i = 0; i < 5; i++) {
           temp.push(res.data[i].hashtag_name);
         }
         const hey = await temp;
         setMyHashtagList(hey);
-      }
-      else{
+      } else {
         for (let i = 0; i < res.data.length; i++) {
           temp.push(res.data[i].hashtag_name);
         }
@@ -43,37 +42,31 @@ const UpdatedFriendsRecommend = () => {
     }
   };
 
-
-  
-
   const [profiles, setProfiles] = useState([]);
   const getProfilesList = async () => {
-    clicked.current = true
-    var li = []
+    clicked.current = true;
+    var li = [];
     const res = await axios.get(
       `${APIURL}/mainfeed/recommend/${currHashtag}/`,
       { headers: { Authorization: "token " + getCookie("token") } }
     );
 
     if (res.status == 200) {
-      if(res.data.length > 5){
-        for(let i = 0 ;i<5;i++){
-          const row = await res.data[i].user
-          li.push(row)
+      if (res.data.length > 5) {
+        for (let i = 0; i < 5; i++) {
+          const row = await res.data[i].user;
+          li.push(row);
+        }
+      } else {
+        for (let i = 0; i < res.data.length; i++) {
+          const row = await res.data[i].user;
+          li.push(row);
         }
       }
-      else{
-        for(let i = 0 ;i<res.data.length;i++){
-          const row = await res.data[i].user
-          li.push(row)
-        }
-      }
-      if(li.length === 0){
-        li_empty.current = true
-      }
-      else{
-        li_empty.current = false
-
+      if (li.length === 0) {
+        li_empty.current = true;
+      } else {
+        li_empty.current = false;
       }
       setProfiles(li);
     } else {
@@ -92,21 +85,20 @@ const UpdatedFriendsRecommend = () => {
     }
   }, [currHashtag]);
 
-  const clicked = useRef(false)
-  const clicked_but_empty = useRef(false)
-  const li_empty = useRef(false)
+  const clicked = useRef(false);
+  const clicked_but_empty = useRef(false);
+  const li_empty = useRef(false);
 
-  var displayStyle 
-  var showrecommendsent = 0
-  if(profiles.length == 0){
-    displayStyle = {display: 'none'}
-    showrecommendsent = 1
+  var displayStyle;
+  var showrecommendsent = 0;
+  if (profiles.length == 0) {
+    displayStyle = { display: "none" };
+    showrecommendsent = 1;
+  } else {
+    displayStyle = {};
+    showrecommendsent = 0;
   }
-  else{
-    displayStyle = {}
-    showrecommendsent = 0
-  }
-  
+
   // console.log('myhashtag', myHashtagList.length)
   // console.log('li empty', li_empty.current)
 
@@ -114,20 +106,26 @@ const UpdatedFriendsRecommend = () => {
     <>
       <section>
         <UpdatedFriendsRecommendToYouDiv>
-          <div style={{ fontSize: "18px", fontWeight:"bold" }}>
+          <div
+            style={{
+              fontSize: "18px",
+              fontWeight: "bold",
+              width: "100%",
+            }}
+          >
             <span>친구추천</span>
-            {myHashtagList.length == 0  && (
+            {myHashtagList.length == 0 && (
               <div
                 style={{
                   fontSize: "16px",
-                  fontWeight:'normal',
+                  fontWeight: "normal",
                   marginTop: "10px",
                 }}
               >
                 내 프로필에서 해시태그를 추가해 친구를 추천받아 보세요
               </div>
             )}
-            { myHashtagList.length != 0  && li_empty.current === false && (
+            {myHashtagList.length != 0 && li_empty.current === false && (
               <div
                 style={{
                   fontSize: "16px",
@@ -138,7 +136,7 @@ const UpdatedFriendsRecommend = () => {
                 해시태그를 클릭해서 추천받아요
               </div>
             )}
-            { myHashtagList.length != 0  && li_empty.current === true && (
+            {myHashtagList.length != 0 && li_empty.current === true && (
               <div
                 style={{
                   fontSize: "16px",
@@ -153,7 +151,12 @@ const UpdatedFriendsRecommend = () => {
           <UpdatedFriendsRecommendChips>
             {myHashtagList.length != 0 &&
               myHashtagList.map((elem, idx) => (
-                <UpdatedFriendsRecommendChip style={currHashtag === elem ? {fontWeight:'bold', borderColor:'#f25089'}: {fontWeight:'400'}}
+                <UpdatedFriendsRecommendChip
+                  style={
+                    currHashtag === elem
+                      ? { fontWeight: "bold", borderColor: "#f25089" }
+                      : { fontWeight: "400" }
+                  }
                   onClick={() => {
                     setCurrHashtag(elem);
                   }}

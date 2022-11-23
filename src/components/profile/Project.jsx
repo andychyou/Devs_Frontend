@@ -29,7 +29,7 @@ const Project = ({ data }) => {
         <ProjectTextWrap>
           <ProjectTextDiv>
             <ProjectTextLabel type="position">담당</ProjectTextLabel>
-            <ProjectText>{data.position}</ProjectText>
+            <ProjectText type="position">{data.position}</ProjectText>
           </ProjectTextDiv>
 
           <ProjectTextDiv>
