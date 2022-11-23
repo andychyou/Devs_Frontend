@@ -16,15 +16,15 @@ const SearchResultPage = () => {
   const [keyword, setKeyword] = useState("")
   // console.log('aaaaaaa', location.search.substring(9) )
   // const searched_list = location.state.t.ids
-  const [searchResult,setSearchResult] = useState({})
+  const searchResult = useRef( location.search.substring(9));
   const Search = async () => {
     const res = await axios.get(`${APIURL}/search/${location.search.substring(9)}/`, {
       headers: { Authorization: "token " + getCookie("token") },
     });
     if (res.status == 200) {
       console.log('res.data', res.data)
-      setSearchResult( res.data)
-      console.log('search result inside', searchResult)
+      searchResult.current = res.data;
+      console.log('search result inside', searchResult.current)
     } else {
       console.log("get user info fail");
     }
@@ -36,7 +36,7 @@ const SearchResultPage = () => {
   } ,[location.search.substring(9)])
   console.log('keyword', keyword)
   console.log('locationnnnn', location.search.substring(9))
-  console.log('search resulttttt', searchResult)
+  console.log('search resulttttt', searchResult.current)
 
   return (
     <>
@@ -46,7 +46,7 @@ const SearchResultPage = () => {
           </RecommendToWho>
 
         {/* {searchedList  && <SearchResultCard id = {searchedList[0]}></SearchResultCard>} */}
-        {searchResult.ids != undefined &&searchResult.ids.map((elem,idx) => (
+        {searchResult.current.ids != undefined &&searchResult.current.ids.map((elem,idx) => (
                   <SearchResultCard key={idx} id = {elem}>
                   </SearchResultCard>
                 ))}
