@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MainTitle,
   NavAccountSpan,
@@ -29,16 +29,15 @@ const NavigationBar = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isClick, setIsClick] = useState(false);
   const location = useLocation().pathname;
-  
+
   useEffect(() => {
-    if (getCookie("user_id") ) {
+    if (getCookie("user_id")) {
       setIsLogin(true);
       getUserInfo();
     } else {
       setIsLogin(false);
     }
   }, [getCookie("user_id")]);
-  
 
   const navigate = useNavigate();
   const goProfile = () => {
@@ -82,10 +81,9 @@ const NavigationBar = () => {
     }
   };
 
-  const PassKeyword =  () =>{
-    navigate({pathname: "/searchresult", search: `?keyword=${keyword}`})
-  }
- 
+  const PassKeyword = () => {
+    navigate({ pathname: "/searchresult", search: `?keyword=${keyword}` });
+  };
 
   //console.log("searchresult", searchResult);
 
@@ -98,6 +96,12 @@ const NavigationBar = () => {
   if (location === "/" || location === "/login") {
     return <></>;
   }
+
+  const onKeyUp = (e) => {
+    if (e.key === "Enter") {
+      PassKeyword();
+    }
+  };
 
   return (
     <>
@@ -114,7 +118,8 @@ const NavigationBar = () => {
               onChange={onChange}
               name="search"
               type="text"
-              placeholder="Search"
+              placeholder="아이디, 이름, 해시태그로 검색해보세요!"
+              onKeyUp={onKeyUp}
             ></NavSearchInput>
             <NavSearchButton onClick={PassKeyword}>
               <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
