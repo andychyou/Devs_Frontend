@@ -10,7 +10,7 @@ const LandingTextComp = () => {
   return (
     <LandingHead>
       <DevsText>
-        <DevsLogo src="./logo.jpeg" />
+        <DevsLogo src="/logo.jpeg" />
         <div>뎁스 devStory</div>
       </DevsText>
     </LandingHead>
