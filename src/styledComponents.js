@@ -639,13 +639,14 @@ export const BigDiv = styled.div`
 `;
 export const BigBox = styled.div`
   // width: calc(983px - 120px);
-  width: calc(100% - 160px + 10px);
+  width: calc(100% - 160px);
   min-height: 100px;
-  line-height: 100px;
+  line-height: 25px;
   background-color: #f4f4f4;
   border-radius: 5px;
-  padding: 0 10px;
+  padding: 10px 15px;
   // margin: 0 auto;
+  white-space: pre-wrap;
 `;
 
 export const BigInput = styled.textarea`
@@ -665,6 +666,7 @@ export const CurrentStudy = styled.div`
   max-width: 100%;
   padding: 30px;
   border-radius: 5px;
+  white-space: pre-wrap;
 `;
 export const CurrentInput = styled.input`
   background-color: #ffe5b2;
@@ -1766,9 +1768,11 @@ export const SuggestP = styled.p`
 export const SearchResultDivParent = styled.div`
   display: flex;
   margin: 0 auto;
-  margin-bottom: 20px;
-  width: 60%;
-  height: 134px;
+  margin-bottom: 30px;
+  // width: 60%;
+  // height: 134px;
+  width: 700px;
+  height: 80px;
   background-color: rgba(255, 224, 130, 0.2);
   border-radius: 10px;
   justify-content: space-evenly;
@@ -1782,45 +1786,87 @@ export const SearchResultDiv = styled.div`
   margin: 0 auto;
   width: 80%;
   align-items: center;
-  justify-content: space-in-between;
+  // justify-content: space-in-between;
+  justify-content: flex-start;
+  // background-color: aqua;
 `;
 export const SearchResultImg = styled.img`
-  width: 66px;
-  height: 66px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: white;
+  margin-left: 20px;
 `;
 
 export const SearchResultDetail = styled.div`
-  width: 20%;
+  // width: 20%;
+  width: 130px;
   display: flex;
   flex-direction: column;
-  margin-left: 2vw;
+  margin: 0 20px;
   gap: 8px;
+
+  // background-color: orange;
+`;
+
+export const SearchResultText = styled.div`
+  font-size: 13px;
+  color: #999;
+
+  ${(props) => {
+    if (props.type === "name") {
+      return css`
+        font-weight: bold;
+        font-size: 18px;
+        color: #333;
+      `;
+    }
+  }}
 `;
 
 export const SearchResultIntroBox = styled.div`
-  width: 60%;
+  // width: 50%;
+  width: calc(100% - 280px);
+  padding: 10px 20px;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
-  height: 90px;
+  // height: 90px;
+  height: 30px;
   background-color: white;
   border-radius: 8px;
   margin-left: auto;
+  font-size: 13px;
+  // overflow: hidden;
+  white-space: pre-wrap;
+`;
+
+export const SearchResultIntro = styled.p`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  // background-color: orange;
+  display: flex;
+  align-items: center;
+  color: #6c6c6c;
 `;
 
 export const SearchResultButton = styled.button`
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
-  width: 100px;
-  height: 50px;
+  width: 80px;
+  height: 35px;
   padding: 5px;
   background-color: #b299b0;
-  border: none;
+  border: 2px solid #b299b0;
   border-radius: 7px;
-  margin-right: 30px;
+  margin-right: 20px;
   cursor: pointer;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: white;
+  }
 `;
 //UpdatedFriends.jsx
 

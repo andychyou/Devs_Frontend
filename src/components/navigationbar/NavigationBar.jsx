@@ -82,10 +82,10 @@ const NavigationBar = () => {
   };
 
   const PassKeyword = () => {
-    navigate({ pathname: "/searchresult", search: `?keyword=${keyword}` });
+    // navigate({ pathname: "/searchresult", search: `?keyword=${_keyword}` });
+    // navigate(`/searchresult/${keyword}`);
+    window.location.replace(`/searchresult/${keyword}`);
   };
-
-  //console.log("searchresult", searchResult);
 
   const [keyword, setKeyword] = useState("");
   const onChange = (e) => {
@@ -93,16 +93,15 @@ const NavigationBar = () => {
     setKeyword(value);
   };
 
-  if (location === "/" || location === "/login") {
-    return <></>;
-  }
-
   const onKeyUp = (e) => {
     if (e.key === "Enter") {
       PassKeyword();
     }
   };
 
+  if (location === "/" || location === "/login") {
+    return <></>;
+  }
   return (
     <>
       <NavBar>
@@ -118,6 +117,7 @@ const NavigationBar = () => {
               onChange={onChange}
               name="search"
               type="text"
+              value={keyword}
               placeholder="아이디, 이름, 해시태그로 검색해보세요!"
               onKeyUp={onKeyUp}
             ></NavSearchInput>
