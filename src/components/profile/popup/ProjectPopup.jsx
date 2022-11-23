@@ -162,7 +162,6 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, id }) => {
     if (res.status == 200) {
       alert("프로젝트 정보가 수정되었습니다.");
       setPopup(false);
-      window.location.relaod();
     }
   };
 
@@ -172,7 +171,9 @@ const ProjectPopup = memo(({ setPopup, text, isCreate, id }) => {
       return;
     }
 
-    onPatch();
+    onPatch().then(() => {
+      window.location.reload();
+    });
   };
 
   const onDelete = async () => {
