@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   MainTitle,
   NavAccountSpan,
@@ -11,7 +11,6 @@ import {
   TitleWrap,
   NavBtn,
   NavBarInner,
-  DevsLogo,
 } from "../../styledComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -81,8 +80,19 @@ const NavigationBar = () => {
     }
   };
 
-  const PassKeyword = () => {
-    navigate({ pathname: "/searchresult", search: `?keyword=${keyword}` });
+  const searchResult = useRef("");
+  const Search = async () => {
+    const res = await axios.get(`${APIURL}/search/${keyword}/`, {
+      headers: { Authorization: "token " + getCookie("token") },
+    });
+    if (res.status == 200) {
+      searchResult.current = res.data;
+      if (searchResult.current !== "") {
+        goSearchResult(searchResult.current);
+      }
+    } else {
+      console.log("get user info fail");
+    }
   };
 
   //console.log("searchresult", searchResult);
@@ -97,18 +107,11 @@ const NavigationBar = () => {
     return <></>;
   }
 
-  const onKeyUp = (e) => {
-    if (e.key === "Enter") {
-      PassKeyword();
-    }
-  };
-
   return (
     <>
       <NavBar>
         <NavBarInner>
           <TitleWrap onClick={goMain}>
-            <DevsLogo src={require("./logo.jpeg")} type="main" />
             <MainTitle href="#">뎁스</MainTitle>
             <SubTitle href="#">devStory</SubTitle>
           </TitleWrap>
@@ -118,10 +121,9 @@ const NavigationBar = () => {
               onChange={onChange}
               name="search"
               type="text"
-              placeholder="아이디, 이름, 해시태그로 검색해보세요!"
-              onKeyUp={onKeyUp}
+              placeholder="Search"
             ></NavSearchInput>
-            <NavSearchButton onClick={PassKeyword}>
+            <NavSearchButton onClick={Search}>
               <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
             </NavSearchButton>
           </NavSearchbar>
@@ -149,9 +151,8 @@ const NavigationBar = () => {
               <NavBtn>
                 <img
                   style={{
-                    width: "37px",
-                    height: "37px",
-                    border: "1px solid white",
+                    width: "40px",
+                    height: "40px",
                     objectFit: "cover",
                     borderRadius: "50%",
                     cursor: "pointer",

@@ -1766,19 +1766,22 @@ export const SuggestP = styled.p`
 export const SearchResultDivParent = styled.div`
   display: flex;
   margin: 0 auto;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
   width: 60%;
   height: 134px;
   background-color: rgba(255, 224, 130, 0.2);
   border-radius: 10px;
   justify-content: space-evenly;
   align-items: center;
+  cursor: pointer;
+  box-shadow: 1px 2px 4px 2px rgba(107, 104, 104, 0.16);
+
 `;
 
 export const SearchResultDiv = styled.div`
   display: flex;
   margin: 0 auto;
-  width: 75%;
+  width: 80%;
   align-items: center;
   justify-content: space-in-between;
 `;
@@ -1792,11 +1795,15 @@ export const SearchResultDetail = styled.div`
   width: 20%;
   display: flex;
   flex-direction: column;
+  margin-left:2vw;
   gap: 8px;
 `;
 
 export const SearchResultIntroBox = styled.div`
   width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 90px;
   background-color: white;
   border-radius: 8px;
@@ -1804,7 +1811,8 @@ export const SearchResultIntroBox = styled.div`
 `;
 
 export const SearchResultButton = styled.button`
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 500;
   width: 100px;
   height: 50px;
   padding: 5px;
@@ -1812,6 +1820,7 @@ export const SearchResultButton = styled.button`
   border: none;
   border-radius: 7px;
   margin-right: 30px;
+  cursor: pointer;
 `;
 //UpdatedFriends.jsx
 
